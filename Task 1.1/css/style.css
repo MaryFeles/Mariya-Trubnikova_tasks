@@ -7,12 +7,48 @@ body {
 }
 
 a {
+    outline: none !important;
     text-decoration: none;
+}
+
+a:visited, a:active {
+    color: #34ACA7;
+}
+
+input, .button-text, .aside-text {
+    font-size: 10px;
+}
+
+input {
+    line-height: 10px;
+}
+
+.aside-menu-item,
+.aside-button,
+.tab-name,
+.tab-describe,
+.card-header,
+.read-more,
+.footer-links {
+    color: #34ACA7;
+}
+
+.date, .footer-copyright {
+    color: #E5E5E5;
+}
+
+
+
+.button-text {
+    line-height: 12px;
+}
+
+.container, aside, .aside-menu-item, menu, footer {
+    display: flex;
 }
 
 .container {
     margin: 0 auto;
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 1088px;
@@ -20,20 +56,33 @@ a {
 
 aside {
     width: 140px;
-}
-
-main {
-    width: 896px;
-}
-
-footer {
-    width: 100%;
+    flex-flow: column nowrap;
 }
 
 .logo {
     width: 120px;
     height: 120px;
     background-image: url("../assets/svg/icon-logo.svg"); 
+
+    align-self: center;
+}
+
+.aside-menu-item {
+    padding: 5px 0 0 3px;
+
+    height: 66px;
+    font-style: italic;
+}
+
+.aside-menu-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+    /* background-image: url("../assets/svg/food-icon.svg"); */
+}
+
+.aside-menu-link {
+    width: 100%;
 }
 
 .aside-header {
@@ -43,25 +92,13 @@ footer {
     text-transform: uppercase;
 }
 
-.card-header {
-    font-size: 16px;
-    line-height: 21px;
-    letter-spacing: -0.02em;
-}
-
-.aside-menu-item {
-    height: 66px;
+.aside-text {
+    line-height: 19px;
     font-style: italic;
 }
 
-.button-text {
-    font-size: 10px;
-    line-height: 12px;
-}
-
-.aside-text-block {
-    font-size: 10px;
-    line-height: 19px;
+main {
+    width: 896px;
 }
 
 .banner-header {
@@ -75,43 +112,21 @@ footer {
     line-height: 18px;
 }
 
-.card-body, .read-more, .date {
-    font-size: 14px;
+.card-header, .card-body, .read-more, .date, .footer-text {
     line-height: 20px;
     letter-spacing: -0.02em;
 }
 
-.date {
-    color: #E5E5E5;
+.card-header {
+    font-size: 16px;
+    line-height: 21px;
+}
+
+footer {
+    width: 100%;
 }
 
 .footer-text {
     font-size: 12px;
     line-height: 12px;
-    letter-spacing: -0.02em;
 }
-
-.aside-menu-item,
-.aside-button,
-.tab-name,
-.tab-describe,
-.card-header,
-.read-more,
-.footer-links {
-    color: #34ACA7;
-}
-
-a:visited, a:active {
-    color: #34ACA7;
-}
-
-.footer-copyright {
-    color: #E5E5E5;
-}
-
-input {
-    font-style: normal;
-    font-size: 10px;
-    line-height: 10px;
-}
-
