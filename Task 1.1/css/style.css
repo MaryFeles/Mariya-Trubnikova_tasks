@@ -37,18 +37,20 @@ input {
     color: #E5E5E5;
 }
 
-
-
 .button-text {
+
     line-height: 12px;
 }
 
-.container, aside, .aside-menu-item, menu, footer {
+.container,
+aside, .aside-menu-item, .aside-menu-link, .aside-tweet, .aside-friends, .aside-friends,
+main,
+footer {
     display: flex;
 }
 
 .container {
-    margin: 0 auto;
+    margin: 46px auto 0;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 1088px;
@@ -69,6 +71,7 @@ aside {
 
 .aside-menu-item {
     padding: 5px 0 0 3px;
+    align-items: flex-start;
 
     height: 66px;
     font-style: italic;
@@ -78,11 +81,15 @@ aside {
     width: 30px;
     height: 30px;
     margin-right: 12px;
-    /* background-image: url("../assets/svg/food-icon.svg"); */
 }
 
 .aside-menu-link {
     width: 100%;
+    align-items: center;
+}
+
+.aside-menu-link:hover {
+    color: black;
 }
 
 .aside-header {
@@ -90,6 +97,35 @@ aside {
     font-size: 12px;
     line-height: 12px;
     text-transform: uppercase;
+    padding: 5px 0 5px 0;
+    border-bottom: 1px dashed #E5E5E5;
+}
+
+.aside-button {
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-style: italic;
+}
+
+.aside-tweet {
+    height: 61px;
+}
+
+.aside-tweet, .aside-friends {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.aside-tweet-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.aside-friends {
+    height: 133px;
 }
 
 .aside-text {
