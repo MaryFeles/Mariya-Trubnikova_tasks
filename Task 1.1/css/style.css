@@ -11,10 +11,6 @@ a {
     text-decoration: none;
 }
 
-a:visited, a:active {
-    color: #34ACA7;
-}
-
 input, .button-text, .aside-text {
     font-size: 10px;
 }
@@ -23,6 +19,7 @@ input {
     line-height: 10px;
 }
 
+a, a:visited, a:active,
 .aside-menu-item,
 .aside-button,
 .tab-name,
@@ -33,23 +30,27 @@ input {
     color: #34ACA7;
 }
 
-.date, .footer-copyright {
+input::placeholder, .date, .footer-copyright {
     color: #E5E5E5;
 }
 
 .button-text {
-
     line-height: 12px;
 }
 
-.container,
-aside, .aside-menu-item, .aside-menu-link, .aside-tweet, .aside-friends, .aside-friends,
-main,
+.aside-menu-item, .aside-button, .aside-text, .banner-description, .banner-header, .main-text {
+    font-style: italic;
+}
+
+.container, aside, .aside-menu-item, .aside-menu-link, .aside-tweet, .aside-friends, .aside-friends,
+main, .banner-header, .banner-description, .tabs ul, .tab-item-large, .tab-link, .subscribe-box,
+.wrapper-cards, .card-large, .image-wrap, .wrap-date-link,
 footer {
     display: flex;
 }
 
 .container {
+    height: 1175px;
     margin: 46px auto 0;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -58,6 +59,7 @@ footer {
 
 aside {
     width: 140px;
+    flex-direction: column;
     flex-flow: column nowrap;
 }
 
@@ -72,9 +74,7 @@ aside {
 .aside-menu-item {
     padding: 5px 0 0 3px;
     align-items: flex-start;
-
     height: 66px;
-    font-style: italic;
 }
 
 .aside-menu-icon {
@@ -88,7 +88,8 @@ aside {
     align-items: center;
 }
 
-.aside-menu-link:hover {
+.aside-menu-link:hover,
+.read-more:hover {
     color: black;
 }
 
@@ -103,11 +104,14 @@ aside {
 
 .aside-button {
     height: 30px;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #E5E5E5;
     box-sizing: border-box;
     border-radius: 5px;
-    font-style: italic;
+}
+
+.aside-button:active {
+    background-color: #D9EFEC;
 }
 
 .aside-tweet {
@@ -130,22 +134,127 @@ aside {
 
 .aside-text {
     line-height: 19px;
-    font-style: italic;
 }
 
 main {
     width: 896px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.banner {
+    position: relative;
+    height: 445px;
+    width: auto;
+    background-image: url("../assets/png/baner.png");
+}
+
+.banner-header, .banner-description {
+    position: absolute;
+    padding-left: 24px;
+    align-items: center;
 }
 
 .banner-header {
+    bottom: 111px;
+    width: 272px;
+    height: 47px;
+    background-color: #ffffff;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 0.01em;
 }
 
+.banner-description {
+    bottom: 69px;
+    width: 487px;
+    height: 42px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.tabs ul {
+    flex-direction: row;
+    justify-content: stretch;
+}
+
+.tab-link {
+    box-sizing: border-box;
+    padding-left: 20px;
+    width: 224px;
+    height: 85px;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #EFF8F7;
+}
+
+.tab-link:hover, .tab-link-active {
+    background-color: #D9EFEC;
+}
+
 .tab-name {
     font-size: 18px;
     line-height: 18px;
+}
+
+.subscribe-box {
+    height: 51px;
+    border-top: 1px dashed #E5E5E5;
+    border-bottom: 1px dashed #E5E5E5;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.subscribe-box input {
+    width: 160px;
+    padding: 6px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+}
+
+.main-mail-icon {
+    width: 32px;
+    height: 26px;
+}
+
+.main-text {
+    width: 530px;
+    line-height: 16px;
+}
+
+.subscribe-button {
+    width: 80px;
+    height: 23px;
+    padding-bottom: 7px;
+    background: linear-gradient(180deg, #F4F3F3 0%, #BBB9B9 100%);
+    border: 1px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+
+.subscribe-button:active {
+    background: linear-gradient(360deg, #F4F3F3 0%, #BBB9B9 100%);
+}
+
+.wrapper-cards {
+    justify-content: space-between;
+}
+
+.card-large {
+    flex-direction: column;
+    width: 207px;
+}
+
+.image-wrap {
+    box-sizing: border-box;
+    border: 1px solid #E5E5E5;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+.image-wrap img {
+    box-sizing: border-box;
+    width: 207px;
+    border: 11px solid #FFFFFF;
 }
 
 .card-header, .card-body, .read-more, .date, .footer-text {
@@ -154,8 +263,18 @@ main {
 }
 
 .card-header {
+    padding-top: 11px;
     font-size: 16px;
     line-height: 21px;
+}
+
+.card-body {
+    padding-top: 9px;
+    color: black;
+}
+
+.wrap-date-link {
+    padding-top: 11px;
 }
 
 footer {
