@@ -30,6 +30,10 @@ a, a:visited, a:active,
     color: #34ACA7;
 }
 
+.text-link:hover {
+    color: #000000;
+}
+
 input::placeholder, .date, .footer-copyright {
     color: #E5E5E5;
 }
@@ -45,7 +49,7 @@ input::placeholder, .date, .footer-copyright {
 .container, aside, .aside-menu-item, .aside-menu-link, .aside-tweet, .aside-friends, .aside-friends,
 main, .banner-header, .banner-description, .tabs ul, .tab-item-large, .tab-link, .subscribe-box,
 .wrapper-cards, .card-large, .image-wrap, .wrap-date-link,
-footer {
+footer, .footer-item, .footer-links, .footer-icons-wrapper, .footer-content {
     display: flex;
 }
 
@@ -84,13 +88,8 @@ aside {
 }
 
 .aside-menu-link {
-    width: 100%;
+    flex-grow: 1;
     align-items: center;
-}
-
-.aside-menu-link:hover,
-.read-more:hover {
-    color: black;
 }
 
 .aside-header {
@@ -278,10 +277,36 @@ main {
 }
 
 footer {
-    width: 100%;
+    height: 92px;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #E5E5E5;
+}
+
+.footer-content {
+    flex-grow: 1;
+    justify-content: flex-end;
+    align-items: stretch;
 }
 
 .footer-text {
     font-size: 12px;
     line-height: 12px;
+}
+
+.footer-item {
+    padding-left: 8px;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.footer-item li:not(:first-child) {
+    padding-left: 4px;
+}
+
+.footer-item li:not(:last-child) {
+    padding-right: 4px;
+    border-right: 1px solid #E5E5E5;
 }
