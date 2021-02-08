@@ -11,17 +11,13 @@ a {
     text-decoration: none;
 }
 
-input, .button-text, .aside-text {
+.small-text {
     font-size: 10px;
-}
-
-input {
-    line-height: 10px;
 }
 
 a, a:visited, a:active,
 .aside-menu-item,
-.aside-button,
+.widget-button,
 .tab-name,
 .tab-describe,
 .card-header,
@@ -34,7 +30,7 @@ a, a:visited, a:active,
     color: #000000;
 }
 
-input::placeholder, .date, .footer-copyright {
+input::placeholder, .date, .text-splitter, .footer-copyright {
     color: #E5E5E5;
 }
 
@@ -42,24 +38,25 @@ input::placeholder, .date, .footer-copyright {
     line-height: 12px;
 }
 
-.aside-menu-item, .aside-button, .aside-text, .banner-description, .banner-header, .main-text {
+.aside-menu-item, .widget-button, .widget-text, .banner-description, .banner-header, .subscribe-text {
     font-style: italic;
 }
 
-.container, aside, .aside-menu-item, .aside-menu-link, .aside-tweet, .aside-friends, .aside-friends,
-main, .banner-header, .banner-description, .tabs ul, .tab-item-large, .tab-link, .subscribe-box,
-.wrapper-cards, .card-large, .image-wrap, .wrap-date-link,
-footer, .footer-item, .footer-links, .footer-icons-wrapper, .footer-content {
+.container, aside, .aside-menu-item, .aside-menu-link, .widget, .widget-button,
+main, .wrapper-banner-header, .banner-header, .banner-description, .tabs, .tabs ul, .tab-item, .tab-link, .subscribe-form,
+.wrapper-cards, .card, .image-wrap, .card-footer,
+footer, .footer-links-block, .footer-links, .footer-content, .wrapper-social-icons {
     display: flex;
 }
 
 .container {
-    height: 1175px;
     margin: 46px auto 0;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 1088px;
 }
+
+/*   aside   */
 
 aside {
     width: 140px;
@@ -70,21 +67,40 @@ aside {
 .logo {
     width: 120px;
     height: 120px;
-    background-image: url("../assets/svg/icon-logo.svg"); 
-
+    background-image: url("../assets/svg/icon-logo.svg");
     align-self: center;
 }
 
 .aside-menu-item {
-    padding: 5px 0 0 3px;
+    padding: 5px 0 35px 3px;
     align-items: flex-start;
-    height: 66px;
 }
 
 .aside-menu-icon {
+    background-size: cover;
     width: 30px;
     height: 30px;
     margin-right: 12px;
+}
+
+.food-icon {
+    background-image: url("../assets/svg/food-icon.svg");
+}
+
+.blog-icon {
+    background-image: url("../assets/svg/blog-icon.svg");
+}
+
+.a-list-icon {
+    background-image: url("../assets/svg/a-list-icon.svg");
+}
+
+.camera-icon {
+    background-image: url("../assets/svg/camera-icon.svg");
+}
+
+.about-icon {
+    background-image: url("../assets/svg/about-icon.svg");
 }
 
 .aside-menu-link {
@@ -92,16 +108,23 @@ aside {
     align-items: center;
 }
 
-.aside-header {
+.widget {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.widget-header {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 12px;
     line-height: 12px;
     text-transform: uppercase;
     padding: 5px 0 5px 0;
+    margin-bottom: 10px;
     border-bottom: 1px dashed #E5E5E5;
 }
 
-.aside-button {
+.widget-button {
+    align-items: center;
     height: 30px;
     background-color: #ffffff;
     border: 1px solid #E5E5E5;
@@ -109,31 +132,27 @@ aside {
     border-radius: 5px;
 }
 
-.aside-button:active {
+.widget-button:active {
     background-color: #D9EFEC;
 }
 
-.aside-tweet {
-    height: 61px;
-}
-
-.aside-tweet, .aside-friends {
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.aside-tweet-icon {
+.widget-tweet-icon {
     width: 16px;
     height: 16px;
+    background-image: url("../assets/svg/twitter-icon-primary.svg");
 }
 
-.aside-friends {
-    height: 133px;
+.widget-button-text {
+    padding-left: 6px;
 }
 
-.aside-text {
+.widget-text {
+    padding-top: 5px;
+    padding-bottom: 15px;
     line-height: 19px;
 }
+
+/*   main   */
 
 main {
     width: 896px;
@@ -146,18 +165,22 @@ main {
     height: 445px;
     width: auto;
     background-image: url("../assets/png/baner.png");
+    background-size: cover;
+}
+
+.wrapper-banner-header {
+    flex-direction: column;
+    position: absolute;
+    bottom: 69px;
 }
 
 .banner-header, .banner-description {
-    position: absolute;
-    padding-left: 24px;
+    padding: 14px 24px 14px;
     align-items: center;
 }
 
 .banner-header {
-    bottom: 111px;
     width: 272px;
-    height: 47px;
     background-color: #ffffff;
     font-size: 22px;
     line-height: 22px;
@@ -165,23 +188,25 @@ main {
 }
 
 .banner-description {
-    bottom: 69px;
     width: 487px;
-    height: 42px;
     background-color: #000000;
     color: #ffffff;
 }
 
 .tabs ul {
     flex-direction: row;
+    flex-grow: 1;
+}
+
+.tab-item {
+    flex-basis: 100%;
     justify-content: stretch;
 }
 
 .tab-link {
     box-sizing: border-box;
     padding-left: 20px;
-    width: 224px;
-    height: 85px;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     background-color: #EFF8F7;
@@ -192,33 +217,45 @@ main {
 }
 
 .tab-name {
+    padding-top: 26px;
     font-size: 18px;
     line-height: 18px;
 }
 
-.subscribe-box {
-    height: 51px;
+.tab-describe {
+   padding-bottom: 22px;
+}
+
+.subscribe-form {
     border-top: 1px dashed #E5E5E5;
     border-bottom: 1px dashed #E5E5E5;
+    margin: 30px 0;
     align-items: center;
     justify-content: space-around;
 }
 
-.subscribe-box input {
+.subscribe-form input {
     width: 160px;
     padding: 6px;
     background: #FFFFFF;
     border: 1px solid #E5E5E5;
 }
 
-.main-mail-icon {
+.mail-icon {
     width: 32px;
     height: 26px;
+    background-image: url("../assets/svg/mail-icon.svg");
+    background-size: cover;
 }
 
-.main-text {
+.subscribe-text {
+    padding: 10px 0 10px 0;
     width: 530px;
     line-height: 16px;
+}
+
+.input-text {
+    line-height: 10px;
 }
 
 .subscribe-button {
@@ -237,11 +274,21 @@ main {
 
 .wrapper-cards {
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.card-large {
+.card {
     flex-direction: column;
     width: 207px;
+    padding-bottom: 50px;
+}
+
+.card-img {
+    box-sizing: border-box;
+    background-size: cover;
+    width: 207px;
+    height: 143px;
+    border: 11px solid #FFFFFF;
 }
 
 .image-wrap {
@@ -256,7 +303,7 @@ main {
     border: 11px solid #FFFFFF;
 }
 
-.card-header, .card-body, .read-more, .date, .footer-text {
+.card-header, .card-body, .read-more, .date, .text-splitter, .footer-text {
     line-height: 20px;
     letter-spacing: -0.02em;
 }
@@ -272,12 +319,13 @@ main {
     color: black;
 }
 
-.wrap-date-link {
+.card-footer {
     padding-top: 11px;
 }
 
+/*   footer   */
+
 footer {
-    height: 92px;
     flex-grow: 1;
     justify-content: space-between;
     align-items: center;
@@ -288,6 +336,7 @@ footer {
     flex-grow: 1;
     justify-content: flex-end;
     align-items: stretch;
+    padding: 25px 0 35px;
 }
 
 .footer-text {
@@ -295,18 +344,37 @@ footer {
     line-height: 12px;
 }
 
-.footer-item {
+.footer-links-block {
     padding-left: 8px;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
 }
 
-.footer-item li:not(:first-child) {
+.footer-links-block li:not(:first-child) {
     padding-left: 4px;
 }
 
-.footer-item li:not(:last-child) {
+.footer-links-block li:not(:last-child) {
     padding-right: 4px;
     border-right: 1px solid #E5E5E5;
+}
+
+.social-icons {
+    margin: 0 4px 0 4px;
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+}
+
+.twitter-icon {
+    background-image: url("../assets/svg/twitter-icon-light-gray.svg");
+}
+
+.fb-icon {
+    background-image: url("../assets/svg/fb-icon-light-gray.svg");
+}
+
+.rss-icon {
+    background-image: url("../assets/svg/rss-icon-light-gray.svg");
 }
