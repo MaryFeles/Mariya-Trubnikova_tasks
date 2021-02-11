@@ -285,7 +285,8 @@ main {
 }
 
 .wrapper-cards {
-    justify-content: space-between;
+    margin-right: -22px;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
@@ -293,6 +294,10 @@ main {
     flex-direction: column;
     width: 207px;
     padding-bottom: 50px;
+}
+
+.card:not(:last-child) {
+    margin-right: 22px;
 }
 
 .card__img {
