@@ -1,0 +1,39 @@
+.food-icon {
+    background-image: url("../assets/svg/food-icon.svg");
+}
+
+.blog-icon {
+    background-image: url("../assets/svg/blog-icon.svg");
+}
+
+.list-icon {
+    background-image: url("../assets/svg/a-list-icon.svg");
+}
+
+.camera-icon {
+    background-image: url("../assets/svg/camera-icon.svg");
+}
+
+.about-icon {
+    background-image: url("../assets/svg/about-icon.svg");
+}
+
+.twIcon-primary {
+    background-image: url("../assets/svg/twitter-icon-primary.svg");
+}
+
+.mail-icon {
+    background-image: url("../assets/svg/mail-icon.svg");
+}
+
+.twIcon-gray {
+    background-image: url("../assets/svg/twitter-icon-light-gray.svg");
+}
+
+.fb-icon {
+    background-image: url("../assets/svg/fb-icon-light-gray.svg");
+}
+
+.rss-icon {
+    background-image: url("../assets/svg/rss-icon-light-gray.svg");
+}

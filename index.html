@@ -4,8 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
     <link rel="stylesheet" type="text/css" href="css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/helpers.css" />
+    <link rel="stylesheet" type="text/css" href="css/aside.css" />
+    <link rel="stylesheet" type="text/css" href="css/main-block.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/1176.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/992.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/768.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/480.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/370.css" />
+
     <title>Food Sence</title>
 </head>
 
@@ -53,8 +64,8 @@
                 <div class="widget widget--tweet">
                     <h3 class="widget__header">LATEST TWEET</h3>
                     <button class="widget__btn btn">
-                        <div class="widget__btn-icon btn__icon btn__icon--tweet-icon tweet-icon"></div>
-                        <span class="widget__btn-text btn__text">Join the Conversation</span>
+                        <div class="widget__btn-icon btn__icon btn__icon--tweet-icon twIcon-primary"></div>
+                        <span class="widget__btn-text">Join the Conversation</span>
                     </button>
                 </div>
                 <div class="widget widget--friends">
@@ -62,8 +73,8 @@
                     <p class="widget__body">For weekly finds, community recommendations, and more, like us on
                         Facebook.</p>
                     <button class="widget__btn btn">
-                        <div class="widget__btn-icon btn__icon btn__icon--tweet-icon tweet-icon"></div>
-                        <span class="widget__btn-text btn__text">Join the Community</span>
+                        <div class="widget__btn-icon btn__icon btn__icon--tweet-icon twIcon-primary"></div>
+                        <span class="widget__btn-text">Join the Community</span>
                     </button>
                 </div>
             </div>
@@ -82,28 +93,20 @@
                 <nav class="slider__tabs tabs">
                     <ul class="tabs__inner">
                         <li class="tabs__item">
-                            <a class="tabs__link" href="#">
                                 <h3 class="tabs__header">Tastemarkers</h3>
-                                <p class="tabs__describe">Feast your eyes & get reciepes!</p>
-                            </a>
+                                <p class="tabs__description">Feast your eyes & get reciepes!</p>
                         </li>
                         <li class="tabs__item">
-                            <a class="tabs__link" href="#">
                                 <h3 class="tabs__header">Blog</h3>
-                                <p class="tabs__describe">News, how-tos, stories, and more</p>
-                            </a>
+                                <p class="tabs__description">News, how-tos, stories, and more</p>
                         </li>
                         <li class="tabs__item">
-                            <a class="tabs__link" href="#">
                                 <h3 class="tabs__header">The A-List</h3>
-                                <p class="tabs__describe">Handpicked, absolute favorites</p>
-                            </a>
+                                <p class="tabs__description">Handpicked, absolute favorites</p>
                         </li>
-                        <li class="tabs__item">
-                            <a class="tabs__link tabs__link--active" href="#">
+                        <li class="tabs__item tabs__item--active">
                                 <h3 class="tabs__header">Contribure</h3>
-                                <p class="tabs__describe">We want to hear from you!</p>
-                            </a>
+                                <p class="tabs__description">We want to hear from you!</p>
                         </li>
                     </ul>
                 </nav>
@@ -111,7 +114,7 @@
 
             <div class="subscription">
                 <div class="subscription__text-wrapper">
-                    <div class="subscription__icon mail-icon"></div>
+                    <div class="subscription__icon subscription__icon--mail-icon mail-icon"></div>
                     <p class="subscription__text">
                         Sign up for out newsletter to receive a handpicked selection of the best
                         stories, recipes, and news, delivered weekly to your inbox.
@@ -121,7 +124,7 @@
                 <form action="" class="subscription__form">
                     <input class="subscription__input input" type="email" name="email" placeholder="Email" />
                     <button class="subscription__btn btn">
-                        <span class="btn__text">Subscribe</span>
+                        <span class="subscription__btn-text">Subscribe</span>
                     </button>
                 </form>                                
             </div>
@@ -222,7 +225,7 @@
                 </div>
                 
                 <div class="footer__item footer__item--icons">
-                    <a href="#" class="footer__icon footer__icon--twitter-icon twitter-icon"></a>
+                    <a href="#" class="footer__icon footer__icon--twitter-icon twIcon-gray"></a>
                     <a href="#" class="footer__icon footer__icon--fb-icon fb-icon"></a>
                     <a href="#" class="footer__icon footer__icon--rss-icon rss-icon"></a>
                 </div>                
