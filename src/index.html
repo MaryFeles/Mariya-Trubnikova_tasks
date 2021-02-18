@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="css/helpers.css" />
+    <link rel="stylesheet" type="text/css" href="css/aside.css" />
+    <link rel="stylesheet" type="text/css" href="css/main-block.css" />
+    <link rel="stylesheet" type="text/css" href="css/footer.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/1176.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/992.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/768.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/480.css" />
+    <link rel="stylesheet" type="text/css" href="css/media/370.css" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <title>Food Sence</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <aside class="aside">
+            <a href="" class="logo"></a>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">
+                            <div class="menu__icon menu__icon--food-icon food-icon"></div>
+                            <span class="menu__link-text link-text">Tastemarkers</span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">
+                            <div class="menu__icon menu__icon--blog-icon blog-icon"></div>
+                            <span class="menu__link-text link-text">Blog</span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">
+                            <div class="menu__icon menu__icon--list-icon list-icon"></div>
+                            <span class="menu__link-text link-text">The A-List</span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">
+                            <div class="menu__icon menu__icon--camera-icon camera-icon"></div>
+                            <span class="menu__link-text link-text">Contribure</span>
+                        </a>
+                    </li>
+                    <li class="menu__item">
+                        <a class="menu__link" href="#">
+                            <div class="menu__icon menu__icon--about-icon about-icon"></div>
+                            <span class="menu__link-text link-text">About</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="list-widget">
+                <div class="widget widget--tweet">
+                    <h3 class="widget__header">LATEST TWEET</h3>
+                    <button class="widget__btn btn">
+                        <div class="widget__btn-icon btn__icon btn__icon--tweet-icon twIcon-primary"></div>
+                        <span class="widget__btn-text">Join the Conversation</span>
+                    </button>
+                </div>
+                <div class="widget widget--friends">
+                    <h3 class="widget__header">LET'S BE FRIENDS!</h3>
+                    <p class="widget__body">For weekly finds, community recommendations, and more, like us on
+                        Facebook.</p>
+                    <button class="widget__btn btn">
+                        <div class="widget__btn-icon btn__icon btn__icon--tweet-icon twIcon-primary"></div>
+                        <span class="widget__btn-text">Join the Community</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="slider">
+                <div class="slider__banner banner">
+                    <div class="banner__content">
+                        <h2 class="banner__header">Share your Food Sence</h2>
+                        <p class="banner__description">
+                            Submit yout favorite recipes,
+                            become a contributor, or get interviewed.</p>
+                    </div>                    
+                </div>
+                <nav class="slider__tabs tabs">
+                    <ul class="tabs__inner">
+                        <li class="tabs__item">
+                                <h3 class="tabs__header">Tastemarkers</h3>
+                                <p class="tabs__description">Feast your eyes & get reciepes!</p>
+                        </li>
+                        <li class="tabs__item">
+                                <h3 class="tabs__header">Blog</h3>
+                                <p class="tabs__description">News, how-tos, stories, and more</p>
+                        </li>
+                        <li class="tabs__item">
+                                <h3 class="tabs__header">The A-List</h3>
+                                <p class="tabs__description">Handpicked, absolute favorites</p>
+                        </li>
+                        <li class="tabs__item tabs__item--active">
+                                <h3 class="tabs__header">Contribure</h3>
+                                <p class="tabs__description">We want to hear from you!</p>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="subscription">
+                <div class="subscription__text-wrapper">
+                    <div class="subscription__icon subscription__icon--mail-icon mail-icon"></div>
+                    <p class="subscription__text">
+                        Sign up for out newsletter to receive a handpicked selection of the best
+                        stories, recipes, and news, delivered weekly to your inbox.
+                    </p>
+                </div>
+                
+                <form action="" class="subscription__form">
+                    <input class="subscription__input input" type="email" name="email" placeholder="Email" />
+                    <button class="subscription__btn btn">
+                        <span class="subscription__btn-text">Subscribe</span>
+                    </button>
+                </form>                                
+            </div>
+
+            <div class="wrapper-cards">
+                <div class="card">
+                    <div class="card__img-wrapper">
+                        <a href="#">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/png/vegetable_chips-w260.png">
+                                <source media="(min-width: 767px)" srcset="assets/png/vegetable_chips.png">
+                                <img class="card__img" src="assets/png/vegetable_chips.png" alt="Vegetable chips">
+                            </picture>
+                        </a>
+                    </div>
+                    <h4 class="card__header">2012’s Best Summer Cookbooks</h4>
+                    <p class="card__body">
+                        With the best of the season coming 
+                        from “orchards, farms and gardens,” NPR has
+                        put together an impressive collection of 10 summer cookbooks.
+                    </p>
+                    <div class="card__footer">
+                        <span class="card__date">May 23, 2012</span><span class="text-splitter">&nbsp;/</span>
+                        <a href="#"><span class="card__read-more link-text">Read...</span></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__img-wrapper">
+                        <a href="#">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/png/vegetables-w260.png">
+                                <source media="(min-width: 767px)" srcset="assets/png/vegetables.png">
+                                <img class="card__img" src="assets/png/vegetables.png" alt="Vegetables">
+                            </picture>
+                        </a>
+                    </div>
+                    <h4 class="card__header">How to Make Vegetable Chips</h4>
+                    <p class="card__body">
+                        About a month ago, I ate almost an entire box of kale chips. 
+                        My brother and I were visiting our cousin in Brooklyn, 
+                        and before a very thoughtfully prepared vagan...
+                    </p>
+                    <div class="card__footer">
+                        <span class="card__date">May 17, 2012</span><span class="text-splitter">&nbsp;/</span>
+                        <a href="#"><span class="card__read-more link-text">Read...</span></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__img-wrapper">
+                        <a href="#">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/png/salat-w260.png">
+                                <source media="(min-width: 767px)" srcset="assets/png/salat.png">
+                                <img class="card__img" src="assets/png/salat.png" alt="Salat">
+                            </picture>
+                        </a>
+                    </div>
+                    <h4 class="card__header">Join us on Pinterest!</h4>
+                    <p class="card__body">If I could curate a cookbook for you, this would be it.</p>
+                    <div class="card__footer">
+                        <span class="card__date">May 23, 2012</span><span class="text-splitter">&nbsp;/</span>
+                        <a href="#"><span class="card__read-more link-text">Read...</span></a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__img-wrapper">
+                        <a href="#">
+                            <picture>
+                                <source media="(max-width: 768px)" srcset="assets/png/plant-w260.png">
+                                <source media="(min-width: 767px)" srcset="assets/png/plant.png">
+                                <img class="card__img" src="assets/png/plant.png" alt="Plant">
+                            </picture>
+                        </a>
+                    </div>
+                    <h4 class="card__header">Recipes from a Sunday Supper</h4>
+                    <p class="card__body">
+                        I could not figure out what to do with the delectable slices of Pear Cake 
+                        that I brought home from this wonderful Sunday supper - eat them slowly, 
+                        a little bit at...
+                    </p>
+                    <div class="card__footer">
+                        <span class="card__date">May 17, 2012</span><span class="text-splitter">&nbsp;/</span>
+                        <a href="#"><span class="card__read-more link-text">Read...</span></a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__inner">
+                <div class="footer__item footer__item--links">
+                    <ul class="footer__links-list">
+                        <li><a href="#" class="footer__link link-text">Privacy Policy</a></li>
+                        <li><a href="#" class="footer__link link-text">Terms of Use</a></li>
+                        <li><a href="#" class="footer__link link-text">Contact</a></li>
+                    </ul>
+                    <span class="footer__copyright">&copy; 2016 Food Sense, all rights reserved.</span>
+                </div>
+                
+                <div class="footer__item footer__item--icons">
+                    <a href="#" class="footer__icon footer__icon--twitter-icon twIcon-gray"></a>
+                    <a href="#" class="footer__icon footer__icon--fb-icon fb-icon"></a>
+                    <a href="#" class="footer__icon footer__icon--rss-icon rss-icon"></a>
+                </div>                
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
