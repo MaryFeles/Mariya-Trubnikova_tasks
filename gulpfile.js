@@ -37,7 +37,15 @@ let { src, dest } = require('gulp'),
     file_include = require("gulp-file-include"),
     del = require("del"),
     scss = require("gulp-sass"),
-    autoprefixer = require("gulp-autoprefixer")
+    autoprefixer = require("gulp-autoprefixer"),
+    group_media = require("gulp-group-css-media-queries"),
+    clean_css = require("gulp-clean-css"),
+    rename = require("gulp-rename"),
+    uglify = require("gulp-uglify-es").default,
+    imagemin = require("gulp-imagemin"),
+    webp = require("gulp-webp"),
+    webphtml = require("gulp-webp-html"),
+    webpcss = require("gulp-webp-css");
 
 
 // Обновление браузера    
@@ -51,13 +59,29 @@ function browserSync(param) {
     })
 }
 
-
 function html() {
     return src(path.src.html)
-        .pipe(file_include())                              // сборщик html-файлов
+        .pipe(file_include())
+        .pipe(webphtml())                              // сборщик html-файлов
         .pipe(dest(path.build.html))                       // вывод результирующего файла в папку назначения
         .pipe(browsersync.stream())                        // обновление страницы
 }
+
+function js() {
+    return src(path.src.js)
+        .pipe(file_include())                              
+        .pipe(dest(path.build.js))
+        .pipe(
+            uglify()
+        )
+        .pipe(
+            rename({
+                extname: ".min.js"
+            })
+        )
+        .pipe(dest(path.build.js))                       
+        .pipe(browsersync.stream())
+}                        
 
 function css() {
     return src(path.src.css)
@@ -66,6 +90,9 @@ function css() {
                 outputStyle: "expanded"                    // указание, чтобы css-файл формировался не сжатым
             })
         )
+        .pipe(
+            group_media()
+        )
         .pipe (
             autoprefixer({
                 overrideBrowserslist: ["last 5 versions"], // браузеры, которые нужно поддерживать
@@ -73,6 +100,35 @@ function css() {
             })
         )
         .pipe(dest(path.build.css))
+        .pipe(clean_css())
+        .pipe(
+            rename({
+                extname: ".min.css"
+            })
+        )
+        .pipe(webpcss())
+        .pipe(dest(path.build.css))
+        .pipe(browsersync.stream())
+}
+
+function images() {
+    return src(path.src.img)
+        .pipe(
+            webp({
+                quality: 70
+            })
+        )
+        .pipe(dest(path.build.img))
+        .pipe(src(path.src.img))
+        .pipe(
+            imagemin({
+                progressive: true,
+                svgPlugins: [{ removeViewBox: false }],
+                interlaced: true,
+                optimizationLevel: 3 // 0 to 7
+            })
+        )
+        .pipe(dest(path.build.img))
         .pipe(browsersync.stream())
 }
 
@@ -80,6 +136,8 @@ function css() {
 function watchFiles(params) {
     gulp.watch([path.watch.html], html);
     gulp.watch([path.watch.css], css);
+    gulp.watch([path.watch.js], js);
+    gulp.watch([path.watch.img], images);
 }
 
 // Удаление папки dist
@@ -87,10 +145,12 @@ function clean(params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(css, html)); // серия выполняемых функций
+let build = gulp.series(clean, gulp.parallel(images, js, css, html)); // серия выполняемых функций
 let watch = gulp.parallel(build, watchFiles, browserSync); 
 
-exports.scss = scss;
+exports.images = images;
+exports.js = js;
+exports.css = css;
 exports.html = html;
 exports.build = build;
 exports.watch = watch;
