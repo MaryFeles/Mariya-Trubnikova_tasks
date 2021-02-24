@@ -1,0 +1,53 @@
+.wrapper-cards {
+    margin-right: -25px;
+
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex-direction: column;
+    max-width: calc(25% - 25px);
+    padding-bottom: 5%;
+
+    &:not(:last-child) {
+        margin-right: 25px;
+    }
+
+    &__img {
+        background-size: cover;
+        max-width: 100%;
+        height: auto;
+        border: 11px solid #FFFFFF;
+    }
+
+    &__img-wrapper {
+        border: 1px solid #E5E5E5;
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
+    }
+
+    &__header, &__body, &__read-more, &__date {
+        line-height: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    &__header {
+        padding-top: 11px;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+    &__body {
+        padding-top: 9px;
+        color: black;
+    }
+
+    &__footer {
+        padding-top: 11px;
+    }
+}
+
+.text-splitter {
+    line-height: 20px;
+    letter-spacing: -0.02em;
+}

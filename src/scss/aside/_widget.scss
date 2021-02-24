@@ -1,0 +1,46 @@
+
+.widget {
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__header {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 12px;
+        line-height: 12px;
+        text-transform: uppercase;
+        
+        padding: 5px 0 5px 0;
+        margin-bottom: 10px;
+        border-bottom: 1px dashed #E5E5E5;
+    }
+
+    &__btn {
+        justify-content: flex-start;
+    
+        height: 30px;
+        padding: 0px 7px;
+        background-color: #ffffff;
+        border: 1px solid #E5E5E5;
+        border-radius: 5px;
+
+        &:active {
+            background-color: #D9EFEC;
+        }
+    }
+    
+    &__btn-icon{
+        background-size: cover;
+    
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+    }
+
+    &__body {
+        font-size: 10px;
+    
+        padding-top: 5px;
+        padding-bottom: 15px;
+        line-height: 19px;
+    }
+}

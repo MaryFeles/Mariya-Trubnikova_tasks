@@ -1,0 +1,29 @@
+
+
+.menu {
+    display: flex;
+
+    @include font;
+    font-family: mArial;
+    
+    &__list {
+        flex-direction: column;
+    }
+
+    &__item {
+        padding: 5px 0 35px 3px;
+        align-items: flex-start;
+    }
+
+    &__icon {
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        margin-right: 12px;
+    }
+
+    &__link {
+        flex-grow: 1;
+        align-items: center;
+    }
+}
