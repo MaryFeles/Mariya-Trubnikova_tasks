@@ -1,31 +1,26 @@
 .tabs {
-    display: flex;
+    @include flex;
 
     &__inner {
-        flex-grow: 1;
-        flex-flow: wrap;
+        @include flex (row, wrap, normal, normal, 1);
     }
 
     &__item {
+        @include flex (column, nowrap, normal, normal, 1);
+        
         padding: 26px 0 22px 20px;
-    
-        flex-grow: 1;
-        flex-direction: column;
-    
-        background-color: #EFF8F7
+        background-color: $light;
     }
 
     &__item:hover, &__item--active {
-        background-color: #D9EFEC;
+        background-color: $light-active;
     }
 
     &__header {
-        font-size: 18px;
-        line-height: 18px;
+        @include font (18px, 18px);
     }
 
     &__description {
-        font-size: 10px;
-        line-height: 18px;
+        @include font (10px, 18px);
     }
 }

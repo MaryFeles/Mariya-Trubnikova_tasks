@@ -1,7 +1,5 @@
 .main {
-    display: flex;
-
     max-width: 82%;
-    flex-direction: column;
-    justify-content: space-between;
+
+    @include flex (column, nowrap, normal, space-between, 0);
 }

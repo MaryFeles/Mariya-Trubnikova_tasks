@@ -17,4 +17,10 @@
     letter-spacing: $ls;
 }
    
-
+@mixin flex ($fd: row, $fw: nowrap, $ai: normal, $jc: normal, $fg: 0 ) {
+    display: flex;
+    flex-flow: $fd $fw;
+    align-items: $ai;
+    justify-content: $jc;
+    flex-grow: $fg;
+}

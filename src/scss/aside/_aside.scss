@@ -1,13 +1,14 @@
 .aside {
-    display: flex;
+    @include flex (column, nowrap, none, flex-start, 0);
     width: 140px;
-    flex-flow: column nowrap;
 }
 
 .logo {
     width: 120px;
     height: 120px;
+
     background-image: url("../img/svg/icon-logo.svg");
+    background-repeat: no-repeat;
+
     align-self: center;
 }
-

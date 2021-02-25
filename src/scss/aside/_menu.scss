@@ -1,18 +1,14 @@
-
-
 .menu {
-    display: flex;
-
+    @include flex;
     @include font;
-    font-family: mArial;
     
     &__list {
-        flex-direction: column;
+        @include flex(column);
     }
 
     &__item {
+        @include flex (row, nowrap, flex-start, flex-start, 0);
         padding: 5px 0 35px 3px;
-        align-items: flex-start;
     }
 
     &__icon {
@@ -23,7 +19,6 @@
     }
 
     &__link {
-        flex-grow: 1;
-        align-items: center;
+        @include flex (row, nowrap, center, flex-start, 1);
     }
 }

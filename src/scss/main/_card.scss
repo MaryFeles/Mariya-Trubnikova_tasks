@@ -1,12 +1,10 @@
 .wrapper-cards {
+    @include flex (row, wrap, normal, flex-start, 0);
     margin-right: -25px;
-
-    justify-content: flex-start;
-    flex-wrap: wrap;
 }
 
 .card {
-    flex-direction: column;
+    @include flex (column);
     max-width: calc(25% - 25px);
     padding-bottom: 5%;
 
@@ -18,36 +16,35 @@
         background-size: cover;
         max-width: 100%;
         height: auto;
-        border: 11px solid #FFFFFF;
+        border: 11px solid $white;
     }
 
     &__img-wrapper {
-        border: 1px solid #E5E5E5;
+        border: 1px solid $smokie;
         filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.25));
     }
 
     &__header, &__body, &__read-more, &__date {
-        line-height: 20px;
-        letter-spacing: -0.02em;
+        @include font (14px, 20px, -0.02em);
     }
 
     &__header {
         padding-top: 11px;
-        font-size: 16px;
-        line-height: 21px;
+
+        @include font (16px, 21px);
     }
 
     &__body {
         padding-top: 9px;
-        color: black;
+        color: $dark;
     }
 
     &__footer {
+        @include flex;
         padding-top: 11px;
     }
 }
 
 .text-splitter {
-    line-height: 20px;
-    letter-spacing: -0.02em;
+    @include font (14px, 20px, -0.02em);
 }

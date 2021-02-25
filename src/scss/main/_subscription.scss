@@ -1,29 +1,26 @@
 .subscription {
-    border-top: 1px dashed #E5E5E5;
-    border-bottom: 1px dashed #E5E5E5;
+    // @include flex (row, nowrap, flex-start, normal, 0);
+    border-bottom: 1px dashed $smokie;
     
     margin: 30px 0;
-    padding: 10px 20px;
-
-    align-items: center;
-    justify-content: space-between;
+    padding: 10px 20px;    
 
     &__text-wrapper {
-        align-items: center;
+        @include flex (row, nowrap, center, normal, 0);
     }
 
     &__form {
-        justify-content: space-between;
+        @include flex (row, nowrap, normal, space-between, 0);
     }
 
     &__input {
-        font-size: 10px;
+        @include font(10px, 14px);
     
         width: 160px;
         padding: 6px;
         margin-right: 10%;
-        background: #FFFFFF;
-        border: 1px solid #E5E5E5;
+        background: $white;
+        border: 1px solid $smokie;
     }
 
     &__icon {
@@ -35,8 +32,6 @@
 
     &__text {
         max-width: 85%;
-        line-height: 16px;
-        
         padding-left: 16px;
     }
 
@@ -44,7 +39,7 @@
         width: 80px;
         height: 23px;
         background: linear-gradient(180deg, #F4F3F3 0%, #BBB9B9 100%);
-        border: 1px solid #E5E5E5;
+        border: 1px solid $smokie;
         border-radius: 2px;
 
         &:active {
