@@ -1,19 +1,26 @@
-@import "reset.scss";
-@import "variables/colors";
+@import "base/_reset";
+
+/* === HELPERS === */
+
+@import "helpers/variables";
 @import "helpers/mixins";
 @import "helpers/helpers";
 
-@import "aside/aside";
-@import "aside/menu";
-@import "aside/widget";
+/* === LAYOUT === */
 
-@import "main/main";
-@import "main/banner";
-@import "main/tabs";
-@import "main/subscription";
-@import "main/card";
+@import "layout/aside/aside";
+@import "layout/aside/menu";
+@import "layout/aside/widget";
 
-@import "footer/footer";
+@import "layout/main/main";
+@import "layout/main/banner";
+@import "layout/main/tabs";
+@import "layout/main/subscription";
+@import "layout/main/card";
+
+@import "layout/footer/footer";
+
+/* === MEDIA === */
 
 @import "media/1176.scss";
 @import "media/992.scss";
