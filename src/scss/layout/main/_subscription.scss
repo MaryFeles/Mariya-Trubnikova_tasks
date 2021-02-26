@@ -1,12 +1,15 @@
 .subscription {
     // @include flex (row, nowrap, flex-start, normal, 0);
-    border-bottom: 1px dashed $smokie;
-    
+        
     margin: 30px 0;
     padding: 10px 20px;    
 
     &__text-wrapper {
         @include flex (row, nowrap, center, normal, 0);
+
+        &::before {
+            height: 28px;
+        }
     }
 
     &__form {
@@ -20,11 +23,6 @@
         padding: 6px;
         margin-right: 10%;
         background: $white;
-        border: 1px solid $smokie;
-    }
-
-    &__icon {
-        height: 28px;
     }
 
     &__text {
@@ -35,8 +33,9 @@
     &__btn {
         width: 80px;
         height: 23px;
+
         background: linear-gradient(180deg, #F4F3F3 0%, #BBB9B9 100%);
-        border: 1px solid $smokie;
+        
         border-radius: 2px;
 
         &:active {

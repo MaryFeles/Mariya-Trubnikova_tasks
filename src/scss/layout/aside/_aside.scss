@@ -3,12 +3,7 @@
     width: 140px;
 }
 
-.logo-icon {
-    // width: 120px;
-    // height: 120px;
-
-    // background-image: url("../img/svg/icon-logo.svg");
-    // background-repeat: no-repeat;
-
+.logo {
+    @include flex;
     align-self: center;
 }

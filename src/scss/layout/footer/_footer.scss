@@ -1,8 +1,6 @@
 .footer {
     @include flex (row, nowrap, stretch, space-between, 1);
-
     width: 100%;
-    border-top: 2px solid #E5E5E5;
 
     &__inner {
         @include flex (row, nowrap, stretch, space-between, 1);
@@ -16,8 +14,7 @@
     &__item {
         @include flex;
         
-        &--links {
-            padding-left: 8px;                
+        &--links {                
             @include flex (column, nowrap, stretch, space-between, 1);
         }
 
@@ -36,9 +33,10 @@
     }
 
     &__icon {
-        margin: 0 4px 0 4px;
-        width: 32px;
-        height: 32px;
-        background-size: cover;
+        @include flex;
+        
+        &::before{
+            margin: 0 4px 0 4px;
+        }        
     }
 }

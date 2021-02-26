@@ -8,6 +8,11 @@ $light: #eff8f7;
 $light-active: #d9efec;
 $smokie: #e5e5e5;
 
+$color-map: (
+    "wh": $white,
+    "smo": $smokie
+);
+
 /* ======== ICONS ======== */
 
 $icons: (
@@ -21,4 +26,14 @@ $icons: (
     "twitter": (16, 32),
     "fb": 32,
     "rss": 32 
+);
+
+/* ======== BORDERS ======== */
+
+$borders: (
+    "b": border,
+    "bt": border-top,
+    "br": border-right,
+    "bb": border-bottom,
+    "bl": border-left
 );

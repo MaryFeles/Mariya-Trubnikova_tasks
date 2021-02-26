@@ -10,12 +10,12 @@
         @include flex (row, nowrap, flex-start, flex-start, 0);
         padding: 5px 0 35px 3px;
     }
-
-    &__icon {
-        margin-right: 12px;
-    }
-
+    
     &__link {
         @include flex (row, nowrap, center, flex-start, 1);
+        
+        &:before {
+            margin-right: 12px;
+        }
     }
 }

@@ -1,5 +1,6 @@
 .tabs {
     @include flex;
+    cursor: pointer;
 
     &__inner {
         @include flex (row, wrap, normal, normal, 1);

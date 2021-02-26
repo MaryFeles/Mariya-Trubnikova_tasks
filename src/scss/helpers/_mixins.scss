@@ -11,12 +11,16 @@
 // }
 
 
+/*============== FONT ============== */
+
 @mixin font ($size: 14px, $lh: 14px, $ls: normal) {
     font-size: $size;
     line-height: $lh;
     letter-spacing: $ls;
 }
-   
+
+/*============== FLEX ============== */
+
 @mixin flex ($fd: row, $fw: nowrap, $ai: normal, $jc: normal, $fg: 0 ) {
     display: flex;
     flex-flow: $fd $fw;
@@ -28,7 +32,8 @@
 /*============== ICONS ============== */
 
 @mixin icon ($icon-name, $icon-size) {
-    .#{$icon-name}-icon-#{$icon-size} {
+    .#{$icon-name}-icon-#{$icon-size}::before {
+        content: '';
         height: #{$icon-size}px;
         width: #{$icon-size}px;
 
@@ -40,4 +45,24 @@
     @each $size in $sizes {
       @include icon($icon, $size);
     }
+}
+
+/*============== BORDERS ============== */
+
+$style-list: solid dashed;
+
+@mixin border ($border, $pos, $width, $style, $color-sign, $color) {
+    .#{$border}-#{$width}-#{$style}-#{$color-sign} {
+        #{$pos}: #{$width}px $style $color;
+    }    
+}
+
+@for $width from 1 through 11 {
+    @each $style in $style-list {
+        @each $color-sign, $color in $color-map {
+            @each $border, $pos in $borders {
+                @include border ($border, $pos, $width, $style, $color-sign, $color);
+            }
+        }        
+    }    
 }

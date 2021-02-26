@@ -8,7 +8,6 @@
         
         padding: 5px 0 5px 0;
         margin-bottom: 10px;
-        border-bottom: 1px dashed #E5E5E5;
     }
 
     &__btn {
@@ -18,27 +17,20 @@
         padding: 0px 7px;
 
         background-color: $white;
-
-        border: 1px solid $smokie;
+        
         border-radius: 5px;
 
         &:active {
             background-color: $light-active;
         }
-    }
-    
-    &__btn-icon{
-        // background-size: cover;
-    
-        // width: 16px;
-        // height: 16px;
-        margin-right: 6px;
+
+        &::before {
+            margin-right: 6px;
+        }
     }
 
     &__body {
-        @include font (10px, 19px);
-    
-        padding-top: 5px;
-        padding-bottom: 15px;
+        @include font (10px, 19px);    
+        padding: 5px 0 15px 0;
     }
 }
