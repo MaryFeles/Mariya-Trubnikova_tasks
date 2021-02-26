@@ -24,3 +24,20 @@
     justify-content: $jc;
     flex-grow: $fg;
 }
+
+/*============== ICONS ============== */
+
+@mixin icon ($icon-name, $icon-size) {
+    .#{$icon-name}-icon-#{$icon-size} {
+        height: #{$icon-size}px;
+        width: #{$icon-size}px;
+
+        background: url("../../img/svg/#{$icon-size}-#{$icon-name}.svg") no-repeat center center / cover;
+    }
+}
+
+@each $icon, $sizes in $icons {
+    @each $size in $sizes {
+      @include icon($icon, $size);
+    }
+}
