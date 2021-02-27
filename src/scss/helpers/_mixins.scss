@@ -37,11 +37,11 @@
         height: #{$icon-size}px;
         width: #{$icon-size}px;
 
-        background: url("../../img/svg/#{$icon-size}-#{$icon-name}.svg") no-repeat center center / cover;
+        background: url("../../assets/img/svg/#{$icon-size}-#{$icon-name}.svg") no-repeat center center / cover;
     }
 }
 
-@each $icon, $sizes in $icons {
+@each $icon, $sizes in $icon-map {
     @each $size in $sizes {
       @include icon($icon, $size);
     }
@@ -60,7 +60,7 @@ $style-list: solid dashed;
 @for $width from 1 through 11 {
     @each $style in $style-list {
         @each $color-sign, $color in $color-map {
-            @each $border, $pos in $borders {
+            @each $border, $pos in $border-map {
                 @include border ($border, $pos, $width, $style, $color-sign, $color);
             }
         }        

@@ -23,21 +23,21 @@ const path = {
         html: project_folder + "/",
         css: project_folder + "/css/",
         js: project_folder + "/js",
-        img: project_folder + "/img/",
-        fonts: project_folder + "/fonts/",
+        img: project_folder + "/assets/img/",
+        fonts: project_folder + "/assets/fonts/",
     },
     src: {
         html: [sourse_folder + "/*.html", "!" + sourse_folder + "/_*.html"],
         css: sourse_folder + "/scss/style.scss",
         js: sourse_folder + "/js/script.js",
-        img: sourse_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-        fonts: sourse_folder + "/fonts/*.ttf",
+        img: sourse_folder + "/assets/img/**/*.{jpg,png,svg,gif,ico,webp}",
+        fonts: sourse_folder + "/assets/fonts/*.ttf",
     },
     watch: {
         html: sourse_folder + "/**/*.html",
         css: sourse_folder + "/scss/**/*.scss",
         js: sourse_folder + "/js/**/*.js",
-        img: sourse_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
+        img: sourse_folder + "/assets/assets/img/**/*.{jpg,png,svg,gif,ico,webp}",
     },
     clean: "./" + project_folder + "/"
 }

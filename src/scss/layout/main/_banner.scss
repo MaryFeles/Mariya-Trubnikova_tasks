@@ -2,7 +2,7 @@
     @include flex (row, nowrap, flex-end, space-between, 0);
     position: relative;
     height: 445px;
-    background: url("../img/png/banner.png") no-repeat center center;
+    background: url("../assets/img/png/banner.png") no-repeat center center;
     background-size: cover;
 
     &__content {
