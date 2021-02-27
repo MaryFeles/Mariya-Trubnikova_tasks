@@ -1,9 +1,15 @@
+.widget-list {
+    @include _992 {
+        display: none;
+    }
+}
+
 .widget {
     @include flex (column, nowrap, normal, space-between, 0);
 
     &__header {
         @include font (12px, 12px);
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: Verdana, sans-serif;
         text-transform: uppercase;
         
         padding: 5px 0 5px 0;

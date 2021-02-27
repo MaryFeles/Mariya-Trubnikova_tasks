@@ -2,13 +2,31 @@
     @include flex (row, nowrap, stretch, space-between, 1);
     width: 100%;
 
+    @include _480 {
+        width: 90%;
+    }
+
     &__inner {
         @include flex (row, nowrap, stretch, space-between, 1);
         padding: 25px 0 35px;
+
+        @include _992 {
+            padding-bottom: 15px;
+        }
+
+        @include _370 {
+            padding: 15px 0px 15px;
+        }
     }
 
     &__copyright, &__link {
         @include font (12px, 12px, -0.02em);
+    }
+
+    &__copyright {
+        @include _370 {
+            padding-top: 10px;
+        }
     }
 
     &__item {
@@ -16,6 +34,10 @@
         
         &--links {                
             @include flex (column, nowrap, stretch, space-between, 1);
+
+            @include _370 {
+                padding-right: 10px;
+            }
         }
 
         &--links li:not(:first-child) {
@@ -34,6 +56,13 @@
 
     &__icon {
         @include flex;
-        margin: 0 4px;        
+        margin: 0 4px; 
+        
+        &::before {
+            @include _370 {
+                width: 25px;
+                height: 25px;
+            }
+        }
     }
 }

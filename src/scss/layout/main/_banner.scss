@@ -1,24 +1,47 @@
 .banner {
     @include flex (row, nowrap, flex-end, space-between, 0);
     position: relative;
+    
     height: 445px;
-    background: url("../assets/img/png/banner.png") no-repeat center center;
-    background-size: cover;
+
+    background: url("../assets/img/png/banner.png") no-repeat center center / cover;
+
+    @include _768 {
+        height: 350px;
+    }
+
+    @include _480 {
+        height: 370px;
+    }
 
     &__content {
         @include flex (column, nowrap, flex-start, normal, 0);    
         position: absolute;
         bottom: 69px;
+
+        @include _768 {
+            @include flex (column, nowrap, stretch, normal, 1);
+            position: static;
+        }
     }
 
     &__header, &__description {
         @include flex (column, nowrap, center, normal, 0);
         padding: 14px 24px 14px;
+
+        @include _768 {
+            width: auto;
+        }
     }
 
     &__header {
         @include font (22px, 22px, 0.01em);
         background-color: $white;
+
+        @include _768 {
+            opacity: 0.6;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        }
     }
 
     &__description {

@@ -1,6 +1,11 @@
 .wrapper-cards {
     @include flex (row, wrap, normal, flex-start, 0);
     margin-right: -25px;
+
+    @include _480 {
+        @include flex (column, wrap, center, flex-start, 0);
+        margin: 0;        
+    }
 }
 
 .card {
@@ -8,8 +13,20 @@
     max-width: calc(25% - 25px);
     padding-bottom: 5%;
 
+    @include _768 {
+        max-width: calc(50% - 25px);
+    }
+
+    @include _480 {
+        max-width: 80%;
+    }
+
     &:not(:last-child) {
         margin-right: 25px;
+
+        @include _480 {
+            margin: 0;
+        }
     }
 
     &__img {

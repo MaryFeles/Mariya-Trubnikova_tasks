@@ -1,21 +1,64 @@
 .menu {
     @include flex;
     @include font;
+
+    @include _992 {
+        flex-grow: 1;
+    }
     
     &__list {
         @include flex(column);
+
+        @include _992 {
+            @include flex (row, wrap, flex-start, space-around, 1);
+        }
+
+        @include _768 {
+            justify-content: space-between;
+        }
+
+        @include _480 {
+            justify-content: center;
+        }
     }
 
-    &__item {
+    &__list-item {
         @include flex (row, nowrap, flex-start, flex-start, 0);
         padding: 5px 0 35px 3px;
+
+        @include _992 {
+            padding: 20px 10px 0;
+        }
+
+        @include _768 {
+            padding-top: 4%;
+        }
+
+        &:not(:last-child) {
+            @include _768 {
+                padding-right: 2%;
+            }
+        }
     }
     
     &__link {
         @include flex (row, nowrap, center, flex-start, 1);
+
+        @include _992 {
+            flex-direction: column;
+        }
         
         &:before {
             margin-right: 12px;
+
+            @include _992 {
+                margin: auto;
+                margin-bottom: 12px;
+            }
+
+            @include _768 {
+                display: none;
+            }
         }
     }
 }

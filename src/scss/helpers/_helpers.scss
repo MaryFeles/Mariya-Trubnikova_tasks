@@ -46,4 +46,17 @@ a:visited, a:active,
     max-width: 1088px;
     margin: 46px auto 0;
     padding: 0 5%;
+
+    @include _992 {
+        max-width: 100%;
+        margin-top: 0;
+        padding-top: 20px;
+
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @include _480 {
+        padding: 0;
+    }
 }

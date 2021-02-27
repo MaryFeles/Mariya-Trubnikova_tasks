@@ -2,10 +2,26 @@
     @include flex;
         
     margin: 30px 0;
-    padding: 10px 20px;    
+    padding: 10px 20px;
+
+    @include _1176 {
+        margin: 20px 0;
+    }
+
+    @include _768 {
+        flex-wrap: wrap;
+    }
+
+    @include _480 {
+        margin: 30px 0;
+    }
 
     &__text-wrapper {
         @include flex (row, nowrap, center, normal, 0);
+
+        @include _992 {
+            align-items: flex-start;
+        }
 
         &::before {
             height: 26px;
@@ -14,6 +30,17 @@
 
     &__form {
         @include flex (row, nowrap, center, space-between, 0);
+        
+        @include _768 {
+            flex-grow: 1;
+
+            padding: 16px 0 6px;
+            max-width: 100%;
+        }
+
+        @include _480 {
+            justify-content: flex-start;
+        }
     }
 
     &__input {
@@ -21,13 +48,23 @@
     
         width: 160px;
         height: 22px;
+
         padding: 6px;
         margin-right: 10%;
+
         background: $white;
+
+        @include _768 {
+            flex-grow: 1;
+        }
+
+        @include _480 {
+            max-width: 210px;
+        }
     }
 
     &__text {
-        max-width: 85%;
+        max-width: 90%;
         padding-left: 16px;
     }
 
@@ -35,12 +72,12 @@
         min-width: 80px;
         height: 22px;
 
-        background: linear-gradient(180deg, #F4F3F3 0%, #BBB9B9 100%);
+        background: $gradient-primary;
         
         border-radius: 2px;
 
         &:active {
-            background: linear-gradient(360deg, #F4F3F3 0%, #BBB9B9 100%);
+            background: $gradient-secondary;
         }
     }
 }

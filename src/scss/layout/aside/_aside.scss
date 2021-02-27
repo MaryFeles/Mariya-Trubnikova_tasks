@@ -1,9 +1,34 @@
 .aside {
-    @include flex (column, nowrap, none, flex-start, 0);
+    @include flex (column, nowrap, normal, flex-start, 0);
     width: 140px;
+
+    @include _992 {
+        @include flex (row, nowrap, center, space-between, 0);
+        width: 100%;
+        padding-bottom: 30px;
+    }
+
+    @include _768 {
+        padding-bottom: 20px;
+    }
+
+    @include _480 {
+        flex-flow: column-reverse nowrap;
+
+        padding: 15px 0 30px;
+        margin-bottom: 10px;
+    }
 }
 
 .logo {
     @include flex;
     align-self: center;
+
+    @include _992 {
+        margin-right: 20px;
+    }
+
+    @include _480 {
+        margin: 35px 0 0;
+    }
 }
