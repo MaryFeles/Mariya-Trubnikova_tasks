@@ -1,3 +1,8 @@
+
+@include font-face(Arial, assets/fonts/ArialMT, normal, normal);
+@include font-face(Arial, assets/fonts/Arial-ItalicMT, normal, italic);
+@include font-face(Verdana, assets/fonts/ArialMT, normal, normal );
+
 .menu__link-text, .widget__body, .widget__btn-text, .banner__description,
 .banner__header,.tabs__description, .subscription__text {
     font-style: italic;
