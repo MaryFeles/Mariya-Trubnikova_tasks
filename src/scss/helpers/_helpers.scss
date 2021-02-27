@@ -3,35 +3,41 @@
 @include font-face(Arial, assets/fonts/Arial-ItalicMT, normal, italic);
 @include font-face(Verdana, assets/fonts/ArialMT, normal, normal );
 
+body {
+    font-family: Arial, sans-serif;
+    @include font (14px, 14px);
+}
+
 .menu__link-text, .widget__body, .widget__btn-text, .banner__description,
 .banner__header,.tabs__description, .subscription__text {
     font-style: italic;
 }
 
 a:visited, a:active,
-/* .menu__link-text, */
 .widget__btn-text,
 .tabs__header,
 .tabs__description,
 .link-text,
-.card__header
-/* .card__read-more, */
-/* .footer__links-list  */
-{
+.card__header{
     color: $primary;
 }
 
 .link-text:hover {
-    color: $dark;
+    color: $dark; 
 }
 
-.input::placeholder, .card__date, .text-splitter, .footer__copyright {
+.input::placeholder,
+.card__date,
+.text-splitter,
+.footer__copyright {
     color: $smokie;
 }
 
 .btn {
     @include flex (row, wrap, center, center, 0);
     @include font (10px, 12px);
+
+    padding: 0px 12px;
 }
 
 .container {

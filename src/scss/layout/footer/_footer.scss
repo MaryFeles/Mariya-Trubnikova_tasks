@@ -34,9 +34,6 @@
 
     &__icon {
         @include flex;
-        
-        &::before{
-            margin: 0 4px 0 4px;
-        }        
+        margin: 0 4px;        
     }
 }
