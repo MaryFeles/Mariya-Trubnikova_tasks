@@ -1,9 +1,11 @@
 .main {
+    width: 82%;
     max-width: 82%;
 
     @include flex (column);
 
     @include _992 {
+        width: 100%;
         max-width: 100%;
     }
 }

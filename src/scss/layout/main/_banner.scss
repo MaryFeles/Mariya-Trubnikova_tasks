@@ -1,7 +1,7 @@
 .banner {
     @include flex (row, nowrap, flex-end, space-between, 0);
     position: relative;
-    
+
     height: 445px;
 
     background: url("../assets/img/png/banner.png") no-repeat center center / cover;
@@ -19,6 +19,8 @@
         position: absolute;
         bottom: 69px;
 
+        width: 100%;
+
         @include _768 {
             @include flex (column, nowrap, stretch, normal, 1);
             position: static;
@@ -26,7 +28,10 @@
     }
 
     &__header, &__description {
-        @include flex (column, nowrap, center, normal, 0);
+        @include flex (row, nowrap, center, normal, 0);
+
+        max-width: 100%;
+
         padding: 14px 24px 14px;
 
         @include _768 {

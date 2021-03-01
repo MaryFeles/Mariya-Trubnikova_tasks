@@ -1,5 +1,6 @@
 .subscription {
     @include flex;
+    width: 100%;
         
     margin: 30px 0;
     padding: 10px 20px;
@@ -17,7 +18,8 @@
     }
 
     &__text-wrapper {
-        @include flex (row, nowrap, center, normal, 0);
+        @include flex (row, nowrap, center, normal, 2);
+        width: 66%;
 
         @include _992 {
             align-items: flex-start;
@@ -29,13 +31,13 @@
     }
 
     &__form {
-        @include flex (row, nowrap, center, space-between, 0);
+        @include flex (row, nowrap, center, space-between, 1);
         
         @include _768 {
             flex-grow: 1;
+            width: 100%;
 
-            padding: 16px 0 6px;
-            max-width: 100%;
+            padding: 16px 0 6px;            
         }
 
         @include _480 {
@@ -49,8 +51,8 @@
         width: 160px;
         height: 22px;
 
-        padding: 6px;
-        margin-right: 10%;
+        padding: 0 6px;
+        margin-right: 18px;
 
         background: $white;
 
@@ -64,13 +66,11 @@
     }
 
     &__text {
-        max-width: 90%;
         padding-left: 16px;
     }
 
     &__btn {
-        min-width: 80px;
-        height: 22px;
+        min-height: 22px;
 
         background: $gradient-primary;
         

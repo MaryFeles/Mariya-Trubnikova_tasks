@@ -8,22 +8,28 @@
 
     &__inner {
         @include flex (row, wrap, normal, normal, 1);
+        width: 100%
     }
 
     &__item {
-        @include flex (column, nowrap, normal, normal, 1);
-        
-        padding: 26px 0 22px 20px;
+        @include flex (column, wrap, normal, normal, 1);
+        padding: 3% 0 3% 2%;
+
         background-color: $light;
 
         @include _1176 {
             padding: 10px 15px;
+            
             align-items: center;
         }
     }
 
     &__item:hover, &__item--active {
         background-color: $light-active;
+    }
+
+    &__header, &__description {
+        width: 100%
     }
 
     &__header {
@@ -35,6 +41,8 @@
 
     &__description {
         @include font (10px, 18px);
+        max-width: 150px;
+
         @include _1176 {
             display: none;
         }

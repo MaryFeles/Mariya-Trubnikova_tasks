@@ -37,6 +37,7 @@
         content: '';
         height: #{$icon-size}px;
         width: #{$icon-size}px;
+        min-width: #{$icon-size}px;
 
         background: url("../../assets/img/svg/#{$icon-size}-#{$icon-name}.svg") no-repeat center center / cover;
     }

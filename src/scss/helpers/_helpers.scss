@@ -18,7 +18,8 @@ a:visited, a:active,
 .tabs__header,
 .tabs__description,
 .link-text,
-.card__header{
+.card__header,
+.card__header-link{
     color: $primary;
 }
 
@@ -37,7 +38,7 @@ a:visited, a:active,
     @include flex (row, wrap, center, center, 0);
     @include font (10px, 12px);
 
-    padding: 0px 12px;
+    padding: 4px 12px;
 }
 
 .container {

@@ -4,6 +4,7 @@
 
     @include _992 {
         flex-grow: 1;
+        width: 100%;
     }
     
     &__list {
@@ -24,6 +25,8 @@
 
     &__list-item {
         @include flex (row, nowrap, flex-start, flex-start, 0);
+        max-width: 140px;
+
         padding: 5px 0 35px 3px;
 
         @include _992 {
@@ -60,5 +63,9 @@
                 display: none;
             }
         }
+    }
+
+    &__link-text {
+        max-width: 100px;
     }
 }

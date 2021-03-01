@@ -17,11 +17,9 @@
     }
 
     &__btn {
-        justify-content: flex-start;
+        @include flex (row, nowrap, center, flex-start, 0);;
     
-        height: 30px;
-        padding: 0px 7px;
-
+        padding: 6px 7px;
         background-color: $white;
         
         border-radius: 5px;
