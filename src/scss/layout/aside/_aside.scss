@@ -1,9 +1,0 @@
-.aside {
-    @include flex (column, nowrap, none, flex-start, 0);
-    width: 140px;
-}
-
-.logo {
-    @include flex;
-    align-self: center;
-}
