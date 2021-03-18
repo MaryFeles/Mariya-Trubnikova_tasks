@@ -1,40 +1,39 @@
 "use strict";
 
-let squareEveryDigit = (function(){
-    const NUMBER = 9119;
+const EXPONENT = 2;
+let number = 9119;
 
-    let _square = function(digit){
-        let squareDigit = digit*digit;
-    
-        return squareDigit.toString();
+let squareEveryDigit = (function(number, exponent){    
+
+    let _raiseToDegree = function(base, exponent){
+        return Math.pow(base, exponent).toString();
     }
+
+    let splitStrNumber = number.toString().split('');
 
     return {
         firstWay: function(){
             let newNumber = '';
         
-            for (let digit of NUMBER.toString()){
-                newNumber += digit*digit;
+            for (let digit of number.toString()){
+                newNumber += _raiseToDegree(digit, exponent);
             };
         
             return parseInt(newNumber);
         },
 
         secondWay: function(){
-            let newNumber = NUMBER.toString()
-                                    .split('')
-                                    .map( digit => digit ** 2 )
-                                    .join('');
+            let newNumber = splitStrNumber
+                                .map(digit => digit ** exponent)
+                                .join('');
 
             return parseInt(newNumber);           
         },
 
         thirdWay: function(){
-            let splitStrNumber = NUMBER.toString().split('');
-        
-            let newNumber = splitStrNumber.map( digit => digit.replace(/\d/, _square(digit)) );
+            let newNumber = splitStrNumber.map(digit => digit.replace(/\d/, _raiseToDegree(digit, exponent)));
                         
             return parseInt(newNumber.join(''));
         }        
     };
-}());
+}(number, EXPONENT));
