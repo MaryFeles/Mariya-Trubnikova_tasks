@@ -1,15 +1,16 @@
 "use strict";
 
-let arrayDiff = (function(){
-    let arrA = [2,1,2,2,2,3,5,1,2];
-    let arrB = [5,2,2,9];
+let a = [2,1,2,2,2,3,5,1,2];
+let b = [5,2,2,9];
+
+let arrayDiff = (function(arrA, arrB){
 
     let _fillBuffer = function(arrA, arrB){
         let buffer = [];
         let setB = [...new Set(arrB)];
         
-        arrA.forEach( elemA => {
-            setB.forEach( elemB => (elemA == elemB) ? buffer.push(elemA) : false );
+        arrA.forEach(elemA => {
+            setB.forEach(elemB => (elemA == elemB) ? buffer.push(elemA) : false);
         });
     
         return buffer;
@@ -17,25 +18,12 @@ let arrayDiff = (function(){
 
     return {
         firstWay: function(){
-            arrB.forEach ( elB => {
-                let index = arrA.indexOf(elB);
+            arrB.forEach (item1 => {      
+                let index = arrA.findIndex(item2 => item2 == item1);
 
                 while (index != -1) {
                     arrA.splice(index, 1);
-                    index = arrA.indexOf(elB);
-                }
-            });
-            
-            return arrA;
-        },
-
-        secondWay: function(){
-            arrB.forEach ( elB => {      
-                let index = arrA.findIndex( elA => elA == elB );
-
-                while (index != -1) {
-                    arrA.splice(index, 1);
-                    index = arrA.findIndex( elA => elA == elB );
+                    index = arrA.findIndex(item2 => item2 == item1);
                 }
             });
             
@@ -45,11 +33,11 @@ let arrayDiff = (function(){
         thirdWay: function(){
             let buffer = _fillBuffer(arrA, arrB);
 
-            buffer.forEach( elemB => {
-                arrA.forEach( (elemA, index) => (elemA == elemB) ? arrA.splice(index, 1) : false );
+            buffer.forEach(item1 => {
+                arrA.forEach((item2, index) => (item2 == item1) ? arrA.splice(index, 1) : false);
             });
 
             return arrA;
         }
     };
-}());
+}(a, b));
