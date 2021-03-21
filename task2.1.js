@@ -5,36 +5,35 @@ let b = [5,2,2,9];
 
 let arrayDiff = (function(arrA, arrB){
 
-    let _fillBuffer = function(arrA, arrB){
-        let buffer = [];
-        let setB = [...new Set(arrB)];
-        
-        arrA.forEach(elemA => {
-            setB.forEach(elemB => (elemA == elemB) ? buffer.push(elemA) : false);
-        });
-    
-        return buffer;
-    };
-
     return {
         firstWay: function(){
-            arrB.forEach (item1 => {      
-                let index = arrA.findIndex(item2 => item2 == item1);
-
-                while (index != -1) {
+            arrB.forEach (item => {      
+                let hasItem = arrA.includes(item);
+                while (hasItem) {
+                    let index = arrA.indexOf(item)
                     arrA.splice(index, 1);
-                    index = arrA.findIndex(item2 => item2 == item1);
+                    hasItem = arrA.includes(item);
                 }
             });
             
             return arrA;
         },
 
-        thirdWay: function(){
-            let buffer = _fillBuffer(arrA, arrB);
+        secondWay: function(){
+            
+            let buffer = []; // промежуточный массив для хранения всех элементов, которые нужно удалить из первого массива
+            let setB = [...new Set(arrB)];   // исключение повторений из второго масива
+
+            arrA.forEach(item1 => {
+                setB.forEach(item2 => {
+                    item1 == item2 ? buffer.push(item1) : false;
+                });
+            });
 
             buffer.forEach(item1 => {
-                arrA.forEach((item2, index) => (item2 == item1) ? arrA.splice(index, 1) : false);
+                arrA.forEach((item2, index) => {
+                    item1 == item2 ? arrA.splice(index, 1) : false;
+                });
             });
 
             return arrA;
