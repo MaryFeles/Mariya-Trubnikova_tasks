@@ -30,15 +30,13 @@ let snake = {
     direction: "up",
 }
 
-const SNAKE_HEAD_COLOR = '#fff10d';
-const SNAKE_BODY_COLOR = '#000';
+const SNAKE_HEAD_COLOR = '#9933ff';
+const SNAKE_BODY_COLOR = '#ceff34';
 const SNAKE_BORDER_COLOR = '#fff10d';
 
 function drawSnakePart(snakePart, bodyColor) {
     ctx.fillStyle = bodyColor;
-    ctx.fillRect(snakePart.x, snakePart.y, CELL_SIZE, CELL_SIZE);
-    ctx.strokeStyle = SNAKE_BORDER_COLOR;
-    ctx.strokeRect(snakePart.x, snakePart.y, CELL_SIZE, CELL_SIZE);
+    ctx.fillRect(snakePart.x + 2, snakePart.y + 2, CELL_SIZE - 4, CELL_SIZE - 4);
 }
 
 function drawSnake() {
@@ -60,8 +58,10 @@ function getRandomCoord() {
 }
 
 function drawFood() {
-    ctx.fillStyle = '#cc3e14';
-    ctx.fillRect(food.x, food.y, CELL_SIZE, CELL_SIZE);
+    ctx.fillStyle = '#ff4000';
+    ctx.beginPath();
+    ctx.arc(food.x + CELL_SIZE/2, food.y + CELL_SIZE/2, CELL_SIZE/2-2, 0, 2*Math.PI);
+    ctx.fill();
 }
 
 function startGame() {
@@ -88,25 +88,34 @@ function startGame() {
                 drawFood();
             }
 
-            // Проверяем, не столкнулась ли змея сама с собой 
-            // Для этого перебираем весь массив и смотрим, есть ли у нас в массиве змейки две клетки с одинаковыми координатами 
-            for (var i = index + 1; i < snake.body.length; i++) {
-                // Если такие клетки есть — начинаем игру заново 
-                if (bodyPart.x === snake.body[i].x && bodyPart.y === snake.body[i].y) {
-                    // Задаём стартовые параметры основным переменным
-                    snake.x = 160;
-                    snake.y = 160;
-                    snake.body = [];
-                    snake.bodyParts = 4;
-                    snake.dx = 0;
-                    snake.dy = -16;
-                    snake.direction ="up";
-
-                    food = getRandomCoord();
-                }
+            if (checkEatBody(bodyPart, index)) {
+                snake = {...newSnake};
+                food = getRandomCoord();
+                console.log(snake)          
             }
         });
-    }, 500);
+    }, 200);
+}
+
+function checkEatBody(bodyPart, index){
+    let snakeLength = snake.body.length;
+
+    for (var i = index + 1; i < snakeLength; i++) {
+        if (bodyPart.x === snake.body[i].x && bodyPart.y === snake.body[i].y) {
+            return true;
+        }
+    }
+}
+
+
+let newSnake = {
+    x: START_COORD.x,
+    y: START_COORD.y,
+    dx: 0,
+    dy: - CELL_SIZE,
+    body: [],
+    bodyParts: 4,
+    direction: "up",
 }
 
 
