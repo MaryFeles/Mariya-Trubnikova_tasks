@@ -6,10 +6,15 @@ const CELL_SIZE = 16;
 const CELLS_HORIZONTALLY = SNAKEBOARD.width / CELL_SIZE;
 const CELLS_VERTICALLY = SNAKEBOARD.height / CELL_SIZE;
 
-const START_COORD = {
-    x: SNAKEBOARD.width / 2,
-    y: SNAKEBOARD.height / 2
+function getRandomCoord() {
+    let x = Math.floor(Math.random() * (CELLS_HORIZONTALLY - 1)) * CELL_SIZE;
+    let y = Math.floor(Math.random() * (CELLS_VERTICALLY - 1)) * CELL_SIZE;
+    return { x, y }
 }
+
+document.addEventListener('keydown', function (event) {
+    Snake.setDirection(event.key);
+});
 
 let gameState = {
     start: false,
@@ -18,146 +23,84 @@ let gameState = {
     time: 30
 }
 
-let food = getRandomCoord();
 
-let snake = {
-    x: START_COORD.x,
-    y: START_COORD.y,
-    dx: 0,
-    dy: - CELL_SIZE,
-    body: [],
-    bodyParts: 4,
-    direction: "up",
-}
+let Game = (function () {
+    let interval;
 
-const SNAKE_HEAD_COLOR = '#9933ff';
-const SNAKE_BODY_COLOR = '#ceff34';
-const SNAKE_BORDER_COLOR = '#fff10d';
+    return {
+        start: function () {            
+            interval = setInterval(() => {
+                ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
-function drawSnakePart(snakePart, bodyColor) {
-    ctx.fillStyle = bodyColor;
-    ctx.fillRect(snakePart.x + 2, snakePart.y + 2, CELL_SIZE - 4, CELL_SIZE - 4);
-}
+                Food.draw();
 
-function drawSnake() {
-    snake.body.forEach((bodyPart, index) => {
-        let isSnakeHead = index == 0;
+                Snake.move();
+                Snake.draw();
+                Snake.checkFoodEating();
 
-        if (isSnakeHead) {
-            drawSnakePart(bodyPart, SNAKE_HEAD_COLOR);
-        } else {
-            drawSnakePart(bodyPart, SNAKE_BODY_COLOR);
-        }
-    });
-}
+                if (Snake.checkBodyEating()){
+                    //this.reset();
+                    console.log('reset');
 
-function getRandomCoord() {
-    let x = Math.floor(Math.random() * (CELLS_HORIZONTALLY - 1)) * CELL_SIZE;
-    let y = Math.floor(Math.random() * (CELLS_VERTICALLY - 1)) * CELL_SIZE;
-    return { x, y }
-}
+                }
+                console.log(Snake.checkBodyEating());
 
-function drawFood() {
-    ctx.fillStyle = '#ff4000';
-    ctx.beginPath();
-    ctx.arc(food.x + CELL_SIZE/2, food.y + CELL_SIZE/2, CELL_SIZE/2-2, 0, 2*Math.PI);
-    ctx.fill();
-}
+            }, 500);
+        },
 
-function startGame() {
-    setInterval(() => {
-        ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
+        reset: function () {
+            food = getRandomCoord();
+            console.log('reset')
+        },
 
-        snake.x += snake.dx;
-        snake.y += snake.dy;
+        pause: function () {
+            console.log('pause');
+            
+            clearInterval(interval);
+        },
 
-        snake.body.unshift({ x: snake.x, y: snake.y });
-
-        if (snake.body.length > snake.bodyParts) {
-            snake.body.pop();
-        }
-
-        drawSnake();
-        drawFood();
-
-        snake.body.forEach(function (bodyPart, index) {
-
-            if (bodyPart.x === food.x && bodyPart.y === food.y) {
-                snake.bodyParts++;
-                food = getRandomCoord();
-                drawFood();
-            }
-
-            if (checkEatBody(bodyPart, index)) {
-                snake = {...newSnake};
-                food = getRandomCoord();
-                console.log(snake)          
-            }
-        });
-    }, 200);
-}
-
-function checkEatBody(bodyPart, index){
-    let snakeLength = snake.body.length;
-
-    for (var i = index + 1; i < snakeLength; i++) {
-        if (bodyPart.x === snake.body[i].x && bodyPart.y === snake.body[i].y) {
-            return true;
+        continue: function() {
+            this.start();
         }
     }
-}
+})();
 
 
-let newSnake = {
-    x: START_COORD.x,
-    y: START_COORD.y,
-    dx: 0,
-    dy: - CELL_SIZE,
-    body: [],
-    bodyParts: 4,
-    direction: "up",
-}
+let buttons = document.querySelectorAll('.btn');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', function () {
+        if (btn.dataset.gameState === 'start') {
+            Game.start();
+
+            btn.classList.add('btn--reset')
+            btn.dataset.gameState = 'reset';
+            btn.innerHTML = "Начать заново";
+            console.log('Start game')
+
+        } else if (btn.dataset.gameState === 'reset') {
+            Game.reset();
+
+            btn.classList.add('btn--start')
+            btn.dataset.gameState = 'start';
+            console.log('Reset game')
+
+        } else if (btn.dataset.gameState === 'pause') {
+            Game.pause();
 
 
-document.addEventListener('keydown', function (event) {
-    setDirection(event.key);
+            btn.classList.add('btn--pause')
+            btn.dataset.gameState = 'continue';
+            btn.innerHTML = "Продолжить";
+            console.log('Pause game')
+
+        } else if (btn.dataset.gameState === 'continue') {
+            Game.continue();
+
+            btn.classList.add('btn--continue')
+            btn.dataset.gameState = 'pause';
+            btn.innerHTML = "Пауза";
+            console.log('Continue game')
+        }
+    })
 });
-
-function setDirection(key) {
-    switch (key) {
-        case "ArrowUp":
-            if (snake.direction != "down") {
-                snake.direction = "up";
-
-                snake.dx = 0;
-                snake.dy = - CELL_SIZE;
-            }
-            break;
-        case "ArrowRight":
-            if (snake.direction != "left") {
-                snake.direction = "right";
-
-                snake.dx = CELL_SIZE;
-                snake.dy = 0;
-            }
-            break;
-        case "ArrowDown":
-            if (snake.direction != "up") {
-                snake.direction = "down";
-
-                snake.dx = 0;
-                snake.dy = CELL_SIZE;
-            }
-            break;
-        case "ArrowLeft":
-            if (snake.direction != "right") {
-                snake.direction = "left";
-
-                snake.dx = - CELL_SIZE;
-                snake.dy = 0;
-            }
-            break;
-    }
-}
-
-startGame();

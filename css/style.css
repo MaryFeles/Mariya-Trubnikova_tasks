@@ -47,9 +47,6 @@ canvas {
     background-color: #fff10d;
 }
 
-.btn-pause {
-    display: none;
-}
 
 .score-wrapper, .time-wrapper {
     display: flex;
