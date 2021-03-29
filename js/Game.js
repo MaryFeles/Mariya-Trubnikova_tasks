@@ -1,15 +1,8 @@
-let gameState = {
-    start: false,
-    pause: false,
-    score: 0,
-    time: 30
-}
-
 
 let Game = (function () {
     let interval;
 
-    function refreshCanvas() {
+    let _refreshCanvas = function () {
         ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
         Food.draw();
@@ -17,14 +10,8 @@ let Game = (function () {
         Snake.move();
         Snake.draw();
         Snake.foodEat();
-
-        if (Snake.bodyEat()) {
-            Game.restart();
-        }
-
-        if (Snake.clashWithWall()) {
-            Game.restart();
-        }
+        Snake.bodyEat() ? Game.restart() : false;
+        Snake.clashWithWall() ? Game.restart() : false;
     }
 
     return {
@@ -32,7 +19,7 @@ let Game = (function () {
             Snake.createNewSnake();
 
             interval = setInterval(() => {
-                refreshCanvas();
+                _refreshCanvas();
             }, 400);
         },
 
@@ -47,7 +34,7 @@ let Game = (function () {
 
         continue: function () {
             interval = setInterval(() => {
-                refreshCanvas();
+                _refreshCanvas();
             }, 400);
         }
     }

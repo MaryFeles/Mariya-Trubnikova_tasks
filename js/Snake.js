@@ -2,7 +2,6 @@
 let Snake = (function () {
     const SNAKE_HEAD_COLOR = '#9933ff';
     const SNAKE_BODY_COLOR = '#ceff34';
-    const SNAKE_BORDER_COLOR = '#fff10d';
 
     const START_COORD = {
         x: SNAKEBOARD.width / 2,
@@ -93,7 +92,8 @@ let Snake = (function () {
                     snake.bodyParts++;
                     Food.setCoords();
                     Food.draw();
-                }
+
+                    PlayState.increaseScore();                }
             });
         },
 

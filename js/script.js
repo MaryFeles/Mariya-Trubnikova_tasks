@@ -52,3 +52,5 @@ btnPause.addEventListener('click', function () {
         btnPause.innerHTML = "Пауза";
     }
 });
+
+
