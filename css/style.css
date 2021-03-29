@@ -34,7 +34,7 @@ canvas {
     background-color: #0c1315;
 }
 
-.btn {
+.btn__game-state {
     padding: 4px 8px;
 
     cursor: pointer;
@@ -43,8 +43,12 @@ canvas {
     background-color: #fff777;
 }
 
-.btn:hover {
+.btn__game-state:hover {
     background-color: #fff10d;
+}
+
+.btn__game-state:disabled:hover{
+    background-color: #fff777;
 }
 
 

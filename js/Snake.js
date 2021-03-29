@@ -17,16 +17,16 @@ let Snake = (function () {
     }
 
     return {
-        createNewSnake: function() {
+        createNewSnake: function () {
             snake.x = START_COORD.x;
-            snake.y =  START_COORD.y;
+            snake.y = START_COORD.y;
             snake.dx = 0;
             snake.dy = - CELL_SIZE;
             snake.body = [];
-            snake.bodyPart = 4;
+            snake.bodyParts = 4;
             snake.direction = "up";
         },
-        
+
         setDirection: function (key) {
             switch (key) {
                 case "ArrowUp":
@@ -103,10 +103,10 @@ let Snake = (function () {
                     if (bodyPart.x === snake.body[i].x && bodyPart.y === snake.body[i].y) {
                         console.log('!');
                         return true;
-                        
+
                     }
                 }
-            });            
+            });
         },
     }
 

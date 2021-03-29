@@ -27,80 +27,81 @@ let gameState = {
 let Game = (function () {
     let interval;
 
+    function refreshCanvas() {
+        ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
+
+        Food.draw();
+
+        Snake.move();
+        Snake.draw();
+        Snake.checkFoodEating();
+
+        if (Snake.checkBodyEating()) {
+            this.restart();
+            console.log('restart');
+        }
+    }
+
     return {
-        start: function () {            
+        start: function () {
+            Snake.createNewSnake();
+
             interval = setInterval(() => {
-                ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
-
-                Food.draw();
-
-                Snake.move();
-                Snake.draw();
-                Snake.checkFoodEating();
-
-                if (Snake.checkBodyEating()){
-                    this.restart();
-                    console.log('restart');
-
-                }
-                //console.log(Snake.checkBodyEating());
-
-            }, 500);
+                refreshCanvas();
+            }, 400);
         },
 
         restart: function () {
             Snake.createNewSnake();
-            food = getRandomCoord();
+            Food.setCoords();
+
             console.log('restart')
         },
 
-        pause: function () {            
+        pause: function () {
             clearInterval(interval);
         },
 
-        continue: function() {
-            this.start();
+        continue: function () {
+            interval = setInterval(() => {
+                refreshCanvas();
+            }, 400);
         }
     }
 })();
 
+let btnStart = document.querySelector('.btn__game-state--start');
+let btnPause = document.querySelector('.btn__game-state--pause');
 
-let buttons = document.querySelectorAll('.btn');
+btnStart.addEventListener('click', function () {
+    if (btnStart.dataset.gameState === 'start') {
+        Game.start();
 
-buttons.forEach(btn => {
-    btn.addEventListener('click', function () {
-        if (btn.dataset.gameState === 'start') {
-            Snake.createNewSnake();
+        btnStart.dataset.gameState = 'restart';
+        btnStart.innerHTML = "Начать заново";
+
+        btnPause.disabled = false;
+    } else if (btnStart.dataset.gameState === 'restart') {
+        Game.restart();
+        if (btnPause.dataset.gameState === 'continue') {
             Game.start();
-
-            btn.classList.add('btn--restart')
-            btn.dataset.gameState = 'restart';
-            btn.innerHTML = "Начать заново";
-            console.log('Start game')
-
-        } else if (btn.dataset.gameState === 'restart') {
-            Game.restart();
-
-            btn.classList.add('btn--restart')
-            btn.dataset.gameState = 'restart';
-            console.log('Reset game')
-
-        } else if (btn.dataset.gameState === 'pause') {
-            Game.pause();
-
-
-            btn.classList.add('btn--pause')
-            btn.dataset.gameState = 'continue';
-            btn.innerHTML = "Продолжить";
-            console.log('Pause game')
-
-        } else if (btn.dataset.gameState === 'continue') {
-            Game.continue();
-
-            btn.classList.add('btn--continue')
-            btn.dataset.gameState = 'pause';
-            btn.innerHTML = "Пауза";
-            console.log('Continue game')
+            btnPause.dataset.gameState = 'pause';
+            btnPause.innerHTML = "Пауза";
         }
-    })
+    }
+});
+
+btnPause.addEventListener('click', function () {
+    if (btnPause.dataset.gameState === 'pause') {
+        Game.pause();
+
+        btnPause.dataset.gameState = 'continue';
+        btnPause.innerHTML = "Продолжить";
+
+    } else if (btnPause.dataset.gameState === 'continue') {
+        Game.continue();
+        
+        btnPause.dataset.gameState = 'pause';
+        btnPause.innerHTML = "Пауза";
+    }
 });
