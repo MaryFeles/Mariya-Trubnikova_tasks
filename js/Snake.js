@@ -1,14 +1,14 @@
 
-const SNAKE_HEAD_COLOR = '#9933ff';
-const SNAKE_BODY_COLOR = '#ceff34';
-const SNAKE_BORDER_COLOR = '#fff10d';
-
-const START_COORD = {
-    x: SNAKEBOARD.width / 2,
-    y: SNAKEBOARD.height / 2
-}
-
 let Snake = (function () {
+    const SNAKE_HEAD_COLOR = '#9933ff';
+    const SNAKE_BODY_COLOR = '#ceff34';
+    const SNAKE_BORDER_COLOR = '#fff10d';
+
+    const START_COORD = {
+        x: SNAKEBOARD.width / 2,
+        y: SNAKEBOARD.height / 2
+    }
+
     let snake = {};
 
     let _drawSnakePart = function (snakePart, bodyColor) {
@@ -87,7 +87,7 @@ let Snake = (function () {
             });
         },
 
-        checkFoodEating: function () {
+        foodEat: function () {
             snake.body.forEach(bodyPart => {
                 if (bodyPart.x === Food.getCoords().x && bodyPart.y === Food.getCoords().y) {
                     snake.bodyParts++;
@@ -97,12 +97,20 @@ let Snake = (function () {
             });
         },
 
-        checkBodyEating: function () {
+        bodyEat: function () {
             for (let i = 1; i < snake.body.length; i++) {
                 if (snake.body[0].x == snake.body[i].x && snake.body[0].y == snake.body[i].y) {
                     return true;
                 }
             }
+        },
+
+        clashWithWall: function () {
+            let snakeHead = snake.body[0];
+            return snakeHead.x < 0 ||
+                snakeHead.y < 0 ||
+                snakeHead.x > SNAKEBOARD.width - CELL_SIZE ||
+                snakeHead.y > SNAKEBOARD.height - CELL_SIZE;
         },
     }
 

@@ -34,9 +34,13 @@ let Game = (function () {
 
         Snake.move();
         Snake.draw();
-        Snake.checkFoodEating();
+        Snake.foodEat();
 
-        if (Snake.checkBodyEating()) {
+        if (Snake.bodyEat()) {
+            Game.restart();
+        }
+
+        if (Snake.clashWithWall()) {
             Game.restart();
         }
     }
