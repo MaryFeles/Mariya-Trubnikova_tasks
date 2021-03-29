@@ -39,23 +39,22 @@ let Game = (function () {
                 Snake.checkFoodEating();
 
                 if (Snake.checkBodyEating()){
-                    //this.reset();
-                    console.log('reset');
+                    this.restart();
+                    console.log('restart');
 
                 }
-                console.log(Snake.checkBodyEating());
+                //console.log(Snake.checkBodyEating());
 
             }, 500);
         },
 
-        reset: function () {
+        restart: function () {
+            Snake.createNewSnake();
             food = getRandomCoord();
-            console.log('reset')
+            console.log('restart')
         },
 
-        pause: function () {
-            console.log('pause');
-            
+        pause: function () {            
             clearInterval(interval);
         },
 
@@ -71,18 +70,19 @@ let buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => {
     btn.addEventListener('click', function () {
         if (btn.dataset.gameState === 'start') {
+            Snake.createNewSnake();
             Game.start();
 
-            btn.classList.add('btn--reset')
-            btn.dataset.gameState = 'reset';
+            btn.classList.add('btn--restart')
+            btn.dataset.gameState = 'restart';
             btn.innerHTML = "Начать заново";
             console.log('Start game')
 
-        } else if (btn.dataset.gameState === 'reset') {
-            Game.reset();
+        } else if (btn.dataset.gameState === 'restart') {
+            Game.restart();
 
-            btn.classList.add('btn--start')
-            btn.dataset.gameState = 'start';
+            btn.classList.add('btn--restart')
+            btn.dataset.gameState = 'restart';
             console.log('Reset game')
 
         } else if (btn.dataset.gameState === 'pause') {

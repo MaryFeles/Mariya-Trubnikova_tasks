@@ -9,16 +9,7 @@ const START_COORD = {
 }
 
 let Snake = (function () {
-    let snake = {
-        x: START_COORD.x,
-        y: START_COORD.y,
-        dx: 0,
-        dy: - CELL_SIZE,
-        body: [],
-        bodyParts: 4,
-        direction: "up",
-    };
-
+    let snake = {};
 
     let _drawSnakePart = function (snakePart, bodyColor) {
         ctx.fillStyle = bodyColor;
@@ -26,6 +17,16 @@ let Snake = (function () {
     }
 
     return {
+        createNewSnake: function() {
+            snake.x = START_COORD.x;
+            snake.y =  START_COORD.y;
+            snake.dx = 0;
+            snake.dy = - CELL_SIZE;
+            snake.body = [];
+            snake.bodyPart = 4;
+            snake.direction = "up";
+        },
+        
         setDirection: function (key) {
             switch (key) {
                 case "ArrowUp":
@@ -97,12 +98,12 @@ let Snake = (function () {
         },
 
         checkBodyEating: function () {
-            let snakeLength = snake.body.length;
-
             snake.body.forEach((bodyPart, index) => {
-                for (let i = index + 1; i < snakeLength; i++) {
+                for (let i = index + 1; i < snake.body.length; i++) {
                     if (bodyPart.x === snake.body[i].x && bodyPart.y === snake.body[i].y) {
+                        console.log('!');
                         return true;
+                        
                     }
                 }
             });            
