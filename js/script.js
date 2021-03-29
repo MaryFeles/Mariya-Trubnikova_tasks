@@ -37,8 +37,7 @@ let Game = (function () {
         Snake.checkFoodEating();
 
         if (Snake.checkBodyEating()) {
-            this.restart();
-            console.log('restart');
+            Game.restart();
         }
     }
 
@@ -54,8 +53,6 @@ let Game = (function () {
         restart: function () {
             Snake.createNewSnake();
             Food.setCoords();
-
-            console.log('restart')
         },
 
         pause: function () {
@@ -69,6 +66,8 @@ let Game = (function () {
         }
     }
 })();
+
+
 
 let btnStart = document.querySelector('.btn__game-state--start');
 let btnPause = document.querySelector('.btn__game-state--pause');
@@ -100,7 +99,7 @@ btnPause.addEventListener('click', function () {
 
     } else if (btnPause.dataset.gameState === 'continue') {
         Game.continue();
-        
+
         btnPause.dataset.gameState = 'pause';
         btnPause.innerHTML = "Пауза";
     }

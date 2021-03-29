@@ -98,15 +98,11 @@ let Snake = (function () {
         },
 
         checkBodyEating: function () {
-            snake.body.forEach((bodyPart, index) => {
-                for (let i = index + 1; i < snake.body.length; i++) {
-                    if (bodyPart.x === snake.body[i].x && bodyPart.y === snake.body[i].y) {
-                        console.log('!');
-                        return true;
-
-                    }
+            for (let i = 1; i < snake.body.length; i++) {
+                if (snake.body[0].x == snake.body[i].x && snake.body[0].y == snake.body[i].y) {
+                    return true;
                 }
-            });
+            }
         },
     }
 
