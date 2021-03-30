@@ -1,41 +1,59 @@
-
 let Game = (function () {
     let interval;
+    let speed = PlayState.getSpeed();
 
-    let _refreshCanvas = function () {
+    let refreshCanvas = function () {
         ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
         Food.draw();
-
         Snake.move();
         Snake.draw();
         Snake.foodEat();
-        Snake.bodyEat() ? Game.restart() : false;
-        Snake.clashWithWall() ? Game.restart() : false;
+        if (Snake.bodyEat() || Snake.clashWithWall()) {
+            Game.stop();
+            Modal.createWindow('losingWindow');
+        }
     }
 
     return {
         start: function () {
+            PlayState.reset();
             Snake.createNewSnake();
 
             interval = setInterval(() => {
-                _refreshCanvas();
-            }, 400);
+                refreshCanvas();
+                if (PlayState.getTime().min == 0 && PlayState.getTime().sec == 0) {
+                    this.stop();
+                    Modal.createWindow('summaryWindow')
+                }
+            }, speed);
         },
 
         restart: function () {
             Snake.createNewSnake();
             Food.setCoords();
+            PlayState.reset();
         },
 
         pause: function () {
             clearInterval(interval);
+            PlayState.stopTimer();
         },
 
         continue: function () {
             interval = setInterval(() => {
-                _refreshCanvas();
-            }, 400);
-        }
+                refreshCanvas();
+            }, speed);
+
+            PlayState.startTimer();
+        },
+
+        stop: function() {
+            btnStart.dataset.gameState = 'start';
+            PlayState.stopTimer();
+            clearInterval(interval);
+            Snake.createNewSnake();
+            Food.setCoords();
+        },
     }
 })();
