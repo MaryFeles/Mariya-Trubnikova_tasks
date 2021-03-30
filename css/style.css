@@ -82,8 +82,7 @@ canvas {
     position: absolute;
     z-index: 1000;
 
-    height: 200px;
-    width: 300px;
+    max-width: 410px;
     padding: 10px;
 
     background-color: #fff777;
@@ -97,10 +96,16 @@ canvas {
 .modal__btn {
     color: #000;
     background-color: #b964ff;
+
+    margin-top: 10px;
 }
 
 .modal__btn:hover {
     background-color: #b964ff;
+}
+
+.cover[data-cover="hidden"]{
+    display: none;
 }
 
 .cover {
