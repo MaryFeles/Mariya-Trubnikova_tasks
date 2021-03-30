@@ -1,7 +1,7 @@
 let Modal = (function () {
     let modal = {
         welcomWindow: {
-            content: "Цель игры: за выделенное время собрать максимальное количество еды (красные кружки). Управление осуществляется стрелками на клавиатуре.",
+            content: "Цель игры: за выделенное время собрать максимальное количество еды (красные кружки). <br/> <br/> Управление осуществляется стрелками на клавиатуре.",
             buttonText: "Начать",
             modifier: "welcomWindow",
         },
@@ -48,7 +48,7 @@ let Modal = (function () {
                 content = modal.welcomWindow.content;
                 buttonText = modal.welcomWindow.buttonText;
                 modifier = modal.welcomWindow.modifier;
-                
+
             } else if (type == 'summaryWindow') {
                 buttonText = modal.summaryWindow.buttonText;
                 modifier = modal.summaryWindow.modifier;
