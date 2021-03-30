@@ -18,14 +18,33 @@ let Modal = (function () {
 
     let gameContainer = document.querySelector('.game-container');
 
-    return {
-        createHtml: function (content, buttonText) {
-            let modalHtml = document.createElement("div");
-            modalHtml.classList.add('modal');
-            modalHtml.innerHTML = `<div class="modal__content">${content}</div><button class="btn modal__btn">${buttonText}</button>`;
-            document.body.insertBefore(modalHtml, gameContainer);
-        },
+    
+       let toggleCover = function () {
+        let cover = document.querySelector('.cover');
 
+        if (cover.dataset.cover == 'opened') {
+            cover.dataset.cover = 'hidden';
+        } else cover.dataset.cover = 'opened';
+    };
+
+    let modalClose = function () {
+        let modal = document.querySelector('.modal');
+        modal.remove();
+        toggleCover();
+    };
+
+    let createHtml = function (content, buttonText) {
+        let modalHtml = document.createElement("div");
+        modalHtml.classList.add('modal');
+        modalHtml.innerHTML = `<div class="modal__content">${content}</div><button class="btn modal__btn">${buttonText}</button>`;
+        document.body.insertBefore(modalHtml, gameContainer);
+        let modalBtn = document.querySelector('.modal__btn');
+
+        modalBtn.addEventListener('click', modalClose, {once: true});
+        toggleCover();
+    };
+
+    return {
         createWindow: function (type) {
             let content = '';
             let buttonText = '';
@@ -41,16 +60,10 @@ let Modal = (function () {
                 buttonText = modal.summaryWindow.buttonText;
             }
 
-            this.createHtml(content, buttonText);
-        },
-
-        close: function () {
-            let modal = document.querySelector('.modal');
-
-            modal.remove();
+            createHtml(content, buttonText);
         },
     }
 })();
 
-let modalBtn = document.querySelector('.modal__btn');
-modalBtn.addEventListener('click', Modal.close)
+Modal.createWindow('welcomWindow');
+
