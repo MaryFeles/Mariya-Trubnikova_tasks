@@ -42,8 +42,11 @@ let PlayState = (function () {
 
         },
 
+        getScore: function() {
+            return playState.score;
+        },
+
     }
 })();
-
 
 

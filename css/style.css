@@ -30,24 +30,28 @@ body {
 canvas {
     display: flex;
 
-    border: 4px solid #6a656b;
+    border: 5px solid #777;
     background-color: #0c1315;
 }
 
-.btn__game-state {
-    padding: 4px 8px;
-
+.btn {
     cursor: pointer;
     outline: none;
-
+    
+    padding: 4px 8px;
     background-color: #fff777;
+    border: 2px outset #777;
 }
 
-.btn__game-state:hover {
+.btn:active {
+    border-style: inset;
+}
+
+.btn:hover {
     background-color: #fff10d;
 }
 
-.btn__game-state:disabled:hover{
+.btn:disabled:hover{
     background-color: #fff777;
 }
 
@@ -66,4 +70,46 @@ canvas {
 
 .penalty-time {
     color: #f00;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+    z-index: 1000;
+
+    height: 200px;
+    width: 300px;
+    padding: 10px;
+
+    background-color: #fff777;
+    border: 3px ridge #9933ff;
+    color: #fff777;
+    color: #000;
+
+    font-size: 14px;
+}
+
+.modal__btn {
+    color: #000;
+    background-color: #b964ff;
+}
+
+.modal__btn:hover {
+    background-color: #b964ff;
+}
+
+.cover {
+    position: absolute;
+    z-index: 100;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #777;
+    opacity: .7 ;
 }

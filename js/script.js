@@ -17,8 +17,8 @@ document.addEventListener('keydown', function (event) {
 });
 
 
-let btnStart = document.querySelector('.btn__game-state--start');
-let btnPause = document.querySelector('.btn__game-state--pause');
+let btnStart = document.querySelector('.playgame-btn--start');
+let btnPause = document.querySelector('.playgame-btn--pause');
 
 btnStart.addEventListener('click', function () {
     if (btnStart.dataset.gameState === 'start') {
