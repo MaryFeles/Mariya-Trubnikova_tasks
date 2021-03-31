@@ -2,12 +2,14 @@ let Game = (function () {
     let interval;
     let speed = PlayState.getSpeed();
 
-    let refreshCanvas = function () {
+    let refreshGame = function () {
+        clearInterval(interval);
         ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
         Snake.move();
         Snake.draw();
         Snake.foodEat();
+
         if (Snake.bodyEat() || Snake.clashWithWall()) {
             Game.stop();
             Modal.createWindow('losingWindow');
@@ -17,9 +19,9 @@ let Game = (function () {
         Food.draw('minusSpeed');
         Food.draw('plusScore');
 
-        console.log(speed);
         speed = PlayState.getSpeed();
 
+        interval = setInterval(() => refreshGame(), speed);
     }
 
     return {
@@ -29,7 +31,8 @@ let Game = (function () {
             Snake.createNewSnake();
 
             interval = setInterval(() => {
-                refreshCanvas();
+                refreshGame();
+
                 if (PlayState.getTime().min <= 0 && PlayState.getTime().sec <= 0) {
                     this.stop();
                     Modal.createWindow('summaryWindow')
@@ -53,14 +56,12 @@ let Game = (function () {
 
         continue: function () {
             PlayState.setState('start');
-            interval = setInterval(() => {
-                refreshCanvas();
-            }, speed);
+            interval = setInterval(() => refreshGame(), speed);
 
             PlayState.startTimer();
         },
 
-        stop: function() {
+        stop: function () {
             PlayState.setState('stop');
             btnStart.dataset.gameState = 'start';
             btnPause.disabled = true;

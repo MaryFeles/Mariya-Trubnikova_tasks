@@ -93,10 +93,10 @@ let Snake = (function () {
                     if (bodyPart.x === Food.getCoords(food).x && bodyPart.y === Food.getCoords(food).y) {
 
                         switch (food) {
-                            case 'plusTime':
+                            case 'plusSpeed':
                                 PlayState.increaseSpeed();
                                 break;
-                            case 'minusTime':
+                            case 'minusSpeed':
                                 PlayState.decreaseSpeed();
                                 break;
                             case 'plusScore':

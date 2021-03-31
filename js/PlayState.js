@@ -1,6 +1,6 @@
 let PlayState = (function () {    
     const MINUTES = 0;
-    const SECONDS = 10;
+    const SECONDS = 30;
     const NORMAL_GAME_SPEED = 500;
     const INCREASED_GAME_SPEED = 100;
     const DECREASED_GAME_SPEED = 1000;
@@ -46,19 +46,19 @@ let PlayState = (function () {
         },
 
         increaseSpeed: function () {
-            // setTimeout(() => {
-            //     PlayState.gameSpeed = normalGameSpeed;
-            // }, 10000);
+            setTimeout(() => {
+                playState.gameSpeed = NORMAL_GAME_SPEED;
+            }, 5000);
 
-            PlayState.gameSpeed = INCREASED_GAME_SPEED;
+            playState.gameSpeed = INCREASED_GAME_SPEED;
         },
 
         decreaseSpeed: function () {
-            // setTimeout(() => {
-            //     PlayState.gameSpeed = normalGameSpeed;
-            // }, 10000);
+            setTimeout(() => {
+                playState.gameSpeed = NORMAL_GAME_SPEED;
+            }, 5000);
 
-            PlayState.gameSpeed = DECREASED_GAME_SPEED;
+            playState.gameSpeed = DECREASED_GAME_SPEED;
         },
 
         getScore: function () {
@@ -95,9 +95,6 @@ let PlayState = (function () {
 
                 this.setTimer();
             }, 1000);
-
-
-
         },
 
         stopTimer: function () {

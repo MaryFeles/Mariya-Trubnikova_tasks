@@ -9,13 +9,13 @@ let Food = (function () {
         plusSpeed: {
             coords: getRandomCoord(),
             color: '#00ff00',
-            interval: 10000,
+            interval: 5500,
         },
 
         minusSpeed: {
             coords: getRandomCoord(),
             color: '#0000ff',
-            interval: 10000,
+            interval: 2200,
         },
     };
 
