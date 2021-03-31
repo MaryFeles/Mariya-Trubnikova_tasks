@@ -44,25 +44,16 @@ let Modal = (function () {
             let buttonText = '';
             let modifier = '';
 
-            if (type == 'welcomWindow') {
-                content = modal.welcomWindow.content;
-                buttonText = modal.welcomWindow.buttonText;
-                modifier = modal.welcomWindow.modifier;
+            content = modal[type].content;
+            buttonText = modal[type].buttonText;
+            modifier = modal[type].modifier;
 
-            } else if (type == 'summaryWindow') {
-                buttonText = modal.summaryWindow.buttonText;
-                modifier = modal.summaryWindow.modifier;
-
+            if (type == 'summaryWindow') {
                 if (PlayState.getScore() < 5) {
                     content = modal.summaryWindow.content + PlayState.getScore() + ". <br/> Pезультат оставляет желать лучшего...";
                 } else if (PlayState.getScore() >= 5 && PlayState.getScore() <= 20) {
                     content = "Поздравляю! Вы набрали " + PlayState.getScore() + " очков!";
                 } else modal.summaryWindow.content + PlayState.getScore();
-
-            } else if (type == 'losingWindow') {
-                content = modal.losingWindow.content;
-                buttonText = modal.losingWindow.buttonText;
-                modifier = modal.losingWindow.modifier;
             }
 
             createHtml(content, buttonText, modifier);
