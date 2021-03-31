@@ -64,14 +64,6 @@ canvas {
     margin-right: 8px;
 }
 
-.bonus-time {
-    color: #0f0;
-}
-
-.penalty-time {
-    color: #f00;
-}
-
 .modal {
     display: flex;
     flex-direction: column;

@@ -1,16 +1,23 @@
-let PlayState = (function () {
+let PlayState = (function () {    
+    const MINUTES = 0;
+    const SECONDS = 10;
+    const NORMAL_GAME_SPEED = 500;
+    const INCREASED_GAME_SPEED = 100;
+    const DECREASED_GAME_SPEED = 1000;
+
     let _score = document.querySelector('.score');
     let _timer = document.querySelector('.timer');
 
     let timerInterval;
 
     let playState = {
+        game: 'stop',
         score: 0,
         timer: {
-            min: 0,
-            sec: 15
+            min: MINUTES,
+            sec: SECONDS
         },
-        speed: 500,
+        gameSpeed: NORMAL_GAME_SPEED,
     };
 
     return {
@@ -18,16 +25,18 @@ let PlayState = (function () {
             this.stopTimer();
 
             playState.score = 0;
-            playState.timer.min = 0;
-            playState.timer.sec = 15;
+            playState.timer.min = MINUTES;
+            playState.timer.sec = SECONDS;
 
             _score.textContent = playState.score;
-            this.setTimer(playState.timer.min, playState.timer.sec);
 
+            this.setTimer();
             this.startTimer();
         },
 
-        setTimer: function (min, sec) {
+        setTimer: function () {
+            let min = playState.timer.min;
+            let sec = playState.timer.sec;
             _timer.textContent = (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec);
         },
 
@@ -36,32 +45,20 @@ let PlayState = (function () {
             _score.textContent = playState.score;
         },
 
-        increaseTime: function () {
-            if (_timer.classList.contains('penalty-time')) {
-                _timer.classList.add('bonus-time');
-                _timer.classList.remove('penalty-time');
-            }
-
-            playState.timer += 5;
-            _timer.textContent = "+5";
-        },
-
-        decreaseTime: function () {
-            if (_timer.classList.contains('bonus-time')) {
-                _timer.classList.add('penalty-time');
-                _timer.classList.remove('bonus-time');
-            }
-
-            playState.timer -= 5;
-            _timer.textContent = "-5";
-        },
-
         increaseSpeed: function () {
+            // setTimeout(() => {
+            //     PlayState.gameSpeed = normalGameSpeed;
+            // }, 10000);
 
+            PlayState.gameSpeed = INCREASED_GAME_SPEED;
         },
 
         decreaseSpeed: function () {
+            // setTimeout(() => {
+            //     PlayState.gameSpeed = normalGameSpeed;
+            // }, 10000);
 
+            PlayState.gameSpeed = DECREASED_GAME_SPEED;
         },
 
         getScore: function () {
@@ -69,7 +66,7 @@ let PlayState = (function () {
         },
 
         getSpeed: function () {
-            return playState.speed;
+            return playState.gameSpeed;
         },
 
         getTime: function () {
@@ -92,9 +89,11 @@ let PlayState = (function () {
                     this.stopTimer();
                 }
 
-                this.setTimer(min, sec);
+                
                 playState.timer.min = min;
                 playState.timer.sec = sec;
+
+                this.setTimer();
             }, 1000);
 
 
@@ -103,6 +102,14 @@ let PlayState = (function () {
 
         stopTimer: function () {
             clearInterval(timerInterval);
+        },
+
+        setState: function(state) {
+            playState.game = state;
+        },
+
+        getState: function(state) {
+            return playState.game;
         },
     }
 })();

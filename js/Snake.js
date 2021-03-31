@@ -86,14 +86,31 @@ let Snake = (function () {
         },
 
         foodEat: function () {
-            snake.body.forEach(bodyPart => {
-                if (bodyPart.x === Food.getCoords().x && bodyPart.y === Food.getCoords().y) {
-                    snake.bodyParts++;
-                    Food.setCoords();
-                    Food.draw();
+            let foodList = Food.getFoodList();
 
-                    PlayState.increaseScore();
-                }
+            snake.body.forEach(bodyPart => {
+                foodList.forEach(food => {
+                    if (bodyPart.x === Food.getCoords(food).x && bodyPart.y === Food.getCoords(food).y) {
+
+                        switch (food) {
+                            case 'plusTime':
+                                PlayState.increaseSpeed();
+                                break;
+                            case 'minusTime':
+                                PlayState.decreaseSpeed();
+                                break;
+                            case 'plusScore':
+                                snake.bodyParts++;
+                                PlayState.increaseScore();
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                        Food.setCoords(food);
+                        Food.draw(food);                        
+                    }
+                });
             });
         },
 
