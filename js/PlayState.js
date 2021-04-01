@@ -1,9 +1,9 @@
-let PlayState = (function () {    
+let PlayState = (function () {
     const MINUTES = 0;
     const SECONDS = 30;
-    const NORMAL_GAME_SPEED = 500;
+    const NORMAL_GAME_SPEED = 400;
     const INCREASED_GAME_SPEED = 100;
-    const DECREASED_GAME_SPEED = 1000;
+    const DECREASED_GAME_SPEED = 9000;
 
     let _score = document.querySelector('.score');
     let _timer = document.querySelector('.timer');
@@ -89,7 +89,7 @@ let PlayState = (function () {
                     this.stopTimer();
                 }
 
-                
+
                 playState.timer.min = min;
                 playState.timer.sec = sec;
 
@@ -101,11 +101,11 @@ let PlayState = (function () {
             clearInterval(timerInterval);
         },
 
-        setState: function(state) {
+        setState: function (state) {
             playState.game = state;
         },
 
-        getState: function(state) {
+        getState: function () {
             return playState.game;
         },
     }

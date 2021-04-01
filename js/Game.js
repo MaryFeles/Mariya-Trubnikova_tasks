@@ -1,14 +1,15 @@
 let Game = (function () {
-    let interval;
+    //let interval;
     let speed = PlayState.getSpeed();
 
     let refreshGame = function () {
-        clearInterval(interval);
+        //clearInterval(interval);
         ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
         Snake.move();
         Snake.draw();
         Snake.foodEat();
+
 
         if (Snake.bodyEat() || Snake.clashWithWall()) {
             Game.stop();
@@ -21,43 +22,60 @@ let Game = (function () {
 
         speed = PlayState.getSpeed();
 
-        interval = setInterval(() => refreshGame(), speed);
+        if (PlayState.getTime().min <= 0 && PlayState.getTime().sec <= 0) {
+            Game.stop();
+            Modal.createWindow('summaryWindow');
+        }
+
+        // interval = setInterval(() => {
+        //     refreshGame();                
+        // }, speed);
+
+        console.log(interval.intervals);
     }
 
     return {
         start: function () {
+            //clearInterval(interval);
+            //Food.stopRendering();
             PlayState.setState('start');
             PlayState.reset();
             Snake.createNewSnake();
 
-            interval = setInterval(() => {
-                refreshGame();
+            // interval = setInterval(() => {
+            //     refreshGame();                
+            // }, speed);
 
-                if (PlayState.getTime().min <= 0 && PlayState.getTime().sec <= 0) {
-                    this.stop();
-                    Modal.createWindow('summaryWindow')
-                }
-            }, speed);
+            interval.make(() => refreshGame(), speed);
 
             Food.placeFood();
         },
 
         restart: function () {
-            PlayState.setState('start');
+            PlayState.setState('restart');
             Snake.createNewSnake();
             PlayState.reset();
+            Food.stopRendering();
+
+            PlayState.setState('start');
+            interval.make(() => refreshGame(), speed);
+            Food.placeFood();
         },
 
         pause: function () {
-            PlayState.setState('pause')
-            clearInterval(interval);
+            Food.stopRendering();
+            PlayState.setState('pause');
             PlayState.stopTimer();
         },
 
         continue: function () {
+            Food.stopRendering();
             PlayState.setState('start');
-            interval = setInterval(() => refreshGame(), speed);
 
+            //interval = setInterval(() => refreshGame(), speed);
+
+            interval.make(() => refreshGame(), speed);
+            Food.placeFood();
             PlayState.startTimer();
         },
 
@@ -65,12 +83,11 @@ let Game = (function () {
             PlayState.setState('stop');
             btnStart.dataset.gameState = 'start';
             btnPause.disabled = true;
-
             PlayState.stopTimer();
-            clearInterval(interval);
+            //clearInterval(interval);
             Snake.createNewSnake();
 
-            Food.placeFood();
+            Food.stopRendering();
         },
     }
 })();

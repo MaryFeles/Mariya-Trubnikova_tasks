@@ -1,4 +1,6 @@
 let Food = (function () {
+    //let interval;
+
     let food = {
         plusScore: {
             coords: getRandomCoord(),
@@ -15,7 +17,7 @@ let Food = (function () {
         minusSpeed: {
             coords: getRandomCoord(),
             color: '#0000ff',
-            interval: 2200,
+            interval: 1200,
         },
     };
 
@@ -24,8 +26,12 @@ let Food = (function () {
             return food[foodType].coords;
         },
 
-        setCoords: function (foodType) {
-            food[foodType].coords = getRandomCoord();
+        setCoords: function () {
+            let foodList = this.getFoodList();
+
+            foodList.forEach(foodType => {
+                food[foodType].coords = getRandomCoord();
+            });
         },
 
         getFoodList: function () {
@@ -48,16 +54,25 @@ let Food = (function () {
         },
 
         placeFood: function () {
-            let interval;
+            this.setCoords();
 
             if (PlayState.getState() == 'start') {
                 let foodList = this.getFoodList();
+
                 foodList.forEach(foodType => {
-                    interval = setInterval(() => {
+                    let setNewCoords = function () {
                         food[foodType].coords = getRandomCoord();
-                    }, food[foodType].interval);
+                    };
+
+                    interval.make(() => setNewCoords(), food[foodType].interval);
                 });
-            } else clearInterval(interval);
+            } else {
+                interval.clearAll();
+            };
+        },
+
+        stopRendering: function () {
+            interval.clearAll();
         },
     }
 })();
