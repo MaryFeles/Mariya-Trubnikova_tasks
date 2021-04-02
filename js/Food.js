@@ -1,28 +1,32 @@
 let Food = (function () {
 
     let food = {
-        addPoint: {
+        addOnePoint: {
             coords: getRandomCoord(),
             color: '#ff0000',
             interval: 20000,
+            givesPoints: 1,
         },
 
         plusSpeed: {
             coords: getRandomCoord(),
             color: '#00ff00',
             interval: 5500,
+            givesPoints: 1,
         },
 
         minusSpeed: {
             coords: getRandomCoord(),
             color: '#0000ff',
             interval: 2000,
+            givesPoints: 1,
         },
 
         addFewPoints: {
             coords: getRandomCoord(),
             color: '#ffff00',
             interval: 2000,
+            givesPoints: 5,
         },
     };
 
@@ -51,6 +55,10 @@ let Food = (function () {
             }
 
             return foodList;
+        },
+
+        getNumberOfPoints: function(typeFood) {
+            return food[typeFood].givesPoints;
         },
 
         draw: function (foodType) {

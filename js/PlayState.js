@@ -40,8 +40,10 @@ let PlayState = (function () {
             _timer.textContent = (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec);
         },
 
-        increaseScore: function () {
-            playState.score++;
+        increaseScore: function (typeFood) {
+            let numberOfpoints = Food.getNumberOfPoints(typeFood);
+            
+            playState.score+=numberOfpoints;
             _score.textContent = playState.score;
         },
 

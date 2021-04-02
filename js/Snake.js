@@ -96,24 +96,20 @@ let Snake = (function () {
                             case 'plusSpeed':
                                 snake.bodyParts++;
                                 PlayState.increaseSpeed();
-                                PlayState.increaseScore();
+                                PlayState.increaseScore(typeFood);
                                 break;
                             case 'minusSpeed':
                                 snake.bodyParts++;
                                 PlayState.decreaseSpeed();
-                                PlayState.increaseScore();
+                                PlayState.increaseScore(typeFood);
                                 break;
-                            case 'addPoint':
+                            case 'addOnePoint':
                                 snake.bodyParts++;
-                                PlayState.increaseScore();
+                                PlayState.increaseScore(typeFood);
                                 break;
                             case 'addFewPoints':
                                 snake.bodyParts++;
-                                PlayState.increaseScore();
-                                PlayState.increaseScore();
-                                PlayState.increaseScore();
-                                PlayState.increaseScore();
-                                PlayState.increaseScore();
+                                PlayState.increaseScore(typeFood);
                                 break;
                             default:
                                 break;

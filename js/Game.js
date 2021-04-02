@@ -18,7 +18,7 @@ let Game = (function () {
 
         Food.draw('plusSpeed');
         Food.draw('minusSpeed');
-        Food.draw('addPoint');
+        Food.draw('addOnePoint');
         Food.draw('addFewPoints');
 
         if (PlayState.getTime().min <= 0 && PlayState.getTime().sec <= 0) {
