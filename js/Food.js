@@ -1,11 +1,10 @@
 let Food = (function () {
-    //let interval;
 
     let food = {
-        plusScore: {
+        addPoint: {
             coords: getRandomCoord(),
             color: '#ff0000',
-            interval: 10000,
+            interval: 20000,
         },
 
         plusSpeed: {
@@ -17,7 +16,13 @@ let Food = (function () {
         minusSpeed: {
             coords: getRandomCoord(),
             color: '#0000ff',
-            interval: 1200,
+            interval: 2000,
+        },
+
+        addFewPoints: {
+            coords: getRandomCoord(),
+            color: '#ffff00',
+            interval: 2000,
         },
     };
 
@@ -26,11 +31,15 @@ let Food = (function () {
             return food[foodType].coords;
         },
 
-        setCoords: function () {
+        setCoords: function(foodType) {
+            food[foodType].coords = getRandomCoord();
+        },
+
+        setCoordsforAllFood: function () {
             let foodList = this.getFoodList();
 
             foodList.forEach(foodType => {
-                food[foodType].coords = getRandomCoord();
+                this.setCoords(foodType);
             });
         },
 
@@ -54,7 +63,7 @@ let Food = (function () {
         },
 
         placeFood: function () {
-            this.setCoords();
+            this.setCoordsforAllFood();
 
             if (PlayState.getState() == 'start') {
                 let foodList = this.getFoodList();

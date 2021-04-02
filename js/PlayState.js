@@ -5,6 +5,8 @@ let PlayState = (function () {
     const INCREASED_GAME_SPEED = 100;
     const DECREASED_GAME_SPEED = 9000;
 
+    let speedTimeout;
+
     let _score = document.querySelector('.score');
     let _timer = document.querySelector('.timer');
 
@@ -15,6 +17,7 @@ let PlayState = (function () {
             min: MINUTES,
             sec: SECONDS
         },
+
         gameSpeed: NORMAL_GAME_SPEED,
     };
 
@@ -23,6 +26,7 @@ let PlayState = (function () {
             playState.score = 0;
             playState.timer.min = MINUTES;
             playState.timer.sec = SECONDS;
+            playState.gameSpeed = NORMAL_GAME_SPEED;
 
             _score.textContent = playState.score;
 
@@ -42,19 +46,21 @@ let PlayState = (function () {
         },
 
         increaseSpeed: function () {
-            setTimeout(() => {
+            clearTimeout(speedTimeout);
+            playState.gameSpeed = INCREASED_GAME_SPEED;
+
+            speedTimeout = setTimeout(() => {
                 playState.gameSpeed = NORMAL_GAME_SPEED;
             }, 5000);
-
-            playState.gameSpeed = INCREASED_GAME_SPEED;
         },
 
         decreaseSpeed: function () {
-            setTimeout(() => {
+            clearTimeout(speedTimeout);
+            playState.gameSpeed = DECREASED_GAME_SPEED;
+
+            speedTimeout = setTimeout(() => {
                 playState.gameSpeed = NORMAL_GAME_SPEED;
             }, 5000);
-
-            playState.gameSpeed = DECREASED_GAME_SPEED;
         },
 
         getScore: function () {

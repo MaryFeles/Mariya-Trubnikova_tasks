@@ -10,7 +10,6 @@ let Game = (function () {
         Snake.draw();
         Snake.foodEat();
 
-
         if (Snake.bodyEat() || Snake.clashWithWall()) {
             Game.stop();
             Modal.createWindow('losingWindow');
@@ -19,9 +18,8 @@ let Game = (function () {
 
         Food.draw('plusSpeed');
         Food.draw('minusSpeed');
-        Food.draw('plusScore');
-
-        speed = PlayState.getSpeed();
+        Food.draw('addPoint');
+        Food.draw('addFewPoints');
 
         if (PlayState.getTime().min <= 0 && PlayState.getTime().sec <= 0) {
             Game.stop();
@@ -29,15 +27,15 @@ let Game = (function () {
             return;
         }
 
+        speed = PlayState.getSpeed();
         refreshSpeedGame = interval.make(() => refreshGame(), speed);
-
-        console.log(interval.intervals);
     }
 
     return {
         start: function () {
             PlayState.setState('start');
             PlayState.reset();
+            speed = PlayState.getSpeed();
             Snake.createNewSnake();
 
             interval.make(() => refreshGame(), speed);
@@ -77,7 +75,7 @@ let Game = (function () {
             btnPause.disabled = true;
 
             interval.clearAll();
-            Snake.createNewSnake();            
+            Snake.createNewSnake();
         },
     }
 })();
