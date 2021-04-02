@@ -3,7 +3,7 @@
 }
 
 body {
-    height: 100vh;
+    height: 90vh;
 
     display: flex;
     justify-content: center;
@@ -19,6 +19,8 @@ body {
 
     justify-content: center;
     align-items: center;
+
+    margin-bottom: 100px;
 }
 
 .game-header {
@@ -80,6 +82,7 @@ canvas {
 
     max-width: 410px;
     padding: 10px;
+    margin-bottom: 50px;
 
     background-color: #fff;
     border: 3px ridge #fff10d;
