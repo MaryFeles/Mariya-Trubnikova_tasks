@@ -1,7 +1,22 @@
 let Modal = (function () {
     let modal = {
         welcomWindow: {
-            content: "Цель игры: за выделенное время собрать максимальное количество еды (красные кружки). <br/> <br/> Управление осуществляется стрелками на клавиатуре.",
+            content: `
+                Цель игры: за выделенное время собрать максимальное количество еды.<br/><br/>
+                    <div class="description">
+                        <div class="redCircle"></div>&nbsp;&ndash; даёт одно очко;
+                    </div><br/>
+                    <div class="description">
+                        <div class="greenCircle"></div>&nbsp;&ndash; даёт одно очко и увеличивает скорость;
+                    </div><br/>
+                    <div class="description">
+                        <div class="cyanCircle"></div>&nbsp;&ndash; даёт пять очков;
+                    </div><br/>
+                        <div class="description">
+                    <div class="blueCircle"></div>&nbsp;&ndash; даёт одно очко и уменьшает скорость.
+                    </div>
+                <br/>Управление осуществляется стрелками на клавиатуре.
+            `,
             buttonText: "Начать",
             modifier: "welcomWindow",
         },
@@ -50,10 +65,10 @@ let Modal = (function () {
 
             if (type == 'summaryWindow') {
                 if (PlayState.getScore() < 5) {
-                    content = modal.summaryWindow.content + PlayState.getScore() + ". <br/> Pезультат оставляет желать лучшего...";
+                    content = modal.summaryWindow.content + PlayState.getScore() + ". <br/><br/> Pезультат оставляет желать лучшего... <br/>";
                 } else if (PlayState.getScore() >= 5 && PlayState.getScore() <= 20) {
                     content = "Поздравляю! Вы набрали " + PlayState.getScore() + " очков!";
-                } else modal.summaryWindow.content + PlayState.getScore();
+                } else content = modal.summaryWindow.content + PlayState.getScore();
             }
 
             createHtml(content, buttonText, modifier);

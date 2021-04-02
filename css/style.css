@@ -37,7 +37,7 @@ canvas {
 .btn {
     cursor: pointer;
     outline: none;
-    
+
     padding: 4px 8px;
     background-color: #fff777;
     border: 2px outset #777;
@@ -51,12 +51,13 @@ canvas {
     background-color: #fff10d;
 }
 
-.btn:disabled:hover{
+.btn:disabled:hover {
     background-color: #fff777;
 }
 
 
-.score-wrapper, .time-wrapper {
+.score-wrapper,
+.time-wrapper {
     display: flex;
 }
 
@@ -77,9 +78,8 @@ canvas {
     max-width: 410px;
     padding: 10px;
 
-    background-color: #fff777;
-    border: 3px ridge #9933ff;
-    color: #fff777;
+    background-color: #fff;
+    border: 3px ridge #fff10d;
     color: #000;
 
     font-size: 14px;
@@ -96,7 +96,7 @@ canvas {
     background-color: #b964ff;
 }
 
-.cover[data-cover="hidden"]{
+.cover[data-cover="hidden"] {
     display: none;
 }
 
@@ -108,5 +108,38 @@ canvas {
     height: 100vh;
 
     background-color: #777;
-    opacity: .7 ;
+    opacity: .7;
+}
+
+/* Description game */
+
+.redCircle,
+.greenCircle,
+.blueCircle,
+.cyanCircle {
+    display:inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.redCircle {
+    background-color: #ff0000;
+}
+
+.greenCircle {
+    background-color: #00ff00;
+}
+
+.blueCircle {
+    background-color: #0000ff;
+}
+
+.cyanCircle {
+    background-color: #00ffff;
+}
+
+.description {
+    display: flex;
+    align-content: center;
 }

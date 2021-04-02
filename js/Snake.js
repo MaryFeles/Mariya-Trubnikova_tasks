@@ -109,7 +109,11 @@ let Snake = (function () {
                                 break;
                             case 'addFewPoints':
                                 snake.bodyParts++;
-                                PlayState.increaseScore() * 5;
+                                PlayState.increaseScore();
+                                PlayState.increaseScore();
+                                PlayState.increaseScore();
+                                PlayState.increaseScore();
+                                PlayState.increaseScore();
                                 break;
                             default:
                                 break;
