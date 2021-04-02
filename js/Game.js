@@ -1,7 +1,9 @@
 let Game = (function () {
     let speed = PlayState.getSpeed();
+    let refreshSpeedGame;
 
     let refreshGame = function () {
+        interval.clear(refreshSpeedGame);
         ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
         Snake.move();
@@ -12,6 +14,7 @@ let Game = (function () {
         if (Snake.bodyEat() || Snake.clashWithWall()) {
             Game.stop();
             Modal.createWindow('losingWindow');
+            return;
         }
 
         Food.draw('plusSpeed');
@@ -23,7 +26,10 @@ let Game = (function () {
         if (PlayState.getTime().min <= 0 && PlayState.getTime().sec <= 0) {
             Game.stop();
             Modal.createWindow('summaryWindow');
+            return;
         }
+
+        refreshSpeedGame = interval.make(() => refreshGame(), speed);
 
         console.log(interval.intervals);
     }
