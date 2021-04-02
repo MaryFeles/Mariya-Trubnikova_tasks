@@ -1,9 +1,7 @@
 let Game = (function () {
-    //let interval;
     let speed = PlayState.getSpeed();
 
     let refreshGame = function () {
-        //clearInterval(interval);
         ctx.clearRect(0, 0, SNAKEBOARD.width, SNAKEBOARD.height);
 
         Snake.move();
@@ -27,24 +25,14 @@ let Game = (function () {
             Modal.createWindow('summaryWindow');
         }
 
-        // interval = setInterval(() => {
-        //     refreshGame();                
-        // }, speed);
-
         console.log(interval.intervals);
     }
 
     return {
         start: function () {
-            //clearInterval(interval);
-            //Food.stopRendering();
             PlayState.setState('start');
             PlayState.reset();
             Snake.createNewSnake();
-
-            // interval = setInterval(() => {
-            //     refreshGame();                
-            // }, speed);
 
             interval.make(() => refreshGame(), speed);
 
@@ -54,26 +42,24 @@ let Game = (function () {
         restart: function () {
             PlayState.setState('restart');
             Snake.createNewSnake();
-            PlayState.reset();
-            Food.stopRendering();
+            
+            interval.clearAll();
 
             PlayState.setState('start');
+            PlayState.reset();
             interval.make(() => refreshGame(), speed);
             Food.placeFood();
         },
 
         pause: function () {
-            Food.stopRendering();
+            interval.clearAll();
             PlayState.setState('pause');
-            PlayState.stopTimer();
         },
 
         continue: function () {
-            Food.stopRendering();
+            interval.clearAll();
+
             PlayState.setState('start');
-
-            //interval = setInterval(() => refreshGame(), speed);
-
             interval.make(() => refreshGame(), speed);
             Food.placeFood();
             PlayState.startTimer();
@@ -83,11 +69,9 @@ let Game = (function () {
             PlayState.setState('stop');
             btnStart.dataset.gameState = 'start';
             btnPause.disabled = true;
-            PlayState.stopTimer();
-            //clearInterval(interval);
-            Snake.createNewSnake();
 
-            Food.stopRendering();
+            interval.clearAll();
+            Snake.createNewSnake();            
         },
     }
 })();

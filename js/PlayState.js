@@ -8,8 +8,6 @@ let PlayState = (function () {
     let _score = document.querySelector('.score');
     let _timer = document.querySelector('.timer');
 
-    let timerInterval;
-
     let playState = {
         game: 'stop',
         score: 0,
@@ -22,8 +20,6 @@ let PlayState = (function () {
 
     return {
         reset: function () {
-            this.stopTimer();
-
             playState.score = 0;
             playState.timer.min = MINUTES;
             playState.timer.sec = SECONDS;
@@ -77,7 +73,7 @@ let PlayState = (function () {
             let min = playState.timer.min;
             let sec = playState.timer.sec;
 
-            timerInterval = setInterval(() => {
+            let start = function () {
                 sec--;
 
                 if (sec == 0 && min > 0) {
@@ -85,20 +81,13 @@ let PlayState = (function () {
                     sec = 60;
                 }
 
-                if (min == 0 && sec == 0) {
-                    this.stopTimer();
-                }
-
-
                 playState.timer.min = min;
                 playState.timer.sec = sec;
 
-                this.setTimer();
-            }, 1000);
-        },
+                PlayState.setTimer();
+            };
 
-        stopTimer: function () {
-            clearInterval(timerInterval);
+            interval.make(() => start(), 1000);
         },
 
         setState: function (state) {
