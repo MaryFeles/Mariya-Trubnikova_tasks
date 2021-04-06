@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100vw;
   height: 100vh;
 
@@ -20,13 +19,20 @@
 
 .gameWrapper {
   display: flex;
-  justify-content: center;
-
-  width: 860px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
   max-width: 860px;
+
   padding: 30px;
 
   background-color: $white;
+
+  @media screen and (max-width: 360px) {
+    flex-direction: column;
+
+    padding: 20px;
+  }
 }
 
 .bgc-health {
@@ -48,8 +54,10 @@
 .col {
   display: flex;
   flex-grow: 1;
+  max-width: 380px;
+  min-height: 195px;
 
-  padding: 20px;
+  padding: 20px;  
 
   box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.7);
 }

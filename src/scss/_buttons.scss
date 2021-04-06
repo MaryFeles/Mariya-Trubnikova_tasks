@@ -2,11 +2,12 @@
   &__list {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     flex-grow: 1;
   }
 
   &__item {
-    padding: 8px;
+    padding: 8px 0;
 
     border: none;
     border-radius: 5px;
