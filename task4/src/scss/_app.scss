@@ -1,0 +1,55 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: $light-grey;
+}
+
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+
+  margin: 50px auto 50px;
+}
+
+.gameWrapper {
+  display: flex;
+  justify-content: center;
+
+  width: 860px;
+  max-width: 860px;
+  padding: 30px;
+
+  background-color: $white;
+}
+
+.bgc-health {
+  background-color: $health-color;
+}
+
+.bgc-thirst {
+  background-color: $thirst-color;
+}
+
+.bgc-hungry {
+  background-color: $hungry-color;
+}
+
+.bgc-fatigue {
+  background-color: $fatigue-color;
+}
+
+.col {
+  display: flex;
+  flex-grow: 1;
+
+  padding: 20px;
+
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.7);
+}

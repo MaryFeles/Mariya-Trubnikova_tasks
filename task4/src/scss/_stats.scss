@@ -1,0 +1,22 @@
+.stats {
+  margin-right: 40px;
+
+  &__list,
+  &__item {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__name {
+    margin-bottom: 5px;
+  }
+}
+
+.status-bar-wrapper {
+  border: 1px solid $dark-grey;
+}
+
+.status-bar {
+  height: 10px;
+}
