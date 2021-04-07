@@ -5,7 +5,15 @@ function ButtonList(props) {
   return (
     <ul className="btns__list">
       {props.buttons.map((button) => {
-        return <Button type={button.type} name={button.name} key={button.id} />;
+        return (
+          <Button
+            type={button.type}
+            color={button.color}
+            name={button.name}
+            key={button.id}
+            onClick={props.handleClick}
+          />
+        );
       })}
     </ul>
   );

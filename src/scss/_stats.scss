@@ -16,15 +16,15 @@
     margin-bottom: 5px;
   }
 
+  &__indicator-wrapper {
+    border: 1px solid $dark-grey;
+  }
+
+  &__indicator {
+    height: 10px;
+  }
+
   @media screen and (max-width: 360px) {
     margin: 0 0 20px 0;
   }
-}
-
-.status-bar-wrapper {
-  border: 1px solid $dark-grey;
-}
-
-.status-bar {
-  height: 10px;
 }

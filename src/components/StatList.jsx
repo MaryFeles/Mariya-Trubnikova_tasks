@@ -5,7 +5,7 @@ function StatList(props) {
   return (
     <ul className="stats__list">
       {props.stats.map((stat) => {
-        return <Stat type={stat.type} name={stat.name} key={stat.id} />;
+        return <Stat key={stat.id} type={stat.type} name={stat.name} indicator={stat.indicator} btn={props.clickedBtn} />;
       })}
     </ul>
   );
