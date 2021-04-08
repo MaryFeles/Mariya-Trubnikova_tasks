@@ -1,36 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import StatList from "./StatList";
 import ButtonList from "./ButtonList";
-import Stat from "./Stat";
 
 function Game(props) {
-  const { stats, buttons } = props;
-
-  // const [ stats2, setStats] = useState(stats);
-
-  function handleClick(typeBtn) {
-
-    console.log(typeBtn);
-
-
-    stats.forEach(stat => {
-
-      switch (typeBtn) {
-        case "eat":
-          if (stat.type === 'health')
-            stat.indicator -= 10;
-          console.log("stat.indicator", stat.indicator);
-          break;
-        case "drink": return typeBtn;
-          break;
-        case "relax": return typeBtn;
-          break;
-        case "work": return typeBtn;
-          break;
-      }
-    })
-
-  }
+  const { stats, buttons, handleClick } = props;
 
   return (
     <div className="gameWrapper">
