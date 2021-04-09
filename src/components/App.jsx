@@ -16,37 +16,47 @@ function App() {
     { id: 4, type: "work", color: "fatigue", name: "Работать" },
   ];
 
-  function changeStats() {
+  // function increase(stat, value) {
+  // }
+
+  // function decrease(stat, value) {
+  // }
+
+  function changeStats(action) {
     setStats(
       stats.map((item) => {
-        item.indicator += 10;
+        switch (action) {
+          case "eat":
+            if (item.type === 'health') item.indicator -= 2;
+            if (item.type === 'hungry') item.indicator -= 10;
+            break;
+          case "drink":
+            if (item.type === 'health') item.indicator += 1;
+            if (item.type === 'thirst') item.indicator -= 10;
+            break;
+          case "relax":
+            if (item.type === 'health') item.indicator += 6;
+            if (item.type === 'thirst') item.indicator += 1;
+            if (item.type === 'hungry') item.indicator += 1;
+            if (item.type === 'fatigue') item.indicator -= 25;
+            break;
+          case "work":
+            if (item.type === 'health') item.indicator -= 5;
+            if (item.type === 'hungry') item.indicator += 10;
+            if (item.type === 'thirst') item.indicator += 30;
+            if (item.type === 'fatigue') item.indicator += 25;
+            break;
+        }
+
         return item;
       })
     );
   }
 
-  function handleClick(typeBtn) {
-    console.log(typeBtn);
-    switch (typeBtn) {
-      case "eat":
-        changeStats();
-        break;
-      case "drink":
-        return typeBtn;
-        break;
-      case "relax":
-        return typeBtn;
-        break;
-      case "work":
-        return typeBtn;
-        break;
-    }
-  }
-
   return (
     <div className="app">
       <h1 className="title">MiniGame</h1>
-      <Game stats={stats} buttons={buttons} handleClick={handleClick} />
+      <Game stats={stats} buttons={buttons} handleClick={changeStats} />
     </div>
   );
 }

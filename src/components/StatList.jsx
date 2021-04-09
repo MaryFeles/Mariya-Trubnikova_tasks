@@ -2,7 +2,6 @@ import React from "react";
 import Stat from "./Stat";
 
 function StatList(props) {
-console.log(props);
   return (
     <ul className="stats__list">
       {props.stats.map((stat) => {
