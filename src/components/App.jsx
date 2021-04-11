@@ -16,36 +16,17 @@ function App() {
     { id: 4, type: "work", color: "fatigue", name: "Работать" },
   ];
 
-  // function increase(stat, value) {
-  // }
-
-  // function decrease(stat, value) {
-  // }
-
-  function changeStats(action) {
+  function changeStat(statType, operation, value) {
     setStats(
       stats.map((item) => {
-        switch (action) {
-          case "eat":
-            if (item.type === 'health') item.indicator -= 2;
-            if (item.type === 'hungry') item.indicator -= 10;
-            break;
-          case "drink":
-            if (item.type === 'health') item.indicator += 1;
-            if (item.type === 'thirst') item.indicator -= 10;
-            break;
-          case "relax":
-            if (item.type === 'health') item.indicator += 6;
-            if (item.type === 'thirst') item.indicator += 1;
-            if (item.type === 'hungry') item.indicator += 1;
-            if (item.type === 'fatigue') item.indicator -= 25;
-            break;
-          case "work":
-            if (item.type === 'health') item.indicator -= 5;
-            if (item.type === 'hungry') item.indicator += 10;
-            if (item.type === 'thirst') item.indicator += 30;
-            if (item.type === 'fatigue') item.indicator += 25;
-            break;
+        if (operation === "plus") {
+          if (item.indicator < 100) {
+            item.type === statType && (item.indicator += value);
+          } else item.indicator = 100;
+        } else if (operation === "minus") {
+          if (item.indicator > 0) {
+            item.type === statType && (item.indicator -= value);
+          } else item.indicator = 0;
         }
 
         return item;
@@ -53,10 +34,35 @@ function App() {
     );
   }
 
+  function handleClick(action) {
+    switch (action) {
+      case "eat":
+        changeStat("health", "plus", 2);
+        changeStat("hungry", "minus", 10);
+        break;
+      case "drink":
+        changeStat("health", "plus", 1);
+        changeStat("thirst", "minus", 10);
+        break;
+      case "relax":
+        changeStat("health", "plus", 6);
+        changeStat("thirst", "plus", 1);
+        changeStat("hungry", "plus", 1);
+        changeStat("fatigue", "minus", 25);
+        break;
+      case "work":
+        changeStat("health", "minus", 5);
+        changeStat("hungry", "plus", 10);
+        changeStat("thirst", "plus", 30);
+        changeStat("fatigue", "plus", 25);
+        break;
+    }
+  }
+
   return (
     <div className="app">
       <h1 className="title">MiniGame</h1>
-      <Game stats={stats} buttons={buttons} handleClick={changeStats} />
+      <Game stats={stats} buttons={buttons} handleClick={handleClick} />
     </div>
   );
 }
