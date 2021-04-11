@@ -11,7 +11,7 @@ function ButtonList(props) {
             color={button.color}
             name={button.name}
             key={button.id}
-            onClick={props.handleClick}
+            handleClick={props.handleClick}
           />
         );
       })}

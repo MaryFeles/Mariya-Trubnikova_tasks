@@ -37,7 +37,7 @@ function App() {
   function handleClick(action) {
     switch (action) {
       case "eat":
-        changeStat("health", "plus", 2);
+        changeStat("health", "minus", 2);
         changeStat("hungry", "minus", 10);
         break;
       case "drink":
@@ -45,9 +45,9 @@ function App() {
         changeStat("thirst", "minus", 10);
         break;
       case "relax":
-        changeStat("health", "plus", 6);
-        changeStat("thirst", "plus", 1);
-        changeStat("hungry", "plus", 1);
+        changeStat("health", "plus", 4);
+        changeStat("thirst", "plus", 5);
+        changeStat("hungry", "plus", 5);
         changeStat("fatigue", "minus", 25);
         break;
       case "work":

@@ -2,8 +2,9 @@ import React from "react";
 
 function Stat (props) {
   const { type, name, indicator } = props;
-  let statClasses = ["stats__item", "stat", "stat--" + type];
-  let statIndicatorClasses = ["stats__indicator", "bgc-" + type];
+  const statClasses = ["stats__item", "stat", "stat--" + type];
+  const statIndicatorClasses = ["stats__indicator", "bgc-" + type];
+  
   return (
     <li className={statClasses.join(" ")}>
       <span className="stats__name">{name}</span>
