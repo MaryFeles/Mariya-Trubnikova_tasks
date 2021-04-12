@@ -1,12 +1,12 @@
 import React from "react";
 
 function Button(props) {
-  const { type, name, color, handleClick } = props;
-  const buttonClasses = ["btns__item", "btn", "btn--" + color, "bgc-" + color];
+  const { type, value, color, handleClick} = props;
+  const buttonClasses = ["controls__btn", "btn", "btn--" + color, "bgc-" + color];
 
   return (
-    <button className={buttonClasses.join(" ")} onClick={() => handleClick(type)}>
-      {name}
+    <button className={buttonClasses.join(" ")} data-btn="non-active" onClick={(e) => handleClick(e, type)}>
+      {value}
     </button>
   );
 }

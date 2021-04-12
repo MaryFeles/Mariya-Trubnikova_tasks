@@ -1,6 +1,6 @@
 @import "./variables";
 @import "./app";
-@import "./buttons";
+@import "./controls";
 @import "./stats";
 
 * {
@@ -24,6 +24,8 @@ ul {
 button {
   margin: 0;
   padding: 0;
-
+  
+  border: none;  
+  outline-color: $dark-grey;
   cursor: pointer;
 }

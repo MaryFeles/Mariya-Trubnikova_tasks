@@ -1,17 +1,17 @@
 import React from "react";
 import StatList from "./StatList";
-import ButtonList from "./ButtonList";
+import ContolList from "./ControlList";
 
 function Game(props) {
-  const { stats, buttons, handleClick } = props;
+  const { stats, controls, changeStats } = props;
 
   return (
     <div className="gameWrapper">
       <div className="col stats">
         <StatList stats={stats} />
       </div>
-      <div className="col btns">
-        <ButtonList buttons={buttons} handleClick={handleClick} />
+      <div className="col controls">
+        <ContolList controls={controls} changeStats={changeStats} />
       </div>
     </div>
   );
