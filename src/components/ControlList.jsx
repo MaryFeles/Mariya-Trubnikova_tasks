@@ -32,7 +32,6 @@ function ContolList(props) {
             {control.type === btnType && (
               <ActionList
                 actionList={control.actionList}
-                active={control.actionList.active}
                 dataBtn={dataBtn}
                 changeStats={changeStats}
               />
