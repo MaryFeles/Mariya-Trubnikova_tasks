@@ -1,9 +1,9 @@
 import { observer } from "mobx-react";
 import React from "react";
-import counter from "../store/counter";
+import todo from "../store/todo";
 
 const Counter = observer(() => {
-  return <>{counter.count}</>;
+  return <>{todo.numberOfPendingTodos}</>;
 });
 
 export default Counter;

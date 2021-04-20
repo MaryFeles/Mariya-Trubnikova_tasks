@@ -1,16 +1,16 @@
-import DevTools from "react-async-devtools";
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './scss/style.scss'
-import App from './components/App.jsx'
-import registerServiceWorker from 'react-service-worker';
+import React from "react";
+import ReactDOM from "react-dom";
+import 'antd/dist/antd.css';
+import "./scss/style.scss";
+import App from "./components/App.jsx";
+import registerServiceWorker from "react-service-worker";
 
+ReactDOM.render(
+  // <BrowserRouter>
 
-ReactDOM.render((
-    // <BrowserRouter>
-  <div className="container">
-    <App />
-  </div>
+  <App />,
+
   // </BrowserRouter>
-), document.getElementById('root'));
+  document.getElementById("root")
+);
 registerServiceWorker();
