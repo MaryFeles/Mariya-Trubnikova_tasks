@@ -3,9 +3,18 @@
 @import "./base/variables";
 
 @import "./layout/container";
-@import "./layout/header";
-@import "./layout/main";
-@import "./layout/aside";
+
+@import "./layout/header/header";
+@import "./layout/header/search";
+
+@import "./layout/main/main";
+@import "./layout/main/todos";
+
+@import "./layout/aside/aside";
+
+@import "./components/modal";
+@import "./components/btn";
+@import "./components/btn-primary";
 
 body {
   background: linear-gradient(115.67deg, #edc1d3 7.14%, #91bdec 99.42%);
@@ -30,4 +39,8 @@ h1 {
 
   width: 100vw;
   height: 100vh;
+}
+
+.highlighted-pink {
+  color: $pink;
 }

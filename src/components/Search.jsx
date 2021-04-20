@@ -7,9 +7,8 @@ const Search = () => {
       <input
         className="header__search"
         type="text"
-        placeholder="Search for any training you want "
-        onChange={({target}) => search.onSearch(target)}
-        style={{ width: 200 }}
+        placeholder="Search for any training you want"
+        onChange={({ target }) => search.onSearch(target)}
       ></input>
     </form>
   );

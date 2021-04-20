@@ -1,2 +1,17 @@
 $white: #FFFFFF;
 $header-color: #1D262C;
+$light-grey: #E0E0E0;
+$grey: #90A0B7;
+$pink: #f3477a;
+$violet: #884CB2;
+$violet-hover: adjust-hue($violet, -20deg);
+$shadow-color: #8ca4d8;
+
+$pending-color: #F2994A;
+$inprogress-color: #56CCF2;
+$completed-color: #27AE60;
+$cancelled-color: #EB5757;
+
+$minor-color: #219653;
+$normal-color: #F2C94C;
+$critical-color: #EB5757;

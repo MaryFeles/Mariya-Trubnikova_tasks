@@ -1,0 +1,108 @@
+.todos {
+  padding-top: 30px;
+  padding-left: 10px;
+
+  &__header {
+    font-size: 18px;
+    line-height: 27px;
+    color: $header-color;
+
+    padding: 10px 0;
+  }
+  &__item {
+    display: flex;
+
+    padding: 20px 0;
+
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+
+    &:not(:last-child) {
+      border-bottom: 0.5px solid $light-grey;
+    }
+  }
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__title {
+    width: 350px;
+  }
+
+  &__status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 90px;
+    padding: 1px 0px;
+    margin-right: 10px;
+
+    font-size: 11px;
+    line-height: 18px;
+    font-weight: 500;
+
+    border-radius: 14px;
+
+    &--pending {
+      color: $pending-color;
+      background-color: lighten($color: $pending-color, $amount: 30);
+    }
+
+    &--inprogress {
+      color: $inprogress-color;
+      background-color: lighten($color: $inprogress-color, $amount: 30);
+    }
+
+    &--completed {
+      color: $completed-color;
+      background-color: lighten($color: $completed-color, $amount: 30);
+    }
+
+    &--cancelled {
+      color: $cancelled-color;
+      background-color: lighten($color: $cancelled-color, $amount: 30);
+    }
+  }
+
+  &__priority {
+    position: relative;
+
+    min-width: 50px;
+    margin-left: 8px;
+
+    font-size: 12px;
+    line-height: 15px;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 3px;
+      left: -12px;
+
+      width: 8px;
+      height: 8px;
+
+      background: $white;
+      border-radius: 50%;
+
+      border: 2px solid #777;
+    }
+
+    &--minor::before {
+      border-color: $minor-color;
+    }
+    &--normal::before {
+      border-color: $normal-color;
+    }
+    &--critical::before {
+      border-color: $critical-color;
+    }
+  }
+}
