@@ -30,8 +30,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &__title {
     width: 350px;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      top: 2px;
+      left: -17px;
+
+      width: 10px;
+      height: 10px;
+
+      background: linear-gradient(
+        133.9deg,
+        rgba(243, 71, 122, 0.7) 0.24%,
+        rgba(136, 76, 178, 0.7) 95.04%
+      );
+      border: 2px solid lighten($color: $violet, $amount: 40);
+      border-radius: 50%;
+    }
   }
 
   &__status {

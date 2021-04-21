@@ -1,23 +1,32 @@
-.header__search {
-  width: 250px;
-  padding: 6px;
+.header {
+  &__search {
+    width: 250px;
+    padding: 6px;
+    margin-left: 9px;
 
-  box-shadow: none;
-  border-bottom: 0.5px solid $white;
+    box-shadow: none;
+    border-bottom: 0.5px solid $white;
 
-  font-family: "Montserrat", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 15px;
-  letter-spacing: 0.01em;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.01em;
 
-  &:hover,
-  &:focus {
-    border-bottom: 0.5px solid $light-grey;
+    &:hover,
+    &:focus {
+      border-bottom: 0.5px solid $light-grey;
+    }
+
+    &::placeholder {
+      color: grey;
+    }
   }
 
-  &::placeholder {
-    color: grey;
+  &__search-wrap {
+    display: flex;
+    justify-content: start;
+    align-items: center;
   }
 }

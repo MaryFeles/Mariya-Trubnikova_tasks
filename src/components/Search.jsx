@@ -1,9 +1,11 @@
 import React from "react";
 import search from "../store/search";
+import {iconSearch} from "../helpers/icons";
 
 const Search = () => {
   return (
     <form className="header__search-wrap">
+    {iconSearch}
       <input
         className="header__search"
         type="text"
