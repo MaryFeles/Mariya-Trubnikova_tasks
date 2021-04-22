@@ -19,7 +19,7 @@ const tailLayout = {
   },
 };
 
-const TodoForm = () => {
+const AddingTaskForm = () => {
   const [form] = Form.useForm();
 
   const handleClick = () => {
@@ -95,4 +95,4 @@ const TodoForm = () => {
   );
 };
 
-export default TodoForm;
+export default AddingTaskForm;

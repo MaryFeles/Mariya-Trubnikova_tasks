@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal, Button } from "antd";
-import TodoForm from "./TodoForm";
+import AddingTaskForm from "./AddingTaskForm";
 import modal from "../store/modal";
 import { observer } from "mobx-react";
 import { iconPlusSquare } from "../helpers/icons";
 
-const TodoModal = observer(() => {
+const AddingTaskModal = observer(() => {
   return (
     <>
       <Button className="main__btn" type="primary" onClick={modal.showModal}>
@@ -19,10 +19,10 @@ const TodoModal = observer(() => {
         onCancel={modal.handleCancel}
         footer=""
       >
-        <TodoForm />
+        <AddingTaskForm />
       </Modal>
     </>
   );
 });
 
-export default TodoModal;
+export default AddingTaskModal;
