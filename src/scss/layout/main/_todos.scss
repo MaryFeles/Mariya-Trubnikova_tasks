@@ -128,4 +128,18 @@
       border-color: $critical-color;
     }
   }
+
+  &__btn.ant-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50%;
+    background-color: #F2F2F2;
+    border: none;
+
+    &:hover {
+      box-shadow: 0px 0px 6px 0px #8ca4d8;
+    }
+  }
 }

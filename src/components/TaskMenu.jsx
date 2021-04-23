@@ -2,12 +2,19 @@ import React from "react";
 import { Menu, Dropdown, Button, Space } from "antd";
 import todo from "../store/todo";
 import { observer } from "mobx-react";
+import { iconDots } from "../helpers/icons";
 
 const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
   const onHoldTaskOptions = [
     { id: 1, title: "View comments" },
     { id: 2, title: "Take on the task" },
-    { id: 3, title: "Complete", click() {todo.completeTodo(todoItem)} },
+    {
+      id: 3,
+      title: "Complete",
+      click() {
+        todo.completeTodo(todoItem);
+      },
+    },
     { id: 4, title: "Edit" },
     { id: 5, title: "Cancel" },
     { id: 6, title: "Delete" },
@@ -28,7 +35,9 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
               return (
                 option.title !== "Take on the task" && (
                   <Menu.Item key={option.id}>
-                    <Button block onClick={option.click}>{option.title}</Button>
+                    <Button className="menu__btn" block onClick={option.click}>
+                      {option.title}
+                    </Button>
                   </Menu.Item>
                 )
               );
@@ -36,7 +45,9 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
               return (
                 option.title !== "Complete" && (
                   <Menu.Item key={option.id}>
-                    <Button block>{option.title}</Button>
+                    <Button className="menu__btn" block>
+                      {option.title}
+                    </Button>
                   </Menu.Item>
                 )
               );
@@ -63,11 +74,17 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
 
   return (
     <Space direction="vertical">
-      <Dropdown overlay={menu} placement="bottomCenter">
-        <Button shape="circle">...</Button>
+      <Dropdown
+        className="todo__dropdown"
+        overlay={menu}
+        placement="bottomCenter"
+      >
+        <Button className="todo__btn" shape="circle" size={'small'}>
+          {iconDots}
+        </Button>
       </Dropdown>
     </Space>
   );
-})
+});
 
 export default TaskMenu;
