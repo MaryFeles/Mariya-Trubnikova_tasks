@@ -67,9 +67,14 @@ class Todo {
     todo.status = status;
   }
 
-  get numberOfPendingTodos() {
-    let pendingTodos = this.todos.filter((todo) => todo.completed === false);
-    return pendingTodos.length;
+  get numberOfIncompletedTodos() {
+    let incompletedTodos = this.todos.filter((todo) => !todo.completed);
+    return incompletedTodos.length;
+  }
+
+  get numberOfCompletedTodos() {
+    let completedTodos = this.todos.filter((todo) => todo.completed);
+    return completedTodos.length;
   }
 }
 

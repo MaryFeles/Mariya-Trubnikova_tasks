@@ -4,34 +4,31 @@ import todo from "../store/todo";
 import { observer } from "mobx-react";
 import { iconDots } from "../helpers/icons";
 
-const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
+const TaskMenu = observer(({ todoItem }) => {
   const onHoldTaskOptions = [
     { id: 1, title: "View comments" },
     { id: 2, title: "Take on the task" },
-    {
-      id: 3,
-      title: "Complete",
-      click() {
-        todo.completeTodo(todoItem);
-      },
-    },
+    { id: 3, title: "Complete", click() { todo.completeTodo(todoItem); }},
     { id: 4, title: "Edit" },
-    { id: 5, title: "Cancel" },
-    { id: 6, title: "Delete" },
+    { id: 5, title: "Cancel", click() {
+      todo.completeTodo(todoItem);
+      todo.setStatus(todoItem, "Cancelled");
+    }},
+    { id: 6, title: "Delete", click() { todo.removeTodo(todoItem.id); }},
   ];
 
   const completedTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 2, title: "Delete" },
-    { id: 3, title: "Mark as incomplete" },
+    { id: 2, title: "Delete", click() { todo.removeTodo(todoItem.id); }},
+    { id: 3, title: "Mark as incomplete",  click() { todo.completeTodo(todoItem);} },
   ];
 
-  const getMenuOptions = (isCompleted, status) => {
-    if (!isCompleted) {
+  const getMenuOptions = (todoItem) => {
+    if (!todoItem.completed) {
       return (
         <Menu>
           {onHoldTaskOptions.map((option) => {
-            if (status === "In Progress") {
+            if (todoItem.status === "In Progress") {
               return (
                 option.title !== "Take on the task" && (
                   <Menu.Item key={option.id}>
@@ -45,7 +42,7 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
               return (
                 option.title !== "Complete" && (
                   <Menu.Item key={option.id}>
-                    <Button className="menu__btn" block>
+                    <Button className="menu__btn" block onClick={option.click}>
                       {option.title}
                     </Button>
                   </Menu.Item>
@@ -61,7 +58,9 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
           {completedTaskOptions.map((option) => {
             return (
               <Menu.Item key={option.id}>
-                <Button block>{option.title}</Button>
+                <Button block onClick={option.click}>
+                  {option.title}
+                </Button>
               </Menu.Item>
             );
           })}
@@ -70,7 +69,7 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
     }
   };
 
-  const menu = getMenuOptions(isCompleted, status);
+  const menu = getMenuOptions(todoItem);
 
   return (
     <Space direction="vertical">
@@ -79,7 +78,7 @@ const TaskMenu = observer(({ isCompleted, status, todoItem }) => {
         overlay={menu}
         placement="bottomCenter"
       >
-        <Button className="todo__btn" shape="circle" size={'small'}>
+        <Button className="todo__btn" shape="circle" size={"small"}>
           {iconDots}
         </Button>
       </Dropdown>

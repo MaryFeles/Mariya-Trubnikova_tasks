@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Search from "./Search";
 import Counter from "./Counter";
 import Todo from "./Todo";
-import CompletedTodo from "./CompletedTodo";
 import Btn from "./AddingTaskModal";
 
 export const formatStr = (str) => {
@@ -31,7 +30,6 @@ class App extends Component {
 
           <div className="main__body">
             <Todo />
-            <CompletedTodo />
           </div>
         </div>
         <div className="aside"></div>
