@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Form, Input, Select } from "antd";
-import modal from "../store/modal";
+import { Modal, Button, Form, Input, Select } from "antd";
+import addTaskModal from "../store/addTaskModal";
 import todo from "../store/todo";
+import InfoModal from "./InfoModal";
 
 const layout = {
   labelCol: {
@@ -21,22 +22,22 @@ const tailLayout = {
 
 const AddingTaskForm = () => {
   const [form] = Form.useForm();
+  const [modal, contextHolder] = Modal.useModal();
+
+  const config = {
+    title: "Task was successfully created!",
+  };
 
   const handleClick = () => {
     form.resetFields();
-    modal.setVisible(false);
+    addTaskModal.setVisible(false);
   };
 
   const onFinish = (values) => {
-    let newTodo = {
-      id: Date.now(),
-      title: values.task,
-      priority: values.priority,
-      completed: false,
-      status: "Pending",
-    };
+    todo.createNewTodo(values.task, values.priority);
+    modal.info(config);
 
-    todo.addTodo(newTodo);
+    form.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -91,6 +92,7 @@ const AddingTaskForm = () => {
           Add
         </Button>
       </Form.Item>
+      <InfoModal contextHolder={contextHolder} />
     </Form>
   );
 };
