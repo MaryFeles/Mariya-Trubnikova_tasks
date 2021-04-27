@@ -1,19 +1,38 @@
 import React from "react";
-import search from "../store/search";
-import {iconSearch} from "../helpers/icons";
+import { iconSearch } from "../helpers/icons";
+import todo from "../store/todo";
+import { observer } from "mobx-react";
 
-const Search = () => {
+const Search = observer(() => {
+  const { searchQuery } = todo.state;
+  const getSearch = (e) => {
+    if (e.key === "Enter") {
+      todo.getAllTodos(searchQuery);
+      e.preventDefault();
+    }
+  };
+
+  const hanleInputChange = ({ target: { value } }) => {
+    todo.setSearchQuery(value);
+  };
+
+  const handleClick = () => {
+    todo.getAllTodos(searchQuery);
+  };
+
   return (
     <form className="header__search-wrap">
-    {iconSearch}
+      <div className="iconSearch" onClick={handleClick}>{iconSearch}</div>
       <input
         className="header__search"
         type="text"
         placeholder="Search for any training you want"
-        onChange={({ target }) => search.onSearch(target)}
+        onKeyPress={(e) => getSearch(e)}
+        onChange={hanleInputChange}
+        value={searchQuery}
       ></input>
     </form>
   );
-};
+});
 
 export default Search;

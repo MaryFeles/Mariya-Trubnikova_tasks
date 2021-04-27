@@ -7,7 +7,7 @@ import { iconDots } from "../helpers/icons";
 const TaskMenu = observer(({ todoItem }) => {
   const onHoldTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 2, title: "Take on the task" },
+    { id: 2, title: "Take the task" },
     { id: 3, title: "Complete", click() { todo.completeTodo(todoItem); }},
     { id: 4, title: "Edit" },
     { id: 5, title: "Cancel", click() {
