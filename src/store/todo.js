@@ -1,79 +1,86 @@
 import { makeAutoObservable } from "mobx";
+import api from "../dal/api";
 
 class Todo {
-  todos = [
-    {
-      id: 1,
-      title: "Evaluate the addition and deletion of user IDs.",
-      priority: "Minor",
-      completed: false,
-      status: "Pending",
-    },
-    {
-      id: 2,
-      title: "Identify the implementation team.",
-      priority: "Normal",
-      completed: false,
-      status: "In Progress",
-    },
-    {
-      id: 3,
-      title: "Batch schedule download/process.",
-      priority: "Critical",
-      completed: true,
-      status: "Completed",
-    },
-    {
-      id: 4,
-      title: "Identify the implementation team.",
-      priority: "Normal",
-      completed: false,
-      status: "Pending",
-    },
-    {
-      id: 5,
-      title: "Batch schedule download/process.",
-      priority: "Critical",
-      completed: false,
-      status: "Pending",
-    },
-    {
-      id: 6,
-      title: "Batch schedule download/process.",
-      priority: "Critical",
-      completed: true,
-      status: "Cancelled",
-    },
-  ];
+  state = {
+    todos: [],
+    isFetching: false,
+    searchQuery: '',
+  };
 
   constructor() {
     makeAutoObservable(this);
   }
+  
+  async getAllTodos(searchQuery) {
+    this.setIsFetching(true);
+    await api.todo.getAll(searchQuery).then((data) => {
+      this.setTodos(data);
+      this.setIsFetching(false);
+    });
+    
+  }
 
-  addTodo(todo) {
-    this.todos.push(todo);
+  async addTodo(todo) {
+    this.setIsFetching(true);
+    await api.todo.add(todo).then((data) => {
+      this.addTodoToArr(data);
+      this.setIsFetching(false);
+    });
+  }
+
+  createNewTodo(task, priority) {
+    let newTodo = {
+      title: task,
+      priority: priority,
+      completed: false,
+      status: "Pending",
+      date: new Date(),
+    };
+
+    this.addTodo(newTodo);
+  }
+
+  setTodos(newTodos) {
+    this.state.todos = newTodos;
+  }
+
+  addTodoToArr(newTodo) {
+    this.state.todos.unshift(newTodo);
   }
 
   removeTodo(id) {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
+    api.todo.remove(id);
+    this.state.todos = this.state.todos.filter((todo) => todo.id !== id);
   }
 
   completeTodo(todo) {
     todo.completed = !todo.completed;
-    todo.completed ? this.setStatus(todo, "Completed") : this.setStatus(todo, "Pending");
+    todo.completed
+      ? this.setStatus(todo, "Completed")
+      : this.setStatus(todo, "Pending");
   }
 
   setStatus(todo, status) {
     todo.status = status;
+    api.todo.update(todo);
+  }
+
+  setIsFetching(value) {
+    this.state.isFetching = value;
+  }
+
+  setSearchQuery(value) {
+    this.state.searchQuery = value;
   }
 
   get numberOfIncompletedTodos() {
-    let incompletedTodos = this.todos.filter((todo) => !todo.completed);
+    let incompletedTodos = this.state.todos.filter((todo) => !todo.completed);
     return incompletedTodos.length;
   }
 
   get numberOfCompletedTodos() {
-    let completedTodos = this.todos.filter((todo) => todo.completed);
+    let completedTodos = this.state.todos.filter((todo) => todo.completed);
     return completedTodos.length;
   }
 }

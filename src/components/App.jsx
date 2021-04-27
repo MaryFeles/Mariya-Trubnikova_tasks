@@ -3,6 +3,8 @@ import Search from "./Search";
 import Counter from "./Counter";
 import Todo from "./Todo";
 import Btn from "./AddingTaskModal";
+import todo from "../store/todo";
+import AuthModal from "./AuthModal";
 
 export const formatStr = (str) => {
   str = str.toLowerCase().replace(/\s/g, "");
@@ -10,11 +12,17 @@ export const formatStr = (str) => {
 };
 
 class App extends Component {
+  componentDidMount() {
+    const { searchQuery } = todo.state;
+    todo.getAllTodos(searchQuery);
+  }
+
   render() {
     return (
       <div className="container">
         <div className="header">
           <Search />
+          <AuthModal />
         </div>
         <div className="main">
           <div className="main__header">
