@@ -3,7 +3,7 @@ import React from "react";
 import todo from "../store/todo";
 
 const Counter = observer(() => {
-  return <>{todo.numberOfPendingTodos}</>;
+  return <>{todo.numberOfIncompletedTodos}</>;
 });
 
 export default Counter;

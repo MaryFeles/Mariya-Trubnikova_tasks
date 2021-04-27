@@ -1,11 +1,17 @@
 import React from "react";
-import { observer } from "mobx-react";
 import TodoItem from "./TodoItem";
+import todo from "../store/todo";
+import { observer } from "mobx-react";
+import Preloader from "./Preloader";
 
 const TodoList = observer(({ isCompleted }) => {
   return (
     <ul className="todos__list">
-      <TodoItem isCompleted={isCompleted} />
+      {todo.state.isFetching ? (
+        <Preloader />
+      ) : (
+        <TodoItem isCompleted={isCompleted} />
+      )}
     </ul>
   );
 });
