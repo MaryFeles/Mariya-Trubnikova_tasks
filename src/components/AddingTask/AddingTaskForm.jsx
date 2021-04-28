@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, Form, Input, Select } from "antd";
-import addTaskModal from "../store/addTaskModal";
-import todo from "../store/todo";
+import addTaskModal from "../../store/addTaskModal";
+import task from "../../store/tasks";
 import InfoModal from "./InfoModal";
 
 const layout = {
@@ -34,7 +34,7 @@ const AddingTaskForm = () => {
   };
 
   const onFinish = (values) => {
-    todo.createNewTodo(values.task, values.priority);
+    task.createNewTask(values.task, values.priority);
     modal.info(config);
 
     form.resetFields();

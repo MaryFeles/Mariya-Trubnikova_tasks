@@ -1,9 +1,9 @@
 import React from "react";
 import { Modal, Button } from "antd";
 import AddingTaskForm from "./AddingTaskForm";
-import addTaskModal from "../store/addTaskModal";
+import addTaskModal from "../../store/addTaskModal";
 import { observer } from "mobx-react";
-import { iconPlusSquare } from "../helpers/icons";
+import { iconPlusSquare } from "../../helpers/icons";
 
 const AddingTaskModal = observer(() => {
   return (

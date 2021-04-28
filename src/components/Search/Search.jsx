@@ -1,23 +1,23 @@
 import React from "react";
-import { iconSearch } from "../helpers/icons";
-import todo from "../store/todo";
+import { iconSearch } from "../../helpers/icons";
+import task from "../../store/tasks";
 import { observer } from "mobx-react";
 
 const Search = observer(() => {
-  const { searchQuery } = todo.state;
+  const { searchQuery } = task.state;
   const getSearch = (e) => {
     if (e.key === "Enter") {
-      todo.getAllTodos(searchQuery);
+      task.getAllTasks(searchQuery);
       e.preventDefault();
     }
   };
 
   const hanleInputChange = ({ target: { value } }) => {
-    todo.setSearchQuery(value);
+    task.setSearchQuery(value);
   };
 
   const handleClick = () => {
-    todo.getAllTodos(searchQuery);
+    task.getAllTasks(searchQuery);
   };
 
   return (

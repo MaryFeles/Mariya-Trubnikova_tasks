@@ -1,22 +1,23 @@
-.ant-btn.ant-btn-block {
-  border: none;
+// .ant-btn.ant-btn-block, .ant-menu-item {
+//   border: none;
 
-  width: 100%;
+//   width: 100%;
 
-    border-radius: 0;
-  &:hover {
-    color: $violet;
-    background-color: #f3edf7;
-  }
+//     border-radius: 0;
+//   &:hover {
+//     color: $violet;
+//     background-color: #f3edf7;
+//   }
 
-  &:active, &:focus {
-      box-shadow: none;
-      border: none;
+//   &:active, &:focus {
+//       box-shadow: none;
+//       border: none;
 
-      background-color: lighten($color: $violet, $amount: 30);
-      color: $white;
-  }
-}
-.ant-dropdown, .ant-dropdown-menu, .ant-dropdown-menu-item {
+//       background-color: lighten($color: $violet, $amount: 30);
+//       color: $white;
+//   }
+// }
+.ant-dropdown, .ant-dropdown-menu, .ant-dropdown-menu-item, .ant-menu-item, .ant-menu-vertical {
   padding: 0;
+  margin: 0;
 }

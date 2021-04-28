@@ -1,8 +1,8 @@
 import axios from "axios";
-import { TodoService } from './services/Todo.service';
+import { TaskService } from './services/Task.service';
 
 class API {
-  todo;
+  task;
   request;
 
   constructor(baseURL) {
@@ -10,7 +10,7 @@ class API {
 
     this.setInterceptors();
 
-    this.todo = new TodoService(this.request);
+    this.task = new TaskService(this.request);
   }
 
   setInterceptors() {

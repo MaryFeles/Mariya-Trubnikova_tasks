@@ -39,15 +39,15 @@
       "title": "Identify the implementation team.",
       "priority": "Normal",
       "completed": false,
-      "status": "Pending",
+      "status": "In Progress",
       "date": "2021-04-26T16:29:48.169Z"
     },
     {
       "id": 5,
       "title": "Batch schedule download/process.",
       "priority": "Critical",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Cancelled",
       "date": "2021-03-26T16:29:48.169Z"
     },
     {
@@ -61,8 +61,8 @@
     {
       "title": "test",
       "priority": "Normal",
-      "completed": true,
-      "status": "Cancelled",
+      "completed": false,
+      "status": "Pending",
       "date": "2021-04-26T16:48:13.230Z",
       "id": 8
     },
@@ -73,22 +73,6 @@
       "status": "Cancelled",
       "date": "2021-04-26T16:49:46.307Z",
       "id": 9
-    },
-    {
-      "title": "sdf",
-      "priority": "Normal",
-      "completed": false,
-      "status": "Pending",
-      "date": "2021-04-26T19:56:45.597Z",
-      "id": 15
-    },
-    {
-      "title": "test2",
-      "priority": "Minor",
-      "completed": false,
-      "status": "Pending",
-      "date": "2021-04-26T20:00:08.459Z",
-      "id": 16
     }
   ],
   "users_tasks": [

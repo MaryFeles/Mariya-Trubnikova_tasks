@@ -1,25 +1,25 @@
 import React from "react";
 import { observer } from "mobx-react";
-import todo from "../store/todo";
-import TodoSection from "./TodoSection";
+import task from "../../store/tasks";
+import TasksSection from "./TasksSection";
 
-const Todo = observer(() => {
+const Tasks = observer(() => {
   return (
     <>
-      <TodoSection
+      <TasksSection
         sectionClass="onhold"
         header="On Hold"
-        numberOfTasks={todo.numberOfIncompletedTodos}
+        numberOfTasks={task.numberOfIncompletedTasks}
         noTasksTitle="You have no tasks!"
       />
-      <TodoSection
+      <TasksSection
         sectionClass="completed"
         header="Completed"
-        numberOfTasks={todo.numberOfCompletedTodos}
+        numberOfTasks={task.numberOfCompletedTasks}
         noTasksTitle="You have no completed tasks!"
       />
     </>
   );
 });
 
-export default Todo;
+export default Tasks;
