@@ -1,23 +1,8 @@
-// .ant-btn.ant-btn-block, .ant-menu-item {
-//   border: none;
-
-//   width: 100%;
-
-//     border-radius: 0;
-//   &:hover {
-//     color: $violet;
-//     background-color: #f3edf7;
-//   }
-
-//   &:active, &:focus {
-//       box-shadow: none;
-//       border: none;
-
-//       background-color: lighten($color: $violet, $amount: 30);
-//       color: $white;
-//   }
-// }
-.ant-dropdown, .ant-dropdown-menu, .ant-dropdown-menu-item, .ant-menu-item, .ant-menu-vertical {
+.ant-dropdown {
+  display: flex;
+  max-width: 200px;
+  border-radius: 10px;
+  
   padding: 0;
   margin: 0;
 }

@@ -2,17 +2,17 @@
   margin-left: 20px;
 
   border: none;
-  background-color: $violet;
+  background-color: $primary-color;
 
   color: $white;
 
   &:hover {
-    background-color: $violet-hover;
+    background-color: $primary-color-hover;
     color: $white;
   }
 
   &:active,
   &:focus {
-    background-color: $violet;
+    background-color: $primary-color;
   }
 }

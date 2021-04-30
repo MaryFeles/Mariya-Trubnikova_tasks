@@ -2,15 +2,16 @@
   "users": [
     {
       "id": 1,
-      "name": "User",
+      "name": "Tom",
       "surname": "User",
       "midname": "User",
       "login": "user",
-      "password": "user"
+      "password": "user",
+      "avatar": "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
     },
     {
       "id": 2,
-      "name": "User2",
+      "name": "Jack",
       "surname": "User2",
       "midname": "User2",
       "login": "user2",
@@ -18,7 +19,7 @@
     },
     {
       "id": 3,
-      "name": "User3",
+      "name": "Sam",
       "surname": "User3",
       "midname": "User3",
       "login": "user3",
@@ -35,19 +36,11 @@
       "date": "2021-02-26T16:29:48.169Z"
     },
     {
-      "id": 4,
-      "title": "Identify the implementation team.",
-      "priority": "Normal",
-      "completed": false,
-      "status": "In Progress",
-      "date": "2021-04-26T16:29:48.169Z"
-    },
-    {
       "id": 5,
       "title": "Batch schedule download/process.",
       "priority": "Critical",
-      "completed": true,
-      "status": "Cancelled",
+      "completed": false,
+      "status": "Pending",
       "date": "2021-03-26T16:29:48.169Z"
     },
     {
@@ -59,20 +52,20 @@
       "date": "2021-02-26T16:29:48.169Z"
     },
     {
-      "title": "test",
-      "priority": "Normal",
-      "completed": false,
-      "status": "Pending",
-      "date": "2021-04-26T16:48:13.230Z",
-      "id": 8
-    },
-    {
       "title": "test2",
       "priority": "Normal",
       "completed": true,
       "status": "Cancelled",
       "date": "2021-04-26T16:49:46.307Z",
       "id": 9
+    },
+    {
+      "title": "test3",
+      "priority": "Critical",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-04-29T17:23:02.020Z",
+      "id": 10
     }
   ],
   "users_tasks": [
@@ -80,12 +73,6 @@
       "id": 1,
       "userId": 1,
       "taskId": 1,
-      "role": "creator"
-    },
-    {
-      "id": 4,
-      "userId": 2,
-      "taskId": 4,
       "role": "creator"
     },
     {

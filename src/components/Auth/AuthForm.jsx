@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
+import users from "../../store/users";
 
 const layout = {
   labelCol: {
@@ -17,8 +18,10 @@ const tailLayout = {
 };
 
 const AuthForm = () => {
+  const [form] = Form.useForm();
   const onFinish = (values) => {
-    console.log("Success:", values);
+    users.login(values.username, values.password);
+    form.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -29,9 +32,7 @@ const AuthForm = () => {
     <Form
       {...layout}
       name="basic"
-      initialValues={{
-        remember: true,
-      }}
+      form={form}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
     >

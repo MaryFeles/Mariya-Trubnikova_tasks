@@ -6,24 +6,23 @@ export class TaskService {
   }
 
   get(id) {
-    return this.request.get(`/tasks/${id}`).catch((error) => console.log(error));
+    return this.request.get(`/tasks/${id}`);
   }
 
   getAll(searchQuery) {
     return this.request
-      .get(`/tasks?q=${searchQuery}&_sort=date&_order=DESC`)
-      .catch((error) => console.log(error));
+      .get(`/tasks?q=${searchQuery}&_sort=date&_order=DESC`);
   }
 
   add(task) {
-    return this.request.post("/tasks", task).catch((error) => console.log(error));
+    return this.request.post("/tasks", task);
   }
 
   remove(id) {
-    this.request.delete(`/tasks/${id}`).catch((error) => console.log(error));
+    this.request.delete(`/tasks/${id}`);
   }
 
   update(task) {
-    this.request.put(`/tasks/${task.id}`, task).catch((error) => console.log(error));
+    this.request.put(`/tasks/${task.id}`, task);
   }
 }
