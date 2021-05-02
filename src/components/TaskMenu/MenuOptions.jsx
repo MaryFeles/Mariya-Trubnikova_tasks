@@ -10,6 +10,7 @@ const MenuOptions = ({ options, taskItem }) => {
           return (
             option.title !== "Take on the task" && (
               <MenuOption
+                task={taskItem}
                 key={option.id}
                 handleClick={option.click}
                 title={option.title}
@@ -20,6 +21,7 @@ const MenuOptions = ({ options, taskItem }) => {
           return (
             option.title !== "Complete" && (
               <MenuOption
+                task={taskItem}
                 key={option.id}
                 handleClick={option.click}
                 title={option.title}

@@ -1,6 +1,6 @@
 import { makeAutoObservable} from "mobx";
 
-class addTaskModal {
+class AddTaskModal {
   visible = false;
   confirmLoading = true;
 
@@ -26,4 +26,4 @@ class addTaskModal {
   };
 }
 
-export default new addTaskModal();
+export default new AddTaskModal();

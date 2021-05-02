@@ -23,6 +23,6 @@ export default class UserService {
   }
 
   login(login, password) {
-    return this.request.get(`/users?login=${login}&password=${password}`);
+    return this.request.get(`/security?login=${login}&password=${password}`);
   }
 }

@@ -1,14 +1,22 @@
-import { Avatar } from "antd";
+import { Avatar, Dropdown, Button, Menu } from "antd";
 import users from "../../store/users";
 import { observer } from "mobx-react";
 
 const CurrentUserAvatar = observer(({ handleClick }) => {
   const { currentUser } = users.state;
-  console.log(currentUser);
-  
+
   const handleClickAvatar = () => {
-    console.log("clicked avatar");
+    users.deleteCurrentUser();
+    users.setStatusLogin("");
   };
+
+  const menu = (
+    <Menu>
+      <Menu.Item>
+        <Button onClick={handleClickAvatar}>Sign Out</Button>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <>
@@ -18,12 +26,17 @@ const CurrentUserAvatar = observer(({ handleClick }) => {
         </span>
       ) : (
         <div>
-          <Avatar
-            src={currentUser.avatar}
-            className={"user-avatar"}
-            size={26}
-            onClick={handleClickAvatar}
-          ></Avatar>
+          <Dropdown
+            className="task__dropdown"
+            overlay={menu}
+            placement="bottomRight"
+          >
+            <Avatar
+              src={`/avatars/${currentUser.avatar}`}
+              className={"user-avatar"}
+              size={26}
+            />
+          </Dropdown>
         </div>
       )}
     </>

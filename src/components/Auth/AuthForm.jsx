@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
 import users from "../../store/users";
+import authModal from "../../store/authModal";
+import { observer } from "mobx-react";
 
 const layout = {
   labelCol: {
@@ -17,11 +19,12 @@ const tailLayout = {
   },
 };
 
-const AuthForm = () => {
+const AuthForm = observer(() => {
   const [form] = Form.useForm();
+  const statusLogin = users.state.statusLogin;
+
   const onFinish = (values) => {
     users.login(values.username, values.password);
-    form.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -61,6 +64,7 @@ const AuthForm = () => {
       >
         <Input.Password />
       </Form.Item>
+      {statusLogin === "Error" && <span>ERROR</span>}
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
           Sign in
@@ -68,6 +72,6 @@ const AuthForm = () => {
       </Form.Item>
     </Form>
   );
-};
+});
 
 export default AuthForm;

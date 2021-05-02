@@ -5,10 +5,12 @@ import Tasks from "./Tasks/Tasks";
 import Btn from "./AddingTask/AddingTaskModal";
 import AuthModal from "./Auth/AuthModal";
 import Message from "./Messages/Messages";
+import comments from "../store/comments";
 
 const Home = () => {
+  comments.setIsFetching(true);
   return (
-    <>
+    <div className="container">
       <header className="header">
         <Search />
         <AuthModal />
@@ -33,7 +35,7 @@ const Home = () => {
       <aside className="aside">
         <Message></Message>
       </aside>
-    </>
+    </div>
   );
 };
 

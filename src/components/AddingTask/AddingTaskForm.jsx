@@ -3,6 +3,7 @@ import { Modal, Button, Form, Input, Select } from "antd";
 import addTaskModal from "../../store/addTaskModal";
 import task from "../../store/tasks";
 import InfoModal from "./InfoModal";
+import users from "../../store/users";
 
 const layout = {
   labelCol: {
@@ -23,6 +24,7 @@ const tailLayout = {
 const AddingTaskForm = () => {
   const [form] = Form.useForm();
   const [modal, contextHolder] = Modal.useModal();
+  const currentUser = users.state.currentUser;
 
   const config = {
     title: "Task was successfully created!",
@@ -34,9 +36,8 @@ const AddingTaskForm = () => {
   };
 
   const onFinish = (values) => {
-    task.createNewTask(values.task, values.priority);
+    task.createNewTask(values.task, values.priority, currentUser.id);
     modal.info(config);
-
     form.resetFields();
   };
 

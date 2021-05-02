@@ -5,20 +5,24 @@ class Tasks {
   state = {
     tasks: [],
     isFetching: false,
-    searchQuery: '',
+    searchQuery: "",
+    currentTask: undefined,
+    currentTaskStatus: "Loading",
   };
 
   constructor() {
     makeAutoObservable(this);
   }
-  
+
   async getAllTasks(searchQuery) {
     this.setIsFetching(true);
-    await api.task.getAll(searchQuery).then((data) => {
-      this.setTasks(data);
-      this.setIsFetching(false);
-    }).catch((error) => console.log(error));
-    
+    await api.task
+      .getAll(searchQuery)
+      .then((data) => {
+        this.setTasks(data);
+        this.setIsFetching(false);
+      })
+      .catch((error) => console.log(error));
   }
 
   async addTask(task) {
@@ -29,20 +33,59 @@ class Tasks {
     });
   }
 
-  createNewTask(task, priority) {
+  async getCurrentTask(id) {
+    await api.task
+      .get(id)
+      .then((data) => {
+        this.setCurrentTask(data);
+      })
+      .then(() => {
+        this.setCurrentTaskStatus("Done");
+      })
+      .catch((e) => {
+        this.setCurrentTaskStatus("error");
+        console.log(e);
+      });
+  }
+
+  updateTask(task) {
+    api.task.update(task);
+  }
+
+  createNewTask(task, priority, userId) {
     let newTask = {
       title: task,
       priority: priority,
       completed: false,
       status: "Pending",
       date: new Date(),
+      comments: [],
+      messages: [],
+      users: [{ id: userId, role: "creator" }],
     };
-
     this.addTask(newTask);
   }
 
   setTasks(data) {
     this.state.tasks = data;
+  }
+
+  setCurrentTask(task) {
+    this.state.currentTask = task;
+  }
+
+  setCurrentTaskStatus(status) {
+    this.state.currentTaskStatus = status;
+    console.log('set current status '+ status)
+  }
+
+  setParticipantUser(userId, role, task) {
+    let userRole = {
+      id: userId,
+      role: role,
+    };
+    task.users.push(userRole);
+    this.updateTask(task);
   }
 
   addTaskToArr(newTask) {

@@ -1,9 +1,8 @@
 import { makeAutoObservable } from "mobx";
 
-class authModal {
+class AuthModal {
 
     visible = false;
-    confirmLoading = true;
   
     constructor() {      
       makeAutoObservable(this);
@@ -11,10 +10,6 @@ class authModal {
   
     setVisible = (value) => {
       this.visible = value;
-    };
-  
-    setConfirmLoading = (value) => {
-      this.confirmLoading = value;
     };
   
     showModal = () => {
@@ -27,4 +22,4 @@ class authModal {
     };
 }
 
-export default new authModal();
+export default new AuthModal();

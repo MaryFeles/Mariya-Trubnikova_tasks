@@ -4,8 +4,9 @@ import api from "../dal/api";
 class Users {
   state = {
     users: [],
-    currentUser: '',
+    currentUser: "",
     isFetching: false,
+    statusLogin: "",
   };
 
   constructor() {
@@ -21,39 +22,63 @@ class Users {
   }
 
   async login(username, password) {
+    this.setIsFetching(true);
     await api.user
       .login(username, password)
       .then((data) => {
-        if (data[0] === undefined){
-          throw new Error('not ok');
-        } else this.setUserToLocalStorage(data[0]);
-      }).catch((value) => {
-        console.log(value)
+        if (data[0] === undefined) {
+          throw new Error("User is not found");
+        } else {
+          this.setUserToLocalStorage(data[0].id);
+          this.setStatusLogin("Done");
+          this.setIsFetching(false);
+        }
+      })
+      .catch((e) => {
+        this.setStatusLogin("Error");
+        console.error(e);
       });
   }
 
-  async getUserFromLocalStorage(id) {
+  async getCurrentUser(id) {
     await api.user.get(id).then((data) => {
-      this.setCurrentUser(data)
-    }).catch((err) => {
-      console.log(err)
-    })
+      this.setCurrentUser(data);
+      return data;
+    });
   }
 
-  setCurrentUser(data){
+  async getUserFromLocalStorage(id) {
+    await api.user
+      .get(id)
+      .then((data) => {
+        this.setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  deleteCurrentUser() {
+    this.state.currentUser = "";
+    localStorage.removeItem("userId");
+  }
+
+  setCurrentUser(data) {
     this.state.currentUser = data;
   }
 
-  setUserToLocalStorage(data){
-    this.state.currentUser = data;
-    localStorage.setItem('userId', data.id);
+  setStatusLogin(value) {
+    this.state.statusLogin = value;
+  }
+
+  setUserToLocalStorage(userId) {
+    this.getCurrentUser(userId);
+    localStorage.setItem("userId", userId);
   }
 
   setUsers(data) {
     this.state.users = data;
   }
-
-  //setRole
 
   setIsFetching(value) {
     this.state.isFetching = value;
