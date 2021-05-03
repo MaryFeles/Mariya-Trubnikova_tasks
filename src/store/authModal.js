@@ -17,7 +17,6 @@ class AuthModal {
     };
   
     handleCancel = () => {
-      console.log("Clicked cancel button");
       this.setVisible(false);
     };
 }

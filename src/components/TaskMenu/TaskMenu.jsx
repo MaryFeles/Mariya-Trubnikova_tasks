@@ -10,7 +10,7 @@ const TaskMenu = observer(({ task }) => {
   const { currentUser } = users.state;
   const includesExecutor = task.users.find(user => user.role === "executor");
 
-  const takeTheTaskHandler = () => {
+  const handlerTakeTheTaskBtn = () => {
     if (includesExecutor) {
       return;
     } else {
@@ -19,17 +19,24 @@ const TaskMenu = observer(({ task }) => {
     }
   }
 
+  const handlerMarkAsIncompleteBtn = () => {
+    tasks.completeTaskToggle(task);
+    let executorIndex = task.users.indexOf(includesExecutor);
+    executorIndex != -1 && task.users.splice(executorIndex);
+    tasks.updateTask(task);     
+  }
+
   let onHoldTaskOptions = [
     { id: 1, title: "View comments" },    
-    { id: 3, title: "Complete", click() {tasks.completeTask(task); }},
+    { id: 3, title: "Complete", click() {tasks.completeTaskToggle(task); }},
     { id: 5, title: "Cancel", click() {
-      tasks.completeTask(task);
+      tasks.completeTaskToggle(task);
       tasks.setStatus(task, "Cancelled");
     }}
   ];
   let completedTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 2, title: "Mark as incomplete",  click() {tasks.completeTask(task);} },
+    { id: 2, title: "Mark as incomplete", click() {handlerMarkAsIncompleteBtn()}},
   ];
 
   let currentUserTaskRole = task.users.find(item => item.id === currentUser.id);
@@ -45,7 +52,7 @@ const TaskMenu = observer(({ task }) => {
   };
 
   if (!includesExecutor) {
-    onHoldTaskOptions.push({ id: 2, title: "Take the task", click() {takeTheTaskHandler()}});
+    onHoldTaskOptions.push({ id: 2, title: "Take the task", click() {handlerTakeTheTaskBtn()}});
   }
 
   const getMenuOptions = (task) => {

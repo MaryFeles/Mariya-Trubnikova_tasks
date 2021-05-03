@@ -4,6 +4,7 @@ import addTaskModal from "../../store/addTaskModal";
 import task from "../../store/tasks";
 import InfoModal from "./InfoModal";
 import users from "../../store/users";
+import { observer } from "mobx-react";
 
 const layout = {
   labelCol: {
@@ -21,9 +22,10 @@ const tailLayout = {
   },
 };
 
-const AddingTaskForm = () => {
+const AddingTaskForm = observer(() => {
   const [form] = Form.useForm();
   const [modal, contextHolder] = Modal.useModal();
+  !addTaskModal.visible && form.resetFields();
   const currentUser = users.state.currentUser;
 
   const config = {
@@ -96,6 +98,6 @@ const AddingTaskForm = () => {
       <InfoModal contextHolder={contextHolder} />
     </Form>
   );
-};
+});
 
 export default AddingTaskForm;

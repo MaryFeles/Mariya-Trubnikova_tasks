@@ -105,7 +105,7 @@ class Tasks {
     this.state.tasks = this.state.tasks.filter((task) => task.id !== id);
   }
 
-  completeTask(task) {
+  completeTaskToggle(task) {
     task.completed = !task.completed;
     task.completed
       ? this.setStatus(task, "Completed")

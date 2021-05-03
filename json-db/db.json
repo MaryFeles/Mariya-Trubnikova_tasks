@@ -140,8 +140,8 @@
       "id": 3,
       "title": "Batch3 schedule download/process.",
       "priority": "Critical",
-      "completed": true,
-      "status": "Completed",
+      "completed": false,
+      "status": "Pending",
       "date": "2021-03-02T12:46:30.453Z",
       "comments": [
         {
@@ -459,24 +459,8 @@
       "title": "test7",
       "priority": "Normal",
       "completed": false,
-      "status": "Pending",
-      "date": "2021-05-02T13:00:08.227Z",
-      "comments": [],
-      "messages": [],
-      "users": [
-        {
-          "id": 3,
-          "role": "creator"
-        }
-      ],
-      "id": 11
-    },
-    {
-      "title": "test8",
-      "priority": "Minor",
-      "completed": false,
       "status": "In Progress",
-      "date": "2021-05-02T13:03:12.643Z",
+      "date": "2021-05-02T13:00:08.227Z",
       "comments": [],
       "messages": [],
       "users": [
@@ -487,6 +471,32 @@
         {
           "id": 1,
           "role": "executor"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "title": "test8",
+      "priority": "Minor",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-05-02T13:03:12.643Z",
+      "comments": [
+        {
+          "body": "test",
+          "date": "2021-05-03T11:19:42.395Z",
+          "userId": 1
+        }
+      ],
+      "messages": [],
+      "users": [
+        {
+          "id": 3,
+          "role": "creator"
+        },
+        {
+          "id": 1,
+          "role": "commentator"
         }
       ],
       "id": 12

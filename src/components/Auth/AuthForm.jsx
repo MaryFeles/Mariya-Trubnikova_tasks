@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Form, Input, Button } from "antd";
 import users from "../../store/users";
 import authModal from "../../store/authModal";
@@ -22,23 +22,15 @@ const tailLayout = {
 const AuthForm = observer(() => {
   const [form] = Form.useForm();
   const statusLogin = users.state.statusLogin;
+  statusLogin == "Done" && authModal.setVisible(false);
+  !authModal.visible && form.resetFields();
 
   const onFinish = (values) => {
     users.login(values.username, values.password);
   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-
   return (
-    <Form
-      {...layout}
-      name="basic"
-      form={form}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
+    <Form {...layout} name="basic" form={form} onFinish={onFinish}>
       <Form.Item
         label="Username"
         name="username"
@@ -48,6 +40,7 @@ const AuthForm = observer(() => {
             message: "Please input your username!",
           },
         ]}
+        required
       >
         <Input />
       </Form.Item>
@@ -61,10 +54,24 @@ const AuthForm = observer(() => {
             message: "Please input your password!",
           },
         ]}
+        required
+        validateStatus={
+          statusLogin
+            ? statusLogin === "Done"
+              ? "success"
+              : "error"
+            : undefined
+        }
+        help={
+          statusLogin &&
+          (statusLogin === "Done"
+            ? "Login successful"
+            : "Incorrect login or password!")
+        }
       >
         <Input.Password />
       </Form.Item>
-      {statusLogin === "Error" && <span>ERROR</span>}
+
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
           Sign in
