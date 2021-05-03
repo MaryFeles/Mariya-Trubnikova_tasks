@@ -61,16 +61,36 @@ class Tasks {
       date: new Date(),
       comments: [],
       messages: [],
-      users: [{ id: userId, role: "creator" }],
+      users: [{ id: userId, roles: ["creator"] }],
+      messages: [
+        {
+          id: 1,
+          type: "creation",
+          body: "Task created",
+          date: Date(),
+          userId: userId,
+        },
+      ],
+      comments: [],
     };
     this.addTask(newTask);
   }
 
   addUserRoleToTask(task, userId, role) {
-    task.users.push({
-      id: userId,
-      role: role,
-    });
+    let UserIndexInTask = task.users.findIndex((user) => user.id == userId);
+
+    if (
+      UserIndexInTask >= 0 &&
+      !task.users[UserIndexInTask].roles.includes(role)
+    ) {
+      task.users[UserIndexInTask].roles.push(role);
+    } else if (UserIndexInTask < 0) {
+      task.users.push({
+        id: userId,
+        roles: [role],
+      });
+    }
+
     this.updateTask(task);
   }
 
@@ -84,16 +104,6 @@ class Tasks {
 
   setCurrentTaskStatus(status) {
     this.state.currentTaskStatus = status;
-    console.log("set current status " + status);
-  }
-
-  setParticipantUser(userId, role, task) {
-    let userRole = {
-      id: userId,
-      role: role,
-    };
-    task.users.push(userRole);
-    this.updateTask(task);
   }
 
   addTaskToArr(newTask) {

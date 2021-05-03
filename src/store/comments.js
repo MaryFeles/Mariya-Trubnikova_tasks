@@ -34,13 +34,29 @@ class Comments {
   }
 
   createNewComment(userId, task) {
+    let idComment = 1;
+    if (this.state.comments.length > 0) {
+      let maxId = 1;
+
+      this.state.comments.forEach((item) => {
+        maxId = item.id > maxId ? item.id : maxId;
+      });
+
+      for (let i = 1; i <= maxId + 1; i++) {
+        if (!this.state.comments.find((item) => item.id == i)) {
+          idComment = i;
+        }
+      }
+    }
+
     const newComment = {
+      id: idComment,
       body: this.state.value,
       date: new Date(),
       userId: userId,
     };
-    this.addCommentIntoTask(task);
     task.comments.push(newComment);
+    this.addCommentIntoTask(task);
     this.refactorOneComment(newComment);
   }
 
@@ -55,8 +71,6 @@ class Comments {
       content: comment.body,
       datetime: moment(comment.date).fromNow(),
     };
-
-    console.log("refactoring one");
     this.state.refactoredComments.push(newComment);
   }
 
@@ -85,7 +99,6 @@ class Comments {
         content: comment.body,
         datetime: moment(comment.date).fromNow(),
       };
-      console.log("refactoring all");
       refactoredComments.push(newComment);
     });
 

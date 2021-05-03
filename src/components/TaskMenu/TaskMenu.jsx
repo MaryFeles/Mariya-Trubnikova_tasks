@@ -39,9 +39,9 @@ const TaskMenu = observer(({ task }) => {
     { id: 2, title: "Mark as incomplete", click() {handlerMarkAsIncompleteBtn()}},
   ];
 
-  let currentUserTaskRole = task.users.find(item => item.id === currentUser.id);
-
-  if (currentUserTaskRole && currentUserTaskRole.role === "creator") {
+  let recordOfCurUserInTask = task.users.find(item => item.id === currentUser.id);
+  
+  if (recordOfCurUserInTask && recordOfCurUserInTask.roles.includes("creator")) {
     let onHoldTaskAdditionalOptions = [
       { id: 4, title: "Edit" },
       { id: 6, title: "Delete", click() { tasks.removeTask(task.id); }}

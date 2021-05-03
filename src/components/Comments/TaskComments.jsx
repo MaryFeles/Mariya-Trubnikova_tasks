@@ -41,7 +41,7 @@ const TaskComments = observer(() => {
 
     comments.setIsFetching(true);
     comments.createNewComment(currentUser.id, currentTask);
-    tasks.setParticipantUser(currentUser.id, "commentator", currentTask);
+    tasks.addUserRoleToTask(currentTask, currentUser.id, "commentator");
     comments.getAllCommentsOfCurrentTask(currentTask.id);
   };
 

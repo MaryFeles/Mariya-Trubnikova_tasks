@@ -80,11 +80,15 @@
       "users": [
         {
           "id": 2,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 1,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -128,11 +132,15 @@
       "users": [
         {
           "id": 2,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 1,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -155,21 +163,6 @@
           "body": "some comment6",
           "date": "2021-05-02T12:46:30.453Z",
           "userId": 2
-        },
-        {
-          "body": "hi!",
-          "date": "2021-05-02T10:19:00.221Z",
-          "userId": 1
-        },
-        {
-          "body": "kjh",
-          "date": "2021-05-02T10:20:05.109Z",
-          "userId": 1
-        },
-        {
-          "body": "test",
-          "date": "2021-05-02T10:23:09.245Z",
-          "userId": 1
         }
       ],
       "messages": [
@@ -191,11 +184,15 @@
       "users": [
         {
           "id": 1,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 2,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -220,9 +217,16 @@
           "userId": 2
         },
         {
-          "body": "test",
-          "date": "2021-05-02T17:31:32.166Z",
-          "userId": 2
+          "id": 3,
+          "body": "zfdf",
+          "date": "2021-05-03T11:39:00.430Z",
+          "userId": 1
+        },
+        {
+          "id": 4,
+          "body": "cfdsf",
+          "date": "2021-05-03T11:39:49.497Z",
+          "userId": 1
         }
       ],
       "messages": [
@@ -244,15 +248,27 @@
       "users": [
         {
           "id": 1,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 2,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         },
         {
-          "id": 2,
-          "role": "commentator"
+          "id": 1,
+          "roles": [
+            "commentator"
+          ]
+        },
+        {
+          "id": 1,
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -275,61 +291,6 @@
           "body": "some comment10",
           "date": "2021-05-02T12:46:30.453Z",
           "userId": 2
-        },
-        {
-          "body": "test comment5",
-          "date": "2021-05-02T10:56:11.238Z",
-          "userId": 1
-        },
-        {
-          "body": "test5",
-          "date": "2021-05-02T11:04:00.735Z",
-          "userId": 1
-        },
-        {
-          "body": "test",
-          "date": "2021-05-02T11:18:19.650Z",
-          "userId": 1
-        },
-        {
-          "body": "test",
-          "date": "2021-05-02T11:18:49.947Z",
-          "userId": 1
-        },
-        {
-          "body": "testteststst",
-          "date": "2021-05-02T11:27:23.892Z",
-          "userId": 1
-        },
-        {
-          "body": "fgfg",
-          "date": "2021-05-02T11:30:35.322Z",
-          "userId": 1
-        },
-        {
-          "body": "qwety",
-          "date": "2021-05-02T11:36:14.753Z",
-          "userId": 1
-        },
-        {
-          "body": "qwertyuqwerty",
-          "date": "2021-05-02T11:40:47.192Z",
-          "userId": 1
-        },
-        {
-          "body": "123123",
-          "date": "2021-05-02T11:42:30.639Z",
-          "userId": 1
-        },
-        {
-          "body": "21212",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
-        },
-        {
-          "body": "123245435",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
         }
       ],
       "messages": [
@@ -351,11 +312,15 @@
       "users": [
         {
           "id": 1,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 2,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -399,11 +364,15 @@
       "users": [
         {
           "id": 1,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 2,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -447,11 +416,15 @@
       "users": [
         {
           "id": 1,
-          "role": "creator"
+          "roles": [
+            "creator"
+          ]
         },
         {
           "id": 2,
-          "userId": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ]
     },
@@ -461,16 +434,40 @@
       "completed": false,
       "status": "In Progress",
       "date": "2021-05-02T13:00:08.227Z",
-      "comments": [],
+      "comments": [
+        {
+          "id": 1,
+          "body": "ewe",
+          "date": "2021-05-03T12:03:34.018Z",
+          "userId": 3
+        },
+        {
+          "id": 1,
+          "body": "ew",
+          "date": "2021-05-03T12:03:36.745Z",
+          "userId": 3
+        },
+        {
+          "id": 2,
+          "body": "qwe",
+          "date": "2021-05-03T12:03:39.122Z",
+          "userId": 3
+        }
+      ],
       "messages": [],
       "users": [
         {
           "id": 3,
-          "role": "creator"
+          "roles": [
+            "creator",
+            "commentator"
+          ]
         },
         {
           "id": 1,
-          "role": "executor"
+          "roles": [
+            "executor"
+          ]
         }
       ],
       "id": 11
@@ -483,23 +480,117 @@
       "date": "2021-05-02T13:03:12.643Z",
       "comments": [
         {
-          "body": "test",
-          "date": "2021-05-03T11:19:42.395Z",
+          "id": 1,
+          "body": "ds",
+          "date": "2021-05-03T11:43:17.131Z",
           "userId": 1
+        },
+        {
+          "id": 2,
+          "body": "asda",
+          "date": "2021-05-03T11:43:21.046Z",
+          "userId": 1
+        },
+        {
+          "id": 3,
+          "body": "dadad",
+          "date": "2021-05-03T11:43:23.181Z",
+          "userId": 1
+        },
+        {
+          "id": 4,
+          "body": "f",
+          "date": "2021-05-03T11:45:44.298Z",
+          "userId": 1
+        },
+        {
+          "id": 5,
+          "body": "asdasd",
+          "date": "2021-05-03T11:53:19.613Z",
+          "userId": 1
+        },
+        {
+          "id": 6,
+          "body": "dw",
+          "date": "2021-05-03T11:56:53.275Z",
+          "userId": 1
+        },
+        {
+          "id": 7,
+          "body": "ds",
+          "date": "2021-05-03T11:57:45.369Z",
+          "userId": 1
+        },
+        {
+          "id": 7,
+          "body": "ds",
+          "date": "2021-05-03T11:58:28.652Z",
+          "userId": 1
+        },
+        {
+          "id": 8,
+          "body": "ds",
+          "date": "2021-05-03T11:59:21.367Z",
+          "userId": 3
         }
       ],
       "messages": [],
       "users": [
         {
           "id": 3,
-          "role": "creator"
+          "roles": [
+            "creator",
+            "commentator"
+          ]
         },
         {
           "id": 1,
-          "role": "commentator"
+          "roles": [
+            "commentator"
+          ]
         }
       ],
       "id": 12
+    },
+    {
+      "title": "testtask",
+      "priority": "Critical",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-05-03T12:04:49.315Z",
+      "comments": [
+        {
+          "id": 1,
+          "body": "dqwd",
+          "date": "2021-05-03T12:05:30.020Z",
+          "userId": 3
+        },
+        {
+          "id": 1,
+          "body": "dqw",
+          "date": "2021-05-03T12:05:32.179Z",
+          "userId": 3
+        }
+      ],
+      "messages": [
+        {
+          "id": 1,
+          "type": "creation",
+          "body": "Task created",
+          "date": "Mon May 03 2021 16:04:49 GMT+0400 (GMT+04:00)",
+          "userId": 3
+        }
+      ],
+      "users": [
+        {
+          "id": 3,
+          "roles": [
+            "creator",
+            "commentator"
+          ]
+        }
+      ],
+      "id": 13
     }
   ]
 }
