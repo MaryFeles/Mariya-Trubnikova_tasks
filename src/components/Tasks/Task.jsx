@@ -26,7 +26,7 @@ const Task = observer(({ isCompleted }) => {
               <span className={priorityClass + formatStr(item.priority)}>
                 {item.priority}
               </span>
-              <TaskMenu taskItem={item} />
+              <TaskMenu task={item} />
             </li>
           )
         );
@@ -42,7 +42,7 @@ const Task = observer(({ isCompleted }) => {
               <span className={priorityClass + formatStr(item.priority)}>
                 {item.priority}
               </span>
-              <TaskMenu taskItem={item} />
+              <TaskMenu task={item} />
             </li>
           )
         );

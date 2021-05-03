@@ -2,15 +2,15 @@ import React from "react";
 import { Menu } from "antd";
 import MenuOption from "./MenuOption";
 
-const MenuOptions = ({ options, taskItem }) => {
+const MenuOptions = ({ options, task }) => {
   return (
     <Menu>
       {options.map((option) => {
-        if (taskItem.status === "In Progress") {
+        if (task.status === "In Progress") {
           return (
             option.title !== "Take on the task" && (
               <MenuOption
-                task={taskItem}
+                task={task}
                 key={option.id}
                 handleClick={option.click}
                 title={option.title}
@@ -21,7 +21,7 @@ const MenuOptions = ({ options, taskItem }) => {
           return (
             option.title !== "Complete" && (
               <MenuOption
-                task={taskItem}
+                task={task}
                 key={option.id}
                 handleClick={option.click}
                 title={option.title}

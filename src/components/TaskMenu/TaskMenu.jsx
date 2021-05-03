@@ -1,54 +1,66 @@
 import React from "react";
 import { Dropdown, Button, Space } from "antd";
-import task from "../../store/tasks";
+import tasks from "../../store/tasks";
 import { observer } from "mobx-react";
 import { iconDots } from "../../helpers/icons";
 import MenuOptions from "./MenuOptions";
 import users from "../../store/users";
 
-const TaskMenu = observer(({ taskItem }) => {
+const TaskMenu = observer(({ task }) => {
   const { currentUser } = users.state;
+  const includesExecutor = task.users.find(user => user.role === "executor");
+
+  const takeTheTaskHandler = () => {
+    if (includesExecutor) {
+      return;
+    } else {
+      tasks.addUserRoleToTask(task, currentUser.id, "executor");
+      tasks.setStatus(task, "In Progress");
+    }
+  }
 
   let onHoldTaskOptions = [
-    { id: 1, title: "View comments" },
-    { id: 2, title: "Take the task" },
-    { id: 3, title: "Complete", click() { task.completeTask(taskItem); }},
+    { id: 1, title: "View comments" },    
+    { id: 3, title: "Complete", click() {tasks.completeTask(task); }},
     { id: 5, title: "Cancel", click() {
-      task.completeTask(taskItem);
-      task.setStatus(taskItem, "Cancelled");
+      tasks.completeTask(task);
+      tasks.setStatus(task, "Cancelled");
     }}
   ];
-
   let completedTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 2, title: "Mark as incomplete",  click() { task.completeTask(taskItem);} },
+    { id: 2, title: "Mark as incomplete",  click() {tasks.completeTask(task);} },
   ];
 
-  let currentUserTaskRole = taskItem.users.find(item => item.id == currentUser.id);
+  let currentUserTaskRole = task.users.find(item => item.id === currentUser.id);
 
-  if (currentUserTaskRole && currentUserTaskRole.role == 'creator') {
+  if (currentUserTaskRole && currentUserTaskRole.role === "creator") {
     let onHoldTaskAdditionalOptions = [
       { id: 4, title: "Edit" },
-      { id: 6, title: "Delete", click() { task.removeTask(taskItem.id); }}
+      { id: 6, title: "Delete", click() { tasks.removeTask(task.id); }}
     ]
 
     onHoldTaskOptions = onHoldTaskOptions.concat(onHoldTaskAdditionalOptions);
-    completedTaskOptions.push({ id: 3, title: "Delete", click() { task.removeTask(taskItem.id); }});
+    completedTaskOptions.push({ id: 3, title: "Delete", click() {tasks.removeTask(task.id);}});
   };
 
-  const getMenuOptions = (taskItem) => {
-    if (!taskItem.completed) {
+  if (!includesExecutor) {
+    onHoldTaskOptions.push({ id: 2, title: "Take the task", click() {takeTheTaskHandler()}});
+  }
+
+  const getMenuOptions = (task) => {
+    if (!task.completed) {
       return (
-        <MenuOptions options={onHoldTaskOptions} taskItem={taskItem} />
+        <MenuOptions options={onHoldTaskOptions} task={task} />
       );
     } else {
       return (
-        <MenuOptions options={completedTaskOptions} taskItem={taskItem} />
+        <MenuOptions options={completedTaskOptions} task={task} />
       );
     }
   };
 
-  const menu = getMenuOptions(taskItem);
+  const menu = getMenuOptions(task);
 
   return (
     <Space direction="vertical">

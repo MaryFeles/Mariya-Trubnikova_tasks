@@ -66,6 +66,14 @@ class Tasks {
     this.addTask(newTask);
   }
 
+  addUserRoleToTask(task, userId, role) {
+    task.users.push({
+      id: userId,
+      role: role,
+    });
+    this.updateTask(task);
+  }
+
   setTasks(data) {
     this.state.tasks = data;
   }
@@ -76,7 +84,7 @@ class Tasks {
 
   setCurrentTaskStatus(status) {
     this.state.currentTaskStatus = status;
-    console.log('set current status '+ status)
+    console.log("set current status " + status);
   }
 
   setParticipantUser(userId, role, task) {

@@ -475,60 +475,9 @@
       "title": "test8",
       "priority": "Minor",
       "completed": false,
-      "status": "Pending",
+      "status": "In Progress",
       "date": "2021-05-02T13:03:12.643Z",
-      "comments": [
-        {
-          "body": "0",
-          "date": "2021-05-02T17:14:41.005Z",
-          "userId": 2
-        },
-        {
-          "body": "1",
-          "date": "2021-05-02T17:16:05.687Z",
-          "userId": 2
-        },
-        {
-          "body": "2",
-          "date": "2021-05-02T17:16:10.187Z",
-          "userId": 2
-        },
-        {
-          "body": "3",
-          "date": "2021-05-02T17:16:14.282Z",
-          "userId": 2
-        },
-        {
-          "body": "4",
-          "date": "2021-05-02T17:16:20.921Z",
-          "userId": 2
-        },
-        {
-          "body": "5",
-          "date": "2021-05-02T17:16:30.959Z",
-          "userId": 2
-        },
-        {
-          "body": "6",
-          "date": "2021-05-02T17:16:35.553Z",
-          "userId": 2
-        },
-        {
-          "body": "gbn",
-          "date": "2021-05-02T17:26:02.483Z",
-          "userId": 2
-        },
-        {
-          "body": "7",
-          "date": "2021-05-02T17:28:00.162Z",
-          "userId": 2
-        },
-        {
-          "body": "123456",
-          "date": "2021-05-02T19:18:37.872Z",
-          "userId": 1
-        }
-      ],
+      "comments": [],
       "messages": [],
       "users": [
         {
@@ -536,44 +485,8 @@
           "role": "creator"
         },
         {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
-          "id": 2,
-          "role": "commentator"
-        },
-        {
           "id": 1,
-          "role": "commentator"
+          "role": "executor"
         }
       ],
       "id": 12
