@@ -114,7 +114,6 @@ class Tasks {
     });
 
     this.state.messages = data;
-    console.log(this.state.messages);
   }
   setCurrentTask(task) {
     this.state.currentTask = task;
@@ -122,7 +121,6 @@ class Tasks {
 
   setCurrentTaskStatus(status) {
     this.state.currentTaskStatus = status;
-    console.log("set current status " + status);
   }
 
   addTaskToArr(newTask) {

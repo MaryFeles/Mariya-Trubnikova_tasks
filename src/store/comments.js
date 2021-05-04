@@ -66,13 +66,12 @@ class Comments {
     );
 
     const newComment = {
-      author: commentAuthor.name,
+      author: commentAuthor.name + " " + commentAuthor.surname,
       avatar: `/avatars/${commentAuthor.avatar}`,
       content: comment.body,
       datetime: moment(comment.date).fromNow(),
     };
 
-    console.log("refactoring one");
     this.state.refactoredComments.push(newComment);
   }
 
@@ -96,12 +95,12 @@ class Comments {
       );
 
       const newComment = {
-        author: commentAuthor.name,
+        author: commentAuthor.name + " " + commentAuthor.surname,
         avatar: `/avatars/${commentAuthor.avatar}`,
         content: comment.body,
         datetime: moment(comment.date).fromNow(),
       };
-      console.log("refactoring all");
+
       refactoredComments.push(newComment);
     });
 

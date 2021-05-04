@@ -13,7 +13,6 @@ ReactDOM.render(
     <App>
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/task" component={TaskComments} /> */}
         <Route exact path='/task/:id' component={TaskComments} />
       </Switch>
     </App>

@@ -33,7 +33,7 @@ const Home = () => {
       </main>
 
       <aside className="aside">
-        <Messages/>
+        <Messages />
       </aside>
     </div>
   );

@@ -1,24 +1,28 @@
-$white: #FFFFFF;
-$header-color: #1D262C;
-$light-grey: #E0E0E0;
-$grey: #90A0B7;
+$white: #ffffff;
+$header-color: #1d262c;
+$light-grey: #e0e0e0;
+$grey: #90a0b7;
 $pink: #f3477a;
-$primary-color: #884CB2;
+
+$primary-color: #884cb2;
 $primary-color-hover: adjust-hue($primary-color, -20deg);
+
 $shadow-color: #8ca4d8;
 
-$pending-color: #F2994A;
-$inprogress-color: #56CCF2;
-$completed-color: #27AE60;
-$cancelled-color: #EB5757;
+$pending-color: #f2994a;
+$inprogress-color: #56ccf2;
+$completed-color: #27ae60;
+$cancelled-color: #eb5757;
 
 $minor-color: #219653;
-$normal-color: #F2C94C;
-$critical-color: #EB5757;
+$normal-color: #f2c94c;
+$critical-color: #eb5757;
 
 $message-color: #555555;
-$message-default-bg: #F3F3F3;
-$title-user-color: #5787A4;
-$creation-message-bg: linear-gradient(90deg, #DAE4F4 0%, #D3DCF1 100%);
+$message-default-bg: #f3f3f3;
+$title-user-color: #5787a4;
+$creation-message-bg: linear-gradient(90deg, #dae4f4 0%, #d3dcf1 100%);
 
-$link-color: #56CCF2;
+$link-color: #56ccf2;
+
+$err-color: rgb(206, 0, 0);

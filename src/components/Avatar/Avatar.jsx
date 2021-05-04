@@ -21,9 +21,9 @@ const CurrentUserAvatar = observer(({ handleClick }) => {
   return (
     <>
       {!currentUser ? (
-        <span className={"signin"} onClick={handleClick}>
+        <Button className={"signin"} onClick={handleClick}>
           Sign In
-        </span>
+        </Button>
       ) : (
         <div>
           <Dropdown

@@ -1,32 +1,37 @@
 import React, { useEffect } from "react";
-import { Comment, Avatar } from "antd";
+import { Comment, Avatar, PageHeader } from "antd";
 import CommentList from "./CommentList";
 import Preloader from "../Preloader/Preloader";
 import Editor from "./Editor";
-import comments from "../../store/comments";
+import AuthModal from "../Auth/AuthModal";
+import commentsStore from "../../store/comments";
+import tasksStore from "../../store/tasks";
+import usersStore from "../../store/users";
 import { observer } from "mobx-react";
-import users from "../../store/users";
 import { useHistory } from "react-router-dom";
-import tasks from "../../store/tasks";
+import Layout from "antd/lib/layout/layout";
 
 const TaskComments = observer(() => {
+  const history = useHistory();
   const path = useHistory().location.pathname;
-  const value = comments.state.value;
-  const isFetching = comments.state.isFetching;
-  const currentTaskComments = comments.state.comments;
-  const currentTask = tasks.state.currentTask;
-  const currentTaskStatus = tasks.state.currentTaskStatus;
-  const currentUser = users.state.currentUser;
-  const refactoredComments = comments.state.refactoredComments;
+  const { currentUser } = usersStore.state;
+  const {
+    comments,
+    isFetching,
+    value,
+    refactoredComments,
+  } = commentsStore.state;
+
+  const { currentTask, currentTaskStatus } = tasksStore.state;
 
   useEffect(() => {
-    tasks.setCurrentTaskStatus("Loading");
+    tasksStore.setCurrentTaskStatus("Loading");
     let taskId = path.replace("/task/", "");
-    tasks.getCurrentTask(taskId).then(() => {
-      comments
+    tasksStore.getCurrentTask(taskId).then(() => {
+      commentsStore
         .getAllCommentsOfCurrentTask(taskId)
         .then(() => {
-          comments.refactorAllComments();
+          commentsStore.refactorAllComments();
         })
         .catch((e) => {
           console.log(e);
@@ -34,47 +39,69 @@ const TaskComments = observer(() => {
     });
   }, []);
 
+  const handleOnBack = () => {
+    history.push("/");
+  };
+
   const handleSubmit = () => {
     if (!value) {
       return;
     }
 
-    comments.setIsFetching(true);
-    comments.createNewComment(currentUser.id, currentTask);
-    tasks.addUserRoleToTask(currentTask, currentUser.id, "commentator");
-    comments.getAllCommentsOfCurrentTask(currentTask.id);
+    commentsStore.setIsFetching(true);
+    commentsStore.createNewComment(currentUser.id, currentTask);
+    tasksStore.addUserRoleToTask(currentTask, currentUser.id, "commentator");
+    commentsStore.getAllCommentsOfCurrentTask(currentTask.id);
   };
 
   const handleChange = (e) => {
-    comments.setValue(e.target.value);
+    commentsStore.setValue(e.target.value);
   };
 
   return currentTask ? (
-    <>
+    <Layout className="comments-container">
+      <PageHeader
+        className="task-title"
+        onBack={handleOnBack}
+        title={currentTask.title}
+      />
       {isFetching ? (
         <Preloader />
-      ) : currentTaskComments.length > 0 ? (
+      ) : comments.length > 0 ? (
         <CommentList comments={refactoredComments} />
       ) : (
         <span>No one has posted comments for this task yet</span>
       )}
       <Comment
-        avatar={currentUser ?
-          <Avatar
-            src={`/avatars/${currentUser.avatar}`}
-            alt={currentUser.name}
-          /> : ''
+        className="comments__editor"
+        avatar={
+          currentUser ? (
+            <Avatar
+              className={"avatar"}
+              src={`/avatars/${currentUser.avatar}`}
+              alt={currentUser.name + currentUser.surname}
+            />
+          ) : (
+            ""
+          )
         }
-        content={ currentUser ?
-          <Editor
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            submitting={isFetching}
-            value={value}
-          /> : <span className="comment__err">Sign in to post a comment!</span>
+        content={
+          currentUser ? (
+            <Editor
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              submitting={isFetching}
+              value={value}
+            />
+          ) : (
+            <>
+              <span className="err">Sign in to post a comment!&emsp; </span>
+              <AuthModal />
+            </>
+          )
         }
       />
-    </>
+    </Layout>
   ) : currentTaskStatus == "Loading" ? (
     <Preloader />
   ) : (
