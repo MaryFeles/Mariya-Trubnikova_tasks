@@ -4,7 +4,7 @@ import Counter from "./Counter/Counter";
 import Tasks from "./Tasks/Tasks";
 import Btn from "./AddingTask/AddingTaskModal";
 import AuthModal from "./Auth/AuthModal";
-import Message from "./Messages/Messages";
+import Messages from "./Messages/Messages";
 import comments from "../store/comments";
 
 const Home = () => {
@@ -33,7 +33,7 @@ const Home = () => {
       </main>
 
       <aside className="aside">
-        <Message></Message>
+        <Messages/>
       </aside>
     </div>
   );

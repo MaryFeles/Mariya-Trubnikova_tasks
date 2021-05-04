@@ -8,7 +8,7 @@ import users from "../../store/users";
 
 const TaskMenu = observer(({ task }) => {
   const { currentUser } = users.state;
-  const includesExecutor = task.users.find(user => user.role === "executor");
+  const includesExecutor = task.users.find((user) => user.role === "executor");
 
   const handlerTakeTheTaskBtn = () => {
     if (includesExecutor) {
@@ -17,53 +17,90 @@ const TaskMenu = observer(({ task }) => {
       tasks.addUserRoleToTask(task, currentUser.id, "executor");
       tasks.setStatus(task, "In Progress");
     }
-  }
+  };
 
   const handlerMarkAsIncompleteBtn = () => {
     tasks.completeTaskToggle(task);
     let executorIndex = task.users.indexOf(includesExecutor);
     executorIndex != -1 && task.users.splice(executorIndex);
-    tasks.updateTask(task);     
-  }
+    tasks.updateTask(task);
+  };
 
   let onHoldTaskOptions = [
-    { id: 1, title: "View comments" },    
-    { id: 3, title: "Complete", click() {tasks.completeTaskToggle(task); }},
-    { id: 5, title: "Cancel", click() {
-      tasks.completeTaskToggle(task);
-      tasks.setStatus(task, "Cancelled");
-    }}
+    { id: 1, title: "View comments" },
+    {
+      id: 3,
+      title: "Complete",
+      click() {
+        tasks.completeTaskToggle(task);
+      },
+    },
+    {
+      id: 5,
+      title: "Cancel",
+      click() {
+        tasks.completeTaskToggle(task);
+        tasks.setStatus(task, "Cancelled");
+      },
+    },
   ];
   let completedTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 2, title: "Mark as incomplete", click() {handlerMarkAsIncompleteBtn()}},
+    {
+      id: 2,
+      title: "Mark as incomplete",
+      click() {
+        handlerMarkAsIncompleteBtn();
+      },
+    },
   ];
 
-  let recordOfCurUserInTask = task.users.find(item => item.id === currentUser.id);
   
-  if (recordOfCurUserInTask && recordOfCurUserInTask.roles.includes("creator")) {
+  let recordOfCurUserInTask;
+  currentUser && (recordOfCurUserInTask = task.users.find(
+    (item) => item.id === currentUser.id
+  ));
+
+  if (
+    recordOfCurUserInTask &&
+    recordOfCurUserInTask.roles.includes("creator")
+  ) {
     let onHoldTaskAdditionalOptions = [
       { id: 4, title: "Edit" },
-      { id: 6, title: "Delete", click() { tasks.removeTask(task.id); }}
-    ]
+      {
+        id: 6,
+        title: "Delete",
+        click() {
+          tasks.removeTask(task.id);
+        },
+      },
+    ];
 
     onHoldTaskOptions = onHoldTaskOptions.concat(onHoldTaskAdditionalOptions);
-    completedTaskOptions.push({ id: 3, title: "Delete", click() {tasks.removeTask(task.id);}});
-  };
+    completedTaskOptions.push({
+      id: 3,
+      title: "Delete",
+      click() {
+        tasks.removeTask(task.id);
+      },
+    });
+  }
 
   if (!includesExecutor) {
-    onHoldTaskOptions.push({ id: 2, title: "Take the task", click() {handlerTakeTheTaskBtn()}});
+    onHoldTaskOptions.push({
+      id: 2,
+      title: "Take the task",
+      click() {
+        handlerTakeTheTaskBtn();
+      },
+    });
   }
 
   const getMenuOptions = (task) => {
     if (!task.completed) {
-      return (
-        <MenuOptions options={onHoldTaskOptions} task={task} />
-      );
+      return <MenuOptions options={onHoldTaskOptions} task={task} />;
     } else {
-      return (
-        <MenuOptions options={completedTaskOptions} task={task} />
-      );
+      return <MenuOptions options={completedTaskOptions} task={task} />;
     }
   };
 
@@ -72,7 +109,7 @@ const TaskMenu = observer(({ task }) => {
   return (
     <Space direction="vertical">
       <Dropdown
-        trigger={['click']}
+        trigger={["click"]}
         className="task__dropdown"
         overlay={menu}
         placement="bottomCenter"
@@ -81,7 +118,7 @@ const TaskMenu = observer(({ task }) => {
           className="task__btn"
           shape="circle"
           size={"small"}
-          onClick={e => e.preventDefault()}
+          onClick={(e) => e.preventDefault()}
         >
           {iconDots}
         </Button>

@@ -11,6 +11,7 @@
 @import "./layout/main/tasks";
 
 @import "./layout/aside/aside";
+@import "./layout/aside/messages";
 
 @import "./components/loader";
 @import "./components/modal";
@@ -41,6 +42,12 @@ h1 {
   align-items: center;
 
   padding: 100px 60px;
+}
+
+.link {
+  cursor: pointer;
+  color: $primary-color;
+  font-weight: 700;
 }
 
 .highlighted-pink {

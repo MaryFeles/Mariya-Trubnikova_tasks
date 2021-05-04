@@ -6,8 +6,8 @@ import users from "../store/users";
 class App extends Component {
   componentDidMount() {
     const { searchQuery } = task.state;
-    task.getAllTasks(searchQuery);
     users.getAllUsers();
+    task.getAllTasks(searchQuery);    
     users.getUserFromLocalStorage(localStorage.getItem("userId"));
   }
 

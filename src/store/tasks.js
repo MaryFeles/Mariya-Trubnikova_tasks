@@ -4,6 +4,7 @@ import api from "../dal/api";
 class Tasks {
   state = {
     tasks: [],
+    messages: [],
     isFetching: false,
     searchQuery: "",
     currentTask: undefined,
@@ -19,7 +20,16 @@ class Tasks {
     await api.task
       .getAll(searchQuery)
       .then((data) => {
+        let messages = [];
+        data.forEach((task) => {
+          task.messages.forEach((message) => {
+            message.taskId = task.id;
+            message.date = new Date(message.date);
+            messages.push(message);
+          });
+        });
         this.setTasks(data);
+        this.setMessages(messages);
         this.setIsFetching(false);
       })
       .catch((error) => console.log(error));
@@ -98,12 +108,21 @@ class Tasks {
     this.state.tasks = data;
   }
 
+  setMessages(data) {
+    data.sort(function (a, b) {
+      return b.date - a.date;
+    });
+
+    this.state.messages = data;
+    console.log(this.state.messages);
+  }
   setCurrentTask(task) {
     this.state.currentTask = task;
   }
 
   setCurrentTaskStatus(status) {
     this.state.currentTaskStatus = status;
+    console.log("set current status " + status);
   }
 
   addTaskToArr(newTask) {

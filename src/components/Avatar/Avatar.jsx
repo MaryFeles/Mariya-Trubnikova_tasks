@@ -20,7 +20,7 @@ const CurrentUserAvatar = observer(({ handleClick }) => {
 
   return (
     <>
-      {currentUser == "" ? (
+      {!currentUser ? (
         <span className={"signin"} onClick={handleClick}>
           Sign In
         </span>

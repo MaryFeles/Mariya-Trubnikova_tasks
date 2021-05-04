@@ -4,7 +4,7 @@ import api from "../dal/api";
 class Users {
   state = {
     users: [],
-    currentUser: "",
+    currentUser: undefined,
     isFetching: false,
     statusLogin: "",
   };

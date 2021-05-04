@@ -1,0 +1,103 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  color: $message-color;
+  font-size: 12px;
+  line-height: 20px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+  }
+
+  &__avatar {
+    margin-top: 2px;
+    margin-left: 2px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin-left: 56px;
+  }
+
+  &__author {
+    font-family: Montserrat;
+    font-weight: 500;
+    color: #24272c;
+    font-size: 12px;
+
+    margin-right: 10px;
+  }
+
+  &__date {
+    color: #7d859a;
+    font-size: 10px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+    font-size: 10px;
+  }
+
+  &__curuser-title {
+    width: 70%;
+
+    color: $title-user-color;
+    font-family: Montserrat;
+    font-weight: 500;
+    line-height: 18px;
+    &--comment {
+        font-size: 10px;
+    }
+  }
+
+  &__body {
+    margin: 5px 0px 30px 54px;
+    border-radius: 10px;
+    padding: 16px 14px;
+    &--creation {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      width: 100%;
+      margin-top: 0;
+      background: $creation-message-bg;
+    }
+    &--comment {
+      background: $message-default-bg;
+    }
+    &--curuser {
+      margin-top: 8px;
+      font-size: 10px;
+      line-height: 15px;
+    }
+  }
+
+  &.right {
+    align-items: flex-end;
+  }
+  &.left {
+    align-items: flex-start;
+  }
+}
+
+.avatar-wrap {
+  height: 36px;
+  width: 36px;
+
+  position: absolute;
+
+  border-radius: 50%;
+  background: linear-gradient(to left, #84d3ff 70%, #4bd3e2 70%, #90d5fd 70%);
+}

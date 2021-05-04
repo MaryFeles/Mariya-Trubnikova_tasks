@@ -71,6 +71,8 @@ class Comments {
       content: comment.body,
       datetime: moment(comment.date).fromNow(),
     };
+
+    console.log("refactoring one");
     this.state.refactoredComments.push(newComment);
   }
 
@@ -99,6 +101,7 @@ class Comments {
         content: comment.body,
         datetime: moment(comment.date).fromNow(),
       };
+      console.log("refactoring all");
       refactoredComments.push(newComment);
     });
 

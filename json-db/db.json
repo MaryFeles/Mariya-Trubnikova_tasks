@@ -570,6 +570,12 @@
           "body": "dqw",
           "date": "2021-05-03T12:05:32.179Z",
           "userId": 3
+        },
+        {
+          "id": 2,
+          "body": "test",
+          "date": "2021-05-04T10:42:58.036Z",
+          "userId": 1
         }
       ],
       "messages": [
@@ -586,6 +592,12 @@
           "id": 3,
           "roles": [
             "creator",
+            "commentator"
+          ]
+        },
+        {
+          "id": 1,
+          "roles": [
             "commentator"
           ]
         }

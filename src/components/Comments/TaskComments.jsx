@@ -59,19 +59,19 @@ const TaskComments = observer(() => {
         <span>No one has posted comments for this task yet</span>
       )}
       <Comment
-        avatar={
+        avatar={currentUser ?
           <Avatar
             src={`/avatars/${currentUser.avatar}`}
             alt={currentUser.name}
-          />
+          /> : ''
         }
-        content={
+        content={ currentUser ?
           <Editor
             onChange={handleChange}
             onSubmit={handleSubmit}
             submitting={isFetching}
             value={value}
-          />
+          /> : <span className="comment__err">Sign in to post a comment!</span>
         }
       />
     </>
