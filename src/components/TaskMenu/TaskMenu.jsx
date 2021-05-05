@@ -28,31 +28,17 @@ const TaskMenu = observer(({ task }) => {
 
   let onHoldTaskOptions = [
     { id: 1, title: "View comments" },
-    {
-      id: 3,
-      title: "Complete",
-      click() {
-        tasks.completeTaskToggle(task);
-      },
-    },
-    {
-      id: 5,
-      title: "Cancel",
-      click() {
+    { id: 3, title: "Complete", click() {tasks.completeTaskToggle(task)}},
+    { id: 4, title: "Cancel", click() {
         tasks.completeTaskToggle(task);
         tasks.setStatus(task, "Cancelled");
       },
     },
   ];
+
   let completedTaskOptions = [
     { id: 1, title: "View comments" },
-    {
-      id: 2,
-      title: "Mark as incomplete",
-      click() {
-        handlerMarkAsIncompleteBtn();
-      },
-    },
+    { id: 2, title: "Mark as incomplete", click() {handlerMarkAsIncompleteBtn()}},
   ];
 
   let recordOfCurUserInTask;
@@ -61,19 +47,9 @@ const TaskMenu = observer(({ task }) => {
       (item) => item.id === currentUser.id
     ));
 
-  if (
-    recordOfCurUserInTask &&
-    recordOfCurUserInTask.roles.includes("creator")
-  ) {
+  if (recordOfCurUserInTask && recordOfCurUserInTask.roles.includes("creator")) {
     let onHoldTaskAdditionalOptions = [
-      { id: 4, title: "Edit" },
-      {
-        id: 6,
-        title: "Delete",
-        click() {
-          tasks.removeTask(task.id);
-        },
-      },
+      { id: 5, title: "Delete", click() {tasks.removeTask(task.id)}},
     ];
 
     onHoldTaskOptions = onHoldTaskOptions.concat(onHoldTaskAdditionalOptions);

@@ -17,13 +17,13 @@ const TasksSection = observer(
 
         {sectionClass === "onhold" ? (
           <Content style={{
-        overflow: 'auto',
-        height: '30vh',
+        // overflow: 'auto',
+        // height: '30vh',
       }} ><TasksList isCompleted={false} /></Content>
         ) : (
           <Content style={{
-        overflow: 'auto',
-        height: '20vh',
+        // overflow: 'auto',
+        // height: '20vh',
       }} ><TasksList isCompleted={true} /></Content>
         )}
       </section>
