@@ -1,7 +1,8 @@
 import React from "react";
 import TaskMenu from "../TaskMenu/TaskMenu";
-import task from "../../store/tasks";
+import tasksStore from "../../store/tasks";
 import { observer } from "mobx-react";
+import AvatarGroup from "../AvatarGroup/AvatarGroup";
 
 const Task = observer(({ isCompleted }) => {
   const formatStr = (str) => {
@@ -9,40 +10,42 @@ const Task = observer(({ isCompleted }) => {
     return str;
   };
 
-  const { tasks } = task.state;
+  const { tasks } = tasksStore.state;
 
   const statusClass = "task__status task__status--";
   const priorityClass = "task__priority task__priority--";
 
   return isCompleted
-    ? tasks.map((item) => {
+    ? tasks.map((task) => {
         return (
-          item.completed && (
-            <li className="tasks__item task" key={item.id}>
-              <span className="task__title">{item.title}</span>
-              <span className={statusClass + formatStr(item.status)}>
-                {item.status}
+          task.completed && (
+            <li className="tasks__item task" key={task.id}>
+              <span className="task__title">{task.title}</span>
+              <span className={statusClass + formatStr(task.status)}>
+                {task.status}
               </span>
-              <span className={priorityClass + formatStr(item.priority)}>
-                {item.priority}
+              <span className={priorityClass + formatStr(task.priority)}>
+                {task.priority}
               </span>
-              <TaskMenu task={item} />
+              <AvatarGroup task={task}/>
+              <TaskMenu task={task} />
             </li>
           )
         );
       })
-    : tasks.map((item) => {
+    : tasks.map((task) => {
         return (
-          !item.completed && (
-            <li className="tasks__item task" key={item.id}>
-              <span className="task__title">{item.title}</span>
-              <span className={statusClass + formatStr(item.status)}>
-                {item.status}
+          !task.completed && (
+            <li className="tasks__item task" key={task.id}>
+              <span className="task__title">{task.title}</span>
+              <span className={statusClass + formatStr(task.status)}>
+                {task.status}
               </span>
-              <span className={priorityClass + formatStr(item.priority)}>
-                {item.priority}
+              <span className={priorityClass + formatStr(task.priority)}>
+                {task.priority}
               </span>
-              <TaskMenu task={item} />
+              <AvatarGroup task={task}/>
+              <TaskMenu task={task} />
             </li>
           )
         );

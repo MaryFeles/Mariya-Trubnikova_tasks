@@ -3,7 +3,7 @@ import Search from "./Search/Search";
 import Counter from "./Counter/Counter";
 import Tasks from "./Tasks/Tasks";
 import Btn from "./AddingTask/AddingTaskModal";
-import AuthModal from "./Auth/AuthModal";
+import Auth from "./Auth/AuthModal";
 import Messages from "./Messages/Messages";
 import comments from "../store/comments";
 import Layout from "antd/lib/layout/layout";
@@ -14,7 +14,7 @@ const Home = () => {
     <Layout className="container">
       <header className="header">
         <Search />
-        <AuthModal />
+        <Auth />
       </header>
 
       <main className="main">

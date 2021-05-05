@@ -208,26 +208,8 @@
       "comments": [
         {
           "id": 1,
-          "body": "some comment7",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
-        },
-        {
-          "id": 2,
-          "body": "some comment8",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 2
-        },
-        {
-          "id": 3,
-          "body": "zfdf",
-          "date": "2021-05-03T11:39:00.430Z",
-          "userId": 1
-        },
-        {
-          "id": 4,
-          "body": "cfdsf",
-          "date": "2021-05-03T11:39:49.497Z",
+          "body": "Some comment Some comment Some comment Some comment Some comment ",
+          "date": "2021-05-05T13:56:11.069Z",
           "userId": 1
         }
       ],
@@ -238,38 +220,28 @@
           "body": "Task created",
           "date": "2021-05-02T12:46:30.453Z",
           "userId": 1
-        },
-        {
-          "id": 2,
-          "type": "comment",
-          "body": "Task changed",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 2
         }
       ],
       "users": [
         {
-          "id": 1,
-          "roles": [
-            "creator"
-          ]
-        },
-        {
           "id": 2,
           "roles": [
+            "creator",
             "commentator"
           ]
         },
         {
           "id": 1,
           "roles": [
+            "commentator",
             "commentator"
           ]
         },
         {
-          "id": 1,
+          "id": 3,
           "roles": [
-            "commentator"
+            "commentator",
+            "executor"
           ]
         }
       ]
