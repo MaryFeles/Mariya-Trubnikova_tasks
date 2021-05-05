@@ -6,11 +6,12 @@ import Btn from "./AddingTask/AddingTaskModal";
 import AuthModal from "./Auth/AuthModal";
 import Messages from "./Messages/Messages";
 import comments from "../store/comments";
+import Layout from "antd/lib/layout/layout";
 
 const Home = () => {
   comments.setIsFetching(true);
   return (
-    <div className="container">
+    <Layout className="container">
       <header className="header">
         <Search />
         <AuthModal />
@@ -32,10 +33,14 @@ const Home = () => {
         </div>
       </main>
 
-      <aside className="aside">
-        <Messages />
+      <aside className="aside" style={{
+        overflow: 'auto',
+        height: '80vh',
+      }} >
+        <Messages style={{height:"100%", overflow: 'auto',
+      }} />
       </aside>
-    </div>
+    </Layout>
   );
 };
 

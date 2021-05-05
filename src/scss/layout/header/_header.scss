@@ -1,7 +1,26 @@
 .header {
   display: flex;
   justify-content: space-between;
-  
+
   width: 100%;
   padding-bottom: 30px;
+
+  &__avatar-wrap {
+    height: 30px;
+    width: 30px;
+
+    border-radius: 50%;
+    background: linear-gradient(
+      to top,
+      #fd648e 10%,
+      #884cb2 100%,
+      #fd648e 100%
+    );
+  }
+
+  &__avatar {
+    margin-top: 2px;
+    margin-left: 2px;
+    border: 1px solid $white;
+  }
 }

@@ -11,31 +11,31 @@ const CurrentUserAvatar = observer(({ handleClick }) => {
   };
 
   const menu = (
-    <Menu>
-      <Menu.Item>
-        <Button onClick={handleClickAvatar}>Sign Out</Button>
-      </Menu.Item>
+    <Menu className="dropdown__menu">
+      <Button className="dropdown__btn" onClick={handleClickAvatar}>
+        Sign Out
+      </Button>
     </Menu>
   );
 
   return (
     <>
       {!currentUser ? (
-        <Button className={"signin"} onClick={handleClick}>
-          Sign In
-        </Button>
+        <Button onClick={handleClick}>Sign In</Button>
       ) : (
         <div>
           <Dropdown
-            className="task__dropdown"
+            className="task__dropdown dropdown"
             overlay={menu}
             placement="bottomRight"
           >
-            <Avatar
-              src={`/avatars/${currentUser.avatar}`}
-              className={"user-avatar"}
-              size={26}
-            />
+            <div className={"header__avatar-wrap user-avatar"}>
+              <Avatar
+                src={`/avatars/${currentUser.avatar}`}
+                className={"header__avatar"}
+                size={26}
+              />
+            </div>
           </Dropdown>
         </div>
       )}

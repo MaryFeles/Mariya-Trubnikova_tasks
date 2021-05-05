@@ -148,8 +148,8 @@
       "id": 3,
       "title": "Batch3 schedule download/process.",
       "priority": "Critical",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Cancelled",
       "date": "2021-03-02T12:46:30.453Z",
       "comments": [
         {
@@ -171,14 +171,16 @@
           "type": "creation",
           "body": "Task created",
           "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
+          "userId": 1,
+          "taskId": 3
         },
         {
           "id": 2,
           "type": "comment",
           "body": "Task changed",
           "date": "2021-05-02T12:46:30.453Z",
-          "userId": 2
+          "userId": 2,
+          "taskId": 3
         }
       ],
       "users": [
@@ -328,8 +330,8 @@
       "id": 6,
       "title": "Batch schedule download/process.",
       "priority": "Critical",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Cancelled",
       "date": "2021-05-02T12:46:30.453Z",
       "comments": [
         {
@@ -351,14 +353,16 @@
           "type": "creation",
           "body": "Task created",
           "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
+          "userId": 1,
+          "taskId": 6
         },
         {
           "id": 2,
           "type": "comment",
           "body": "Task changed",
           "date": "2020-05-02T12:46:30.453Z",
-          "userId": 2
+          "userId": 2,
+          "taskId": 6
         }
       ],
       "users": [
@@ -555,8 +559,8 @@
     {
       "title": "testtask",
       "priority": "Critical",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Completed",
       "date": "2021-05-03T12:04:49.315Z",
       "comments": [
         {
@@ -583,8 +587,9 @@
           "id": 1,
           "type": "creation",
           "body": "Task created",
-          "date": "Mon May 03 2021 16:04:49 GMT+0400 (GMT+04:00)",
-          "userId": 3
+          "date": "2021-05-03T12:04:49.000Z",
+          "userId": 3,
+          "taskId": 13
         }
       ],
       "users": [

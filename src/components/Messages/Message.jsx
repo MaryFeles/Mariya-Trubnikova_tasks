@@ -16,7 +16,7 @@ const Message = ({
     return (
       <div className={className + " " + "left"}>
         <div className={messageClass + "header"}>
-          <div className="avatar-wrap">
+          <div className={messageClass + "avatar-wrap"}>
             <Avatar
               className={messageClass + "avatar"}
               src={`avatars/${author.avatar}`}

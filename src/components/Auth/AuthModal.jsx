@@ -8,14 +8,14 @@ import AuthForm from "./AuthForm";
 const AuthModal = observer(() => {
   return (
     <>
-      <CurrentUserAvatar handleClick={authModal.showModal}/>
+      <CurrentUserAvatar handleClick={authModal.showModal} />
       <Modal
         title="Sign in to task manager"
         visible={authModal.visible}
         onCancel={authModal.handleCancel}
         footer=""
       >
-      <AuthForm />
+        <AuthForm />
       </Modal>
     </>
   );

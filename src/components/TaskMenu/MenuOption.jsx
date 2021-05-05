@@ -14,7 +14,7 @@ const MenuOption = observer((props) => {
 
   return title === "View comments" ? (
     <Button
-      className="menu__btn"
+      className="dropdown__btn"
       key={key}
       block
       onClick={(e) => {
@@ -24,7 +24,7 @@ const MenuOption = observer((props) => {
       {title}
     </Button>
   ) : (
-    <Button className="menu__btn" key={key} block onClick={handleClick}>
+    <Button className="dropdown__btn" key={key} block onClick={handleClick}>
       {title}
     </Button>
   );

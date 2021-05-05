@@ -4,7 +4,7 @@ import MenuOption from "./MenuOption";
 
 const MenuOptions = ({ options, task }) => {
   return (
-    <Menu>
+    <Menu className="dropdown__menu">
       {options.map((option) => {
         if (task.status === "In Progress") {
           return (

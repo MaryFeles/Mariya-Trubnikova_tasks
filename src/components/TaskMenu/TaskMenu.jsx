@@ -55,11 +55,11 @@ const TaskMenu = observer(({ task }) => {
     },
   ];
 
-  
   let recordOfCurUserInTask;
-  currentUser && (recordOfCurUserInTask = task.users.find(
-    (item) => item.id === currentUser.id
-  ));
+  currentUser &&
+    (recordOfCurUserInTask = task.users.find(
+      (item) => item.id === currentUser.id
+    ));
 
   if (
     recordOfCurUserInTask &&
@@ -96,6 +96,11 @@ const TaskMenu = observer(({ task }) => {
     });
   }
 
+  if (!currentUser) {
+    onHoldTaskOptions = [{ id: 1, title: "View comments" }];
+    completedTaskOptions = [{ id: 1, title: "View comments" }];
+  }
+
   const getMenuOptions = (task) => {
     if (!task.completed) {
       return <MenuOptions options={onHoldTaskOptions} task={task} />;
@@ -110,7 +115,7 @@ const TaskMenu = observer(({ task }) => {
     <Space direction="vertical">
       <Dropdown
         trigger={["click"]}
-        className="task__dropdown"
+        className="dropdown task__dropdown"
         overlay={menu}
         placement="bottomCenter"
       >
