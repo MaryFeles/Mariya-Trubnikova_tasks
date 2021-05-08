@@ -44,8 +44,8 @@
       "id": 1,
       "title": "Evaluate the addition and deletion of user IDs.",
       "priority": "Minor",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Cancelled",
       "date": "2021-01-02T12:46:30.453Z",
       "comments": [
         {
@@ -67,14 +67,16 @@
           "type": "creation",
           "body": "Task created",
           "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
+          "userId": 1,
+          "taskId": 1
         },
         {
           "id": 2,
           "type": "comment",
           "body": "Task changed",
           "date": "2021-05-02T12:46:30.453Z",
-          "userId": 2
+          "userId": 2,
+          "taskId": 1
         }
       ],
       "users": [
@@ -96,8 +98,8 @@
       "id": 2,
       "title": "Identify2 the implementation team.",
       "priority": "Normal",
-      "completed": true,
-      "status": "Cancelled",
+      "completed": false,
+      "status": "Pending",
       "date": "2021-02-02T12:46:30.453Z",
       "comments": [
         {
@@ -148,8 +150,8 @@
       "id": 3,
       "title": "Batch3 schedule download/process.",
       "priority": "Critical",
-      "completed": true,
-      "status": "Cancelled",
+      "completed": false,
+      "status": "In Progress",
       "date": "2021-03-02T12:46:30.453Z",
       "comments": [
         {
@@ -193,7 +195,8 @@
         {
           "id": 2,
           "roles": [
-            "commentator"
+            "commentator",
+            "executor"
           ]
         }
       ]
@@ -202,8 +205,8 @@
       "id": 4,
       "title": "Identify the implementation team.",
       "priority": "Normal",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Cancelled",
       "date": "2021-05-02T12:46:30.453Z",
       "comments": [
         {
@@ -247,63 +250,11 @@
       ]
     },
     {
-      "id": 5,
-      "title": "Batch schedule download/process.",
-      "priority": "Critical",
-      "completed": false,
-      "status": "Pending",
-      "date": "2021-05-02T12:46:30.453Z",
-      "comments": [
-        {
-          "id": 1,
-          "body": "some comment9",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
-        },
-        {
-          "id": 2,
-          "body": "some comment10",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 2
-        }
-      ],
-      "messages": [
-        {
-          "id": 1,
-          "type": "creation",
-          "body": "Task created",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 1
-        },
-        {
-          "id": 2,
-          "type": "comment",
-          "body": "Task changed",
-          "date": "2021-05-02T12:46:30.453Z",
-          "userId": 2
-        }
-      ],
-      "users": [
-        {
-          "id": 1,
-          "roles": [
-            "creator"
-          ]
-        },
-        {
-          "id": 2,
-          "roles": [
-            "commentator"
-          ]
-        }
-      ]
-    },
-    {
       "id": 6,
       "title": "Batch schedule download/process.",
       "priority": "Critical",
       "completed": true,
-      "status": "Cancelled",
+      "status": "Completed",
       "date": "2021-05-02T12:46:30.453Z",
       "comments": [
         {
@@ -349,6 +300,12 @@
           "roles": [
             "commentator"
           ]
+        },
+        {
+          "id": 3,
+          "roles": [
+            "executor"
+          ]
         }
       ]
     },
@@ -356,8 +313,8 @@
       "id": 7,
       "title": "Batch schedule download/process.",
       "priority": "Critical",
-      "completed": true,
-      "status": "Cancelled",
+      "completed": false,
+      "status": "In Progress",
       "date": "2021-01-03T12:46:30.453Z",
       "comments": [
         {
@@ -379,14 +336,16 @@
           "type": "creation",
           "body": "Task created",
           "date": "2020-05-02T12:46:30.453Z",
-          "userId": 1
+          "userId": 1,
+          "taskId": 7
         },
         {
           "id": 2,
           "type": "comment",
           "body": "Task changed",
           "date": "2021-05-01T12:46:30.453Z",
-          "userId": 2
+          "userId": 2,
+          "taskId": 7
         }
       ],
       "users": [
@@ -399,159 +358,26 @@
         {
           "id": 2,
           "roles": [
-            "commentator"
+            "commentator",
+            "executor"
           ]
         }
       ]
     },
     {
-      "title": "test7",
-      "priority": "Normal",
+      "title": "task 123",
+      "priority": "Critical",
       "completed": false,
       "status": "In Progress",
-      "date": "2021-05-02T13:00:08.227Z",
-      "comments": [
-        {
-          "id": 1,
-          "body": "ewe",
-          "date": "2021-05-03T12:03:34.018Z",
-          "userId": 3
-        },
-        {
-          "id": 1,
-          "body": "ew",
-          "date": "2021-05-03T12:03:36.745Z",
-          "userId": 3
-        },
-        {
-          "id": 2,
-          "body": "qwe",
-          "date": "2021-05-03T12:03:39.122Z",
-          "userId": 3
-        }
-      ],
-      "messages": [],
+      "date": "2021-05-08T13:03:15.863Z",
+      "comments": [],
       "users": [
         {
           "id": 3,
           "roles": [
             "creator",
-            "commentator"
-          ]
-        },
-        {
-          "id": 1,
-          "roles": [
             "executor"
           ]
-        }
-      ],
-      "id": 11
-    },
-    {
-      "title": "test8",
-      "priority": "Minor",
-      "completed": false,
-      "status": "Pending",
-      "date": "2021-05-02T13:03:12.643Z",
-      "comments": [
-        {
-          "id": 1,
-          "body": "ds",
-          "date": "2021-05-03T11:43:17.131Z",
-          "userId": 1
-        },
-        {
-          "id": 2,
-          "body": "asda",
-          "date": "2021-05-03T11:43:21.046Z",
-          "userId": 1
-        },
-        {
-          "id": 3,
-          "body": "dadad",
-          "date": "2021-05-03T11:43:23.181Z",
-          "userId": 1
-        },
-        {
-          "id": 4,
-          "body": "f",
-          "date": "2021-05-03T11:45:44.298Z",
-          "userId": 1
-        },
-        {
-          "id": 5,
-          "body": "asdasd",
-          "date": "2021-05-03T11:53:19.613Z",
-          "userId": 1
-        },
-        {
-          "id": 6,
-          "body": "dw",
-          "date": "2021-05-03T11:56:53.275Z",
-          "userId": 1
-        },
-        {
-          "id": 7,
-          "body": "ds",
-          "date": "2021-05-03T11:57:45.369Z",
-          "userId": 1
-        },
-        {
-          "id": 7,
-          "body": "ds",
-          "date": "2021-05-03T11:58:28.652Z",
-          "userId": 1
-        },
-        {
-          "id": 8,
-          "body": "ds",
-          "date": "2021-05-03T11:59:21.367Z",
-          "userId": 3
-        }
-      ],
-      "messages": [],
-      "users": [
-        {
-          "id": 3,
-          "roles": [
-            "creator",
-            "commentator"
-          ]
-        },
-        {
-          "id": 1,
-          "roles": [
-            "commentator"
-          ]
-        }
-      ],
-      "id": 12
-    },
-    {
-      "title": "testtask",
-      "priority": "Critical",
-      "completed": true,
-      "status": "Completed",
-      "date": "2021-05-03T12:04:49.315Z",
-      "comments": [
-        {
-          "id": 1,
-          "body": "dqwd",
-          "date": "2021-05-03T12:05:30.020Z",
-          "userId": 3
-        },
-        {
-          "id": 1,
-          "body": "dqw",
-          "date": "2021-05-03T12:05:32.179Z",
-          "userId": 3
-        },
-        {
-          "id": 2,
-          "body": "test",
-          "date": "2021-05-04T10:42:58.036Z",
-          "userId": 1
         }
       ],
       "messages": [
@@ -559,27 +385,43 @@
           "id": 1,
           "type": "creation",
           "body": "Task created",
-          "date": "2021-05-03T12:04:49.000Z",
+          "date": "2021-05-08T13:03:15.000Z",
           "userId": 3,
-          "taskId": 13
+          "taskId": 8
         }
       ],
+      "id": 8
+    },
+    {
+      "title": "task qwerty",
+      "priority": "Critical",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-05-08T14:08:32.596Z",
+      "comments": [],
       "users": [
         {
           "id": 3,
           "roles": [
-            "creator",
-            "commentator"
+            "creator"
           ]
         },
         {
           "id": 1,
-          "roles": [
-            "commentator"
-          ]
+          "roles": []
         }
       ],
-      "id": 13
+      "messages": [
+        {
+          "id": 1,
+          "type": "creation",
+          "body": "Task created",
+          "date": "2021-05-08T14:08:32.000Z",
+          "userId": 3,
+          "taskId": 9
+        }
+      ],
+      "id": 9
     }
   ]
 }

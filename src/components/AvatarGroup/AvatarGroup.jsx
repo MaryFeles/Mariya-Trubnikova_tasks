@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Avatar } from "antd";
 import UserAvatar from "./Avatar";
 import usersStore from "../../store/users";
@@ -16,8 +16,9 @@ const AvatarGroup = observer(({ task }) => {
   return <Avatar.Group maxCount={4}>
       {sorted.map((item) => {
         item = users.find((user) => user.id == item.id);
-        return <UserAvatar user={item} />
+        return <UserAvatar key={item.id} user={item} />
       })}
+      
   </Avatar.Group>;
 });
 

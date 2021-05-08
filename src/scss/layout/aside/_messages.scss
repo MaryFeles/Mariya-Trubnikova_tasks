@@ -61,7 +61,7 @@
   }
 
   &__curuser-title {
-    width: 70%;
+    width: 60%;
 
     color: $title-user-color;
     font-family: "Montserrat", sans-serif;
@@ -89,6 +89,7 @@
       background: $message-default-bg;
     }
     &--curuser {
+      width: 100%;
       margin-top: 8px;
       font-size: 10px;
       line-height: 15px;

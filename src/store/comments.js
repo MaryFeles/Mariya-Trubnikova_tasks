@@ -2,6 +2,7 @@ import { makeAutoObservable } from "mobx";
 import api from "../dal/api";
 import users from "./users";
 import moment from "moment";
+import tasks from "./tasks";
 
 class Comments {
   state = {
@@ -58,6 +59,7 @@ class Comments {
     task.comments.push(newComment);
     this.addCommentIntoTask(task);
     this.refactorOneComment(newComment);
+    tasks.createNewMessage(userId, task, "comment", newComment.body);
   }
 
   refactorOneComment(comment) {
@@ -73,6 +75,17 @@ class Comments {
     };
 
     this.state.refactoredComments.push(newComment);
+  }
+
+  removeComments(taskId) {
+    this.state.comments.forEach(()=>{
+      let commentIndex = this.state.comments.indexOf(
+        (comment) => comment.taskId == taskId
+      );
+      while (commentIndex != -1 ) {
+        this.state.comments.splice(commentIndex, 1);
+      }
+    })   
   }
 
   setComments(comments) {

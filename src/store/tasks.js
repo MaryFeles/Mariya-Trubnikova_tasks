@@ -15,30 +15,37 @@ class Tasks {
     makeAutoObservable(this);
   }
 
-  async getAllTasks(searchQuery) {
+  async getAllTasks(searchQuery = "") {
     this.setIsFetching(true);
     await api.task
       .getAll(searchQuery)
-      .then((data) => {
-        let messages = [];
-        data.forEach((task) => {
-          task.messages.forEach((message) => {
-            message.taskId = task.id;
-            message.date = new Date(message.date);
-            messages.push(message);
-          });
-        });
+      .then((data) => {        
         this.setTasks(data);
-        this.setMessages(messages);
+        this.setMessages(data);
         this.setIsFetching(false);
       })
       .catch((error) => console.log(error));
+  }
+
+  setMessages(tasks=this.state.tasks) {
+    this.setIsFetching(true);
+    let messages = [];
+    tasks.forEach((task) => {
+      task.messages.forEach((message) => {
+        message.taskId = task.id;
+        message.date = new Date(message.date);
+        this.sortMessages(messages);
+        messages.push(message);
+      });
+    });
+    this.setIsFetching(false);
   }
 
   async addTask(task) {
     this.setIsFetching(true);
     await api.task.add(task).then((data) => {
       this.addTaskToArr(data);
+      this.setMessages(this.state.tasks);
       this.setIsFetching(false);
     });
   }
@@ -70,7 +77,6 @@ class Tasks {
       status: "Pending",
       date: new Date(),
       comments: [],
-      messages: [],
       users: [{ id: userId, roles: ["creator"] }],
       messages: [
         {
@@ -87,14 +93,14 @@ class Tasks {
   }
 
   addUserRoleToTask(task, userId, role) {
-    let UserIndexInTask = task.users.findIndex((user) => user.id == userId);
+    let userIndexInTask = task.users.findIndex((user) => user.id == userId);
 
     if (
-      UserIndexInTask >= 0 &&
-      !task.users[UserIndexInTask].roles.includes(role)
+      userIndexInTask >= 0 &&
+      !task.users[userIndexInTask].roles.includes(role)
     ) {
-      task.users[UserIndexInTask].roles.push(role);
-    } else if (UserIndexInTask < 0) {
+      task.users[userIndexInTask].roles.push(role);
+    } else if (userIndexInTask < 0) {
       task.users.push({
         id: userId,
         roles: [role],
@@ -102,19 +108,54 @@ class Tasks {
     }
 
     this.updateTask(task);
+    this.getAllTasks();
+  }
+
+  createNewMessage(userId, task, type, body) {
+    let idMessage = 1;
+
+    if (this.state.messages.length > 0) {
+      let maxId = 1;
+
+      this.state.messages.forEach((item) => {
+        maxId = item.id > maxId ? item.id : maxId;
+      });
+
+      for (let i = 1; i <= maxId + 1; i++) {
+        if (!this.state.messages.find((item) => item.id == i)) {
+          idMessage = i;
+        }
+      }
+    }
+
+    const newMessage = {
+      id: idMessage,
+      type: type,
+      body: body,
+      date: new Date(),
+      userId: userId,
+    };
+
+    task.messages.push(newMessage);
+    this.addMessageIntoTask(task);
+  }
+
+  addMessageIntoTask(task) {
+    api.task.update(task);
   }
 
   setTasks(data) {
     this.state.tasks = data;
   }
 
-  setMessages(data) {
+  sortMessages(data) {
     data.sort(function (a, b) {
       return b.date - a.date;
     });
 
     this.state.messages = data;
   }
+
   setCurrentTask(task) {
     this.state.currentTask = task;
   }
@@ -127,9 +168,23 @@ class Tasks {
     this.state.tasks.unshift(newTask);
   }
 
+  removeMessages(taskId) {
+    this.state.messages.forEach(()=>{
+      let messageIndex = this.state.messages.indexOf(
+        (message) => message.taskId == taskId
+      );
+      while (messageIndex != -1 ) {
+        this.state.messages.splice(messageIndex, 1);
+      }
+    })   
+  }
+
   removeTask(id) {
+    this.setIsFetching(true);
     api.task.remove(id);
     this.state.tasks = this.state.tasks.filter((task) => task.id !== id);
+    this.setMessages();
+    this.setIsFetching(false);
   }
 
   completeTaskToggle(task) {
@@ -141,7 +196,7 @@ class Tasks {
 
   setStatus(task, status) {
     task.status = status;
-    api.task.update(task);
+    this.updateTask(task);
   }
 
   setIsFetching(value) {

@@ -8,7 +8,9 @@ import users from "../../store/users";
 
 const TaskMenu = observer(({ task }) => {
   const { currentUser } = users.state;
-  const includesExecutor = task.users.find((user) => user.role === "executor");
+  const includesExecutor = task.users.find((user) =>
+    user.roles.includes("executor")
+  );
 
   const handlerTakeTheTaskBtn = () => {
     if (includesExecutor) {
@@ -21,15 +23,22 @@ const TaskMenu = observer(({ task }) => {
 
   const handlerMarkAsIncompleteBtn = () => {
     tasks.completeTaskToggle(task);
-    let executorIndex = task.users.indexOf(includesExecutor);
-    executorIndex != -1 && task.users.splice(executorIndex);
+
+
+    if (includesExecutor) {
+      let executorRoleIndex = includesExecutor.roles.indexOf("executor");
+      includesExecutor.roles.splice(executorRoleIndex);
+    }
+
     tasks.updateTask(task);
   };
 
   let onHoldTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 3, title: "Complete", click() {tasks.completeTaskToggle(task)}},
-    { id: 4, title: "Cancel", click() {
+    {
+      id: 4,
+      title: "Cancel",
+      click() {
         tasks.completeTaskToggle(task);
         tasks.setStatus(task, "Cancelled");
       },
@@ -38,7 +47,13 @@ const TaskMenu = observer(({ task }) => {
 
   let completedTaskOptions = [
     { id: 1, title: "View comments" },
-    { id: 2, title: "Mark as incomplete", click() {handlerMarkAsIncompleteBtn()}},
+    {
+      id: 2,
+      title: "Mark as incomplete",
+      click() {
+        handlerMarkAsIncompleteBtn();
+      },
+    },
   ];
 
   let recordOfCurUserInTask;
@@ -47,9 +62,18 @@ const TaskMenu = observer(({ task }) => {
       (item) => item.id === currentUser.id
     ));
 
-  if (recordOfCurUserInTask && recordOfCurUserInTask.roles.includes("creator")) {
+  if (
+    recordOfCurUserInTask &&
+    recordOfCurUserInTask.roles.includes("creator")
+  ) {
     let onHoldTaskAdditionalOptions = [
-      { id: 5, title: "Delete", click() {tasks.removeTask(task.id)}},
+      {
+        id: 5,
+        title: "Delete",
+        click() {
+          tasks.removeTask(task.id);
+        },
+      },
     ];
 
     onHoldTaskOptions = onHoldTaskOptions.concat(onHoldTaskAdditionalOptions);
@@ -58,6 +82,19 @@ const TaskMenu = observer(({ task }) => {
       title: "Delete",
       click() {
         tasks.removeTask(task.id);
+      },
+    });
+  }
+
+  if (
+    recordOfCurUserInTask &&
+    recordOfCurUserInTask.roles.includes("executor")
+  ) {
+    onHoldTaskOptions.push({
+      id: 3,
+      title: "Complete",
+      click() {
+        tasks.completeTaskToggle(task);
       },
     });
   }

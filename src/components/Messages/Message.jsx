@@ -46,7 +46,7 @@ const Message = ({
     );
   } else {
     return message.type === "creation" ? (
-      <div className={className + " " + "right"}>
+      <div  className={className + " " + "right"}>
         <div className={messageClass + "body message__body--" + message.type}>
           <span className={messageClass + "curuser-title"}>{title}</span>
           <span className={messageClass + "date"}>
@@ -57,7 +57,7 @@ const Message = ({
         </div>
       </div>
     ) : (
-      <div className={className + " " + "right right--comment"}>
+      <div  className={className + " " + "right right--comment"}>
         <span className={messageClass + "date"}>
           {moment(message.date).fromNow()}
         </span>

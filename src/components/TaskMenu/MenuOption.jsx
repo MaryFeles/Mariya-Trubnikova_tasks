@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from "antd";
 import { observer } from "mobx-react";
 import { useHistory } from "react-router-dom";
+import comments from "../../store/comments";
+
 
 const MenuOption = observer((props) => {
   const { task, title, key, handleClick } = props;
@@ -10,6 +12,7 @@ const MenuOption = observer((props) => {
   const handleViewComments = (e) => {
     e.preventDefault();
     history.push(`/task/${task.id}`);
+    comments.setIsFetching(true);
   };
 
   return title === "View comments" ? (
