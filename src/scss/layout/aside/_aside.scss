@@ -1,6 +1,29 @@
 .aside {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding-top: 20px;
+  padding-right: 10px;
+
+  height: 85%;
+  overflow: hidden;
+
+  &:hover {
+    padding-right: 5px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
+    -ms-overflow-scrolling: touch;
+    -o-overflow-scrolling: touch;
+  }
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }

@@ -31,12 +31,8 @@ const Home = () => {
         </div>
       </main>
 
-      <aside className="aside" style={{
-        overflow: 'auto',
-        height: '80vh',
-      }} >
-        <Messages style={{height:"100%", overflow: 'auto',
-      }} />
+      <aside className="aside">
+        <Messages />
       </aside>
     </Layout>
   );

@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import React from "react";
 import TasksList from "./TasksList";
 import task from "../../store/tasks";
-import Layout, { Content } from "antd/lib/layout/layout";
+import { Content } from "antd/lib/layout/layout";
 
 const TasksSection = observer(
   ({ sectionClass, header, numberOfTasks, noTasksTitle }) => {
@@ -16,15 +16,9 @@ const TasksSection = observer(
         {numberOfTasks === 0 ? noTasksTitle : ""}
 
         {sectionClass === "onhold" ? (
-          <Content style={{
-        // overflow: 'auto',
-        // height: '30vh',
-      }} ><TasksList isCompleted={false} /></Content>
+          <Content><TasksList isCompleted={false} /></Content>
         ) : (
-          <Content style={{
-        // overflow: 'auto',
-        // height: '20vh',
-      }} ><TasksList isCompleted={true} /></Content>
+          <Content><TasksList isCompleted={true} /></Content>
         )}
       </section>
     );

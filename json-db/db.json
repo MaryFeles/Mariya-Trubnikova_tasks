@@ -395,10 +395,23 @@
     {
       "title": "task qwerty",
       "priority": "Critical",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Completed",
       "date": "2021-05-08T14:08:32.596Z",
-      "comments": [],
+      "comments": [
+        {
+          "id": 1,
+          "body": "test comment",
+          "date": "2021-05-17T12:07:30.005Z",
+          "userId": 1
+        },
+        {
+          "id": 2,
+          "body": "test comment 2",
+          "date": "2021-05-17T12:07:57.374Z",
+          "userId": 1
+        }
+      ],
       "users": [
         {
           "id": 3,
@@ -408,7 +421,10 @@
         },
         {
           "id": 1,
-          "roles": []
+          "roles": [
+            "commentator",
+            "executor"
+          ]
         }
       ],
       "messages": [
@@ -419,9 +435,49 @@
           "date": "2021-05-08T14:08:32.000Z",
           "userId": 3,
           "taskId": 9
+        },
+        {
+          "id": 3,
+          "type": "comment",
+          "body": "test comment",
+          "date": "2021-05-17T12:07:30.044Z",
+          "userId": 1
+        },
+        {
+          "id": 4,
+          "type": "comment",
+          "body": "test comment 2",
+          "date": "2021-05-17T12:07:57.376Z",
+          "userId": 1
         }
       ],
       "id": 9
+    },
+    {
+      "title": "test task",
+      "priority": "Normal",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-05-17T12:12:08.724Z",
+      "comments": [],
+      "users": [
+        {
+          "id": 1,
+          "roles": [
+            "creator"
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "id": 1,
+          "type": "creation",
+          "body": "Task created",
+          "date": "Mon May 17 2021 16:12:08 GMT+0400 (GMT+04:00)",
+          "userId": 1
+        }
+      ],
+      "id": 10
     }
   ]
 }
