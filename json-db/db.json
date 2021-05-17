@@ -20,6 +20,27 @@
       "surname": "User3",
       "midname": "User3",
       "avatar": "3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "User4",
+      "surname": "User4",
+      "midname": "User4",
+      "avatar": "4.png"
+    },
+    {
+      "id": 5,
+      "name": "User5",
+      "surname": "User5",
+      "midname": "User5",
+      "avatar": "5.png"
+    },
+    {
+      "id": 6,
+      "name": "User6",
+      "surname": "User6",
+      "midname": "User6",
+      "avatar": "6.png"
     }
   ],
   "security": [
@@ -37,6 +58,21 @@
       "id": 3,
       "login": "user3",
       "password": "user3"
+    },
+    {
+      "id": 4,
+      "login": "user4",
+      "password": "user4"
+    },
+    {
+      "id": 5,
+      "login": "user5",
+      "password": "user5"
+    },
+    {
+      "id": 6,
+      "login": "user6",
+      "password": "user6"
     }
   ],
   "tasks": [
@@ -205,8 +241,8 @@
       "id": 4,
       "title": "Identify the implementation team.",
       "priority": "Normal",
-      "completed": true,
-      "status": "Cancelled",
+      "completed": false,
+      "status": "Pending",
       "date": "2021-05-02T12:46:30.453Z",
       "comments": [
         {
@@ -214,6 +250,24 @@
           "body": "Some comment Some comment Some comment Some comment Some comment ",
           "date": "2021-05-05T13:56:11.069Z",
           "userId": 1
+        },
+        {
+          "id": 2,
+          "body": "some comment",
+          "date": "2021-05-17T14:52:38.152Z",
+          "userId": 5
+        },
+        {
+          "id": 3,
+          "body": "some comment",
+          "date": "2021-05-17T14:54:11.008Z",
+          "userId": 4
+        },
+        {
+          "id": 4,
+          "body": "some comment\n",
+          "date": "2021-05-17T14:55:40.226Z",
+          "userId": 6
         }
       ],
       "messages": [
@@ -223,6 +277,27 @@
           "body": "Task created",
           "date": "2021-05-02T12:46:30.453Z",
           "userId": 1
+        },
+        {
+          "id": 5,
+          "type": "comment",
+          "body": "some comment",
+          "date": "2021-05-17T14:52:38.192Z",
+          "userId": 5
+        },
+        {
+          "id": 6,
+          "type": "comment",
+          "body": "some comment",
+          "date": "2021-05-17T14:54:11.045Z",
+          "userId": 4
+        },
+        {
+          "id": 7,
+          "type": "comment",
+          "body": "some comment\n",
+          "date": "2021-05-17T14:55:40.263Z",
+          "userId": 6
         }
       ],
       "users": [
@@ -243,8 +318,25 @@
         {
           "id": 3,
           "roles": [
-            "commentator",
-            "executor"
+            "commentator"
+          ]
+        },
+        {
+          "id": 5,
+          "roles": [
+            "commentator"
+          ]
+        },
+        {
+          "id": 4,
+          "roles": [
+            "commentator"
+          ]
+        },
+        {
+          "id": 6,
+          "roles": [
+            "commentator"
           ]
         }
       ]
@@ -367,16 +459,24 @@
     {
       "title": "task 123",
       "priority": "Critical",
-      "completed": false,
-      "status": "In Progress",
+      "completed": true,
+      "status": "Cancelled",
       "date": "2021-05-08T13:03:15.863Z",
-      "comments": [],
+      "comments": [
+        {
+          "id": 1,
+          "body": "new comment",
+          "date": "2021-05-17T15:45:52.841Z",
+          "userId": 3
+        }
+      ],
       "users": [
         {
           "id": 3,
           "roles": [
             "creator",
-            "executor"
+            "executor",
+            "commentator"
           ]
         }
       ],
@@ -388,6 +488,13 @@
           "date": "2021-05-08T13:03:15.000Z",
           "userId": 3,
           "taskId": 8
+        },
+        {
+          "id": 9,
+          "type": "comment",
+          "body": "new comment",
+          "date": "2021-05-17T15:45:52.842Z",
+          "userId": 3
         }
       ],
       "id": 8
@@ -456,8 +563,8 @@
     {
       "title": "test task",
       "priority": "Normal",
-      "completed": false,
-      "status": "Pending",
+      "completed": true,
+      "status": "Completed",
       "date": "2021-05-17T12:12:08.724Z",
       "comments": [],
       "users": [
@@ -465,6 +572,12 @@
           "id": 1,
           "roles": [
             "creator"
+          ]
+        },
+        {
+          "id": 3,
+          "roles": [
+            "executor"
           ]
         }
       ],
@@ -478,6 +591,78 @@
         }
       ],
       "id": 10
+    },
+    {
+      "title": "new task",
+      "priority": "Normal",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-05-17T15:16:13.955Z",
+      "comments": [],
+      "users": [
+        {
+          "id": 6,
+          "roles": [
+            "creator"
+          ]
+        },
+        {
+          "id": 3,
+          "roles": []
+        }
+      ],
+      "messages": [
+        {
+          "id": 1,
+          "type": "creation",
+          "body": "Task created",
+          "date": "2021-05-17T15:16:13.000Z",
+          "userId": 6,
+          "taskId": 11
+        }
+      ],
+      "id": 11
+    },
+    {
+      "title": "new task 2",
+      "priority": "Critical",
+      "completed": false,
+      "status": "Pending",
+      "date": "2021-05-17T15:42:28.205Z",
+      "comments": [
+        {
+          "id": 1,
+          "body": "new comment",
+          "date": "2021-05-17T15:45:07.446Z",
+          "userId": 3
+        }
+      ],
+      "users": [
+        {
+          "id": 3,
+          "roles": [
+            "creator",
+            "commentator"
+          ]
+        }
+      ],
+      "messages": [
+        {
+          "id": 1,
+          "type": "creation",
+          "body": "Task created",
+          "date": "Mon May 17 2021 19:42:28 GMT+0400 (GMT+04:00)",
+          "userId": 3
+        },
+        {
+          "id": 8,
+          "type": "comment",
+          "body": "new comment",
+          "date": "2021-05-17T15:45:07.484Z",
+          "userId": 3
+        }
+      ],
+      "id": 12
     }
   ]
 }
