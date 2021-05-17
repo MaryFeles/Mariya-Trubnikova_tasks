@@ -12,13 +12,32 @@ const TasksSection = observer(
 
     return (
       <section className={tasksClass}>
-        <h2 className="tasks__header">{header}</h2>
+        {sectionClass === "completed" ? (
+          <>
+            <div className="tasks__header-wrap">
+            <h2 className="tasks__header">{header}</h2>
+            <button 
+              className="inactive-btn"
+              data-active={task.sectionIsVisible}
+              onClick={() => {task.toggleSectionVisible()}}
+            >
+            {task.sectionIsVisible ? "Active" : "Inactive"}
+            </button>          
+            </div>
+          </>
+        ) : (
+          <h2 className="tasks__header">{header}</h2>
+        )}
+
         {numberOfTasks === 0 ? noTasksTitle : ""}
 
         {sectionClass === "onhold" ? (
           <Content><TasksList isCompleted={false} /></Content>
         ) : (
-          <Content><TasksList isCompleted={true} /></Content>
+          <Content style={{position: "relative"}}>
+            {task.sectionIsVisible ? "" : <div className="overlay"></div>}
+            <TasksList isCompleted={true} className="tasks__list tasks__list--completed" />
+          </Content>
         )}
       </section>
     );

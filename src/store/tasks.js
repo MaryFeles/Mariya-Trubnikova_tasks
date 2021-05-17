@@ -11,6 +11,8 @@ class Tasks {
     currentTaskStatus: "Loading",
   };
 
+  sectionIsVisible = false;
+
   constructor() {
     makeAutoObservable(this);
   }
@@ -204,6 +206,10 @@ class Tasks {
 
   setSearchQuery(value) {
     this.state.searchQuery = value;
+  }
+
+  toggleSectionVisible() {
+    this.sectionIsVisible = !this.sectionIsVisible;
   }
 
   get numberOfIncompletedTasks() {
