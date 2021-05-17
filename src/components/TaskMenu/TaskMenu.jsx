@@ -24,7 +24,6 @@ const TaskMenu = observer(({ task }) => {
   const handlerMarkAsIncompleteBtn = () => {
     tasks.completeTaskToggle(task);
 
-
     if (includesExecutor) {
       let executorRoleIndex = includesExecutor.roles.indexOf("executor");
       includesExecutor.roles.splice(executorRoleIndex);
@@ -57,26 +56,20 @@ const TaskMenu = observer(({ task }) => {
   ];
 
   let recordOfCurUserInTask;
-  currentUser &&
-    (recordOfCurUserInTask = task.users.find(
+  currentUser && (recordOfCurUserInTask = task.users.find(
       (item) => item.id === currentUser.id
     ));
 
-  if (
-    recordOfCurUserInTask &&
-    recordOfCurUserInTask.roles.includes("creator")
-  ) {
-    let onHoldTaskAdditionalOptions = [
-      {
-        id: 5,
-        title: "Delete",
-        click() {
-          tasks.removeTask(task.id);
-        },
-      },
-    ];
+  if (recordOfCurUserInTask && recordOfCurUserInTask.roles.includes("creator")) {
+    
+    onHoldTaskOptions.push({
+      id: 5,
+      title: "Delete",
+      click() {
+        tasks.removeTask(task.id);
+      }
+    })
 
-    onHoldTaskOptions = onHoldTaskOptions.concat(onHoldTaskAdditionalOptions);
     completedTaskOptions.push({
       id: 3,
       title: "Delete",
@@ -86,10 +79,7 @@ const TaskMenu = observer(({ task }) => {
     });
   }
 
-  if (
-    recordOfCurUserInTask &&
-    recordOfCurUserInTask.roles.includes("executor")
-  ) {
+  if (recordOfCurUserInTask && recordOfCurUserInTask.roles.includes("executor")) {
     onHoldTaskOptions.push({
       id: 3,
       title: "Complete",

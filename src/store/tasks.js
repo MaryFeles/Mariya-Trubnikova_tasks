@@ -108,7 +108,6 @@ class Tasks {
     }
 
     this.updateTask(task);
-    this.getAllTasks();
   }
 
   createNewMessage(userId, task, type, body) {
